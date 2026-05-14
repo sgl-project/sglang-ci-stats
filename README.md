@@ -7,7 +7,7 @@ Auto-scraped per-test elapsed-time history for [`sgl-project/sglang`](https://gi
 | Path | Contents |
 | --- | --- |
 | `runs/<YYYY-MM-DD>T<HH-MM-SS>Z__<run_id>.json` | Raw per-run archive. One file per scraped CI run; jobs grow append-only as reruns succeed. |
-| `models/current.json` | Derived partition model: per-(file, suite, backend) `est` (p90) and per-suite OLS `(coeff, bias, r_squared)` fitting `wall_clock = coeff * sum(elapsed) + bias`. Deterministic function of `runs/` within the same UTC day. `git log models/current.json` is the historical archive. |
+| `model.json` | Derived partition model: per-(file, suite, backend) `est` (p90) and per-suite OLS `(coeff, bias, r_squared)` fitting `wall_clock = coeff * sum(elapsed) + bias`. Deterministic function of `runs/` within the same UTC day. `git log model.json` is the historical archive. |
 | `scrape.py` | The scraper. Pulls completed `PR Test` runs on `main` (events: `schedule` + `workflow_dispatch`) within a 48h rolling window and writes `runs/*.json`. No aggregation. |
 | `derive.py` | The deriver. Reads `runs/*.json` and emits one fresh `models/*.json` snapshot per invocation. |
 | `.github/workflows/scrape.yml` | Auto-runs `scrape.py` + `derive.py` every 6h via GitHub Actions and commits any new files. |

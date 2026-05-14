@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Derive a partition prediction model from runs/*.json.
 
-Output: models/current.json (always overwritten; git log is the archive).
+Output: model.json (always overwritten; `git log model.json` is the archive).
 
     pred_shard_wall_clock = sum(est[file] for file in shard) * coeff + bias
 
@@ -35,7 +35,6 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent
 RUNS_DIR = REPO_ROOT / "runs"
-MODELS_DIR = REPO_ROOT / "models"
 
 MIN_EST_SAMPLES = 3
 MIN_FIT_SAMPLES = 3
@@ -139,7 +138,7 @@ def main():
     )
     parser.add_argument(
         "--out",
-        default=str(MODELS_DIR / "current.json"),
+        default=str(REPO_ROOT / "model.json"),
         help="Destination path for the model snapshot",
     )
     args = parser.parse_args()
