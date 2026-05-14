@@ -1,0 +1,48 @@
+name: Scrape
+
+on:
+  schedule:
+    # every 6 hours
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      max_new_runs:
+        description: "Cap on number of new runs to archive this invocation"
+        required: false
+        default: "50"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run scraper
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAX_NEW_RUNS: ${{ github.event.inputs.max_new_runs || '50' }}
+        run: python scrape.py --max-new-runs "$MAX_NEW_RUNS"
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add runs/
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "scrape: $(date -u +%FT%TZ)"
+            git push
+          fi
