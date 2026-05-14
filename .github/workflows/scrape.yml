@@ -10,11 +10,6 @@ on:
         description: "Cap on number of new runs to archive this invocation"
         required: false
         default: "50"
-      force_derive:
-        description: "Run derive.py + commit even if runs/ has no change"
-        required: false
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -40,42 +35,17 @@ jobs:
           MAX_NEW_RUNS: ${{ github.event.inputs.max_new_runs || '50' }}
         run: python scrape.py --max-new-runs "$MAX_NEW_RUNS"
 
-      - name: Check whether to derive
-        id: changes
-        run: |
-          # Derive when:
-          #   - scrape produced new/augmented runs/  (normal path), OR
-          #   - models/ is empty / missing            (bootstrap), OR
-          #   - --force-derive was requested manually (workflow_dispatch)
-          should=false
-          reason=""
-          if [[ -n "$(git status --porcelain runs/)" ]]; then
-            should=true
-            reason="runs/ changed"
-          elif [[ ! -d models ]] || [[ -z "$(ls -A models/ 2>/dev/null)" ]]; then
-            should=true
-            reason="models/ bootstrap"
-          elif [[ "${{ github.event.inputs.force_derive }}" == "true" ]]; then
-            should=true
-            reason="force_derive=true"
-          fi
-          if [[ "$should" == "true" ]]; then
-            echo "should=true" >> "$GITHUB_OUTPUT"
-            echo "deriving: $reason"
-          else
-            echo "should=false" >> "$GITHUB_OUTPUT"
-            echo "skipping derive + commit (no changes)"
-          fi
-
       - name: Derive partition model
-        if: steps.changes.outputs.should == 'true'
         run: python derive.py
 
-      - name: Commit and push
-        if: steps.changes.outputs.should == 'true'
+      - name: Commit and push if anything changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add runs/ models/
-          git commit -m "scrape+derive: $(date -u +%FT%TZ)"
-          git push
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "scrape+derive: $(date -u +%FT%TZ)"
+            git push
+          fi

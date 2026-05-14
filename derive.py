@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Derive a partition prediction model from runs/*.json.
 
-Output: models/<YYYY-MM-DD>T<HH-MM-SS>Z.json   (one snapshot per invocation)
+Output: models/current.json (always overwritten; git log is the archive).
 
     pred_shard_wall_clock = sum(est[file] for file in shard) * coeff + bias
 
@@ -13,6 +13,11 @@ Where:
              extra runner dimension is redundant.)
   bias       per suite, OLS intercept (~ shard setup overhead).
   r_squared  diagnostic for whether the linear fit is meaningful.
+
+The output is a deterministic function of (runs/, code, fit window).
+`data_as_of` is pinned to UTC midnight (not wall-clock now) so two
+invocations on the same UTC day with unchanged runs/ produce
+byte-identical JSON -- the workflow can simply diff & commit.
 
 Consumers should fall back to coeff=1.0, bias=0 (and the in-source
 static est_time) whenever a lookup is missing or r_squared is too low.
@@ -133,14 +138,19 @@ def main():
         help="Only use runs whose started_at falls within the last N days",
     )
     parser.add_argument(
-        "--out-dir",
-        default=str(MODELS_DIR),
-        help="Directory to write the timestamped snapshot into",
+        "--out",
+        default=str(MODELS_DIR / "current.json"),
+        help="Destination path for the model snapshot",
     )
     args = parser.parse_args()
 
+    # Pin cutoff to UTC midnight (not wall-clock now) so the model is a
+    # deterministic function of runs/ within the same UTC day -- two
+    # consecutive cron ticks produce identical output and the commit step
+    # naturally no-ops.
     now = datetime.now(timezone.utc)
-    cutoff = now - timedelta(days=args.fit_window_days)
+    today_utc = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    cutoff = today_utc - timedelta(days=args.fit_window_days)
     records = load_runs(cutoff)
 
     # Bins arrive newest-first (load_runs sorts that way). Slicing to
@@ -163,20 +173,15 @@ def main():
 
     payload = {
         "version": 1,
-        "generated_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "data_as_of": cutoff.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "fit_window_days": args.fit_window_days,
         "n_runs": len(records),
         "est": est,
         "fit": fit,
     }
 
-    out_dir = Path(args.out_dir)
-    out_dir.mkdir(exist_ok=True)
-    # Filename mirrors runs/<...>.json: ISO timestamp with ':' -> '-' so
-    # plain ls/glob sorts chronologically. No run_id suffix needed --
-    # each invocation is a new snapshot, not tied to one run.
-    filename = now.strftime("%Y-%m-%dT%H-%M-%SZ") + ".json"
-    out_path = out_dir / filename
+    out_path = Path(args.out)
+    out_path.parent.mkdir(exist_ok=True)
     out_path.write_text(json.dumps(payload, indent=2) + "\n")
     print(
         f"wrote {out_path}: "
