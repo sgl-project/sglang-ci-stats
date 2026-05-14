@@ -35,14 +35,17 @@ jobs:
           MAX_NEW_RUNS: ${{ github.event.inputs.max_new_runs || '50' }}
         run: python scrape.py --max-new-runs "$MAX_NEW_RUNS"
 
+      - name: Derive partition model
+        run: python derive.py
+
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add runs/
+          git add runs/ models/
           if git diff --cached --quiet; then
             echo "no changes"
           else
-            git commit -m "scrape: $(date -u +%FT%TZ)"
+            git commit -m "scrape+derive: $(date -u +%FT%TZ)"
             git push
           fi

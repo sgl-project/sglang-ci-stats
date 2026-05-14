@@ -7,8 +7,10 @@ Auto-scraped per-test elapsed-time history for [`sgl-project/sglang`](https://gi
 | Path | Contents |
 | --- | --- |
 | `runs/<YYYY-MM-DD>T<HH-MM-SS>Z__<run_id>.json` | Raw per-run archive. One file per scraped CI run; jobs grow append-only as reruns succeed. |
-| `scrape.py` | The scraper. Pulls completed `PR Test` runs on `main` (events: `schedule` + `workflow_dispatch`) within a 48h rolling window and writes `runs/*.json`. No aggregation -- consumers derive their own views. |
-| `.github/workflows/scrape.yml` | Auto-runs `scrape.py` every 6h via GitHub Actions and commits any new/augmented `runs/*.json`. |
+| `models/<YYYY-MM-DD>T<HH-MM-SS>Z.json` | Snapshot of the derived partition model: per-(file, suite, backend) `est` (p90) and per-suite OLS `(coeff, bias, r_squared)` fitting `wall_clock = coeff * sum(elapsed) + bias`. One new file per cron tick; consumers list the directory and pick the latest. |
+| `scrape.py` | The scraper. Pulls completed `PR Test` runs on `main` (events: `schedule` + `workflow_dispatch`) within a 48h rolling window and writes `runs/*.json`. No aggregation. |
+| `derive.py` | The deriver. Reads `runs/*.json` and emits one fresh `models/*.json` snapshot per invocation. |
+| `.github/workflows/scrape.yml` | Auto-runs `scrape.py` + `derive.py` every 6h via GitHub Actions and commits any new files. |
 
 ## How to consume
 
