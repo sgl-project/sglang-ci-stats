@@ -50,6 +50,13 @@ LOG_PATTERN = re.compile(
     r"filename='[^']*?/sglang/((?:test|python)/[^']+\.py)', elapsed=(\d+),"
 )
 
+# pr-test.yml's `run-name` template emits "[<stage>] <pr_head_sha>" when
+# the slash-command handler dispatches a fork-PR /rerun-stage at main HEAD
+# (so the workflow code is trusted) while telling it to check out the PR
+# commit. Those runs report head_branch=main but actually test PR code,
+# so they must be excluded from main-elapsed statistics.
+PR_RERUN_TITLE_RE = re.compile(r"^\[[^\]]+\] [0-9a-f]{40}$")
+
 
 # ---------- gh api helpers ----------
 
@@ -87,6 +94,8 @@ def list_recent_runs(repo, workflow_id, lookback_hours=LOOKBACK_HOURS):
                 run["run_started_at"].replace("Z", "+00:00")
             )
             if started < cutoff:
+                continue
+            if PR_RERUN_TITLE_RE.match(run.get("display_title") or ""):
                 continue
             seen.setdefault(run["id"], run)
     return sorted(seen.values(), key=lambda r: r["run_started_at"], reverse=True)
@@ -221,6 +230,7 @@ def sync_run(repo, run):
             "event": run["event"],
             "head_sha": run["head_sha"],
             "html_url": run["html_url"],
+            "display_title": run.get("display_title", ""),
             "jobs": [],
         }
         known_job_ids = set()
