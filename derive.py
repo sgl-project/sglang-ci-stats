@@ -154,13 +154,20 @@ def main():
 
     # Bins arrive newest-first (load_runs sorts that way). Slicing to
     # MAX_SAMPLES then keeps only the most recent samples per key.
+    # Output shape: {suite: {file: p90}}. Backend is dropped because each
+    # sglang suite is 1:1 with one backend (e.g. stage-c-test-4-gpu-h100
+    # is always cuda), so the dimension is redundant for lookup.
     est_bins = collect_est_samples(records)
-    est = {}
-    for (file, suite, backend), values in sorted(est_bins.items()):
+    est_by_suite = defaultdict(dict)
+    for (file, suite, _backend), values in est_bins.items():
         recent = values[:MAX_SAMPLES]
         if len(recent) < MIN_EST_SAMPLES:
             continue
-        est[f"{file} @ {suite} @ {backend}"] = p90(recent)
+        est_by_suite[suite][file] = p90(recent)
+    est = {
+        suite: dict(sorted(est_by_suite[suite].items()))
+        for suite in sorted(est_by_suite)
+    }
 
     fit_bins = collect_fit_samples(records)
     fit = {}
@@ -182,9 +189,13 @@ def main():
     out_path = Path(args.out)
     out_path.parent.mkdir(exist_ok=True)
     out_path.write_text(json.dumps(payload, indent=2) + "\n")
+
+    n_est_leaves = sum(len(v) for v in est.values())
     print(
         f"wrote {out_path}: "
-        f"{len(records)} runs -> {len(est)} est entries, {len(fit)} fit entries"
+        f"{len(records)} runs -> "
+        f"{n_est_leaves} est entries across {len(est)} suites, "
+        f"{len(fit)} fit entries"
     )
 
 
