@@ -14,7 +14,9 @@ Layout:
       already on disk.
 
 Filter:
-  - workflow:   "PR Test"
+  - workflow:   "PR Test" OR "PR Test Extra" (label-gated, sglang#24725;
+                empty until upstream adds a `schedule:` trigger to
+                pr-test-extra.yml, then automatically picked up here)
   - branch:     main
   - event:      schedule OR workflow_dispatch
   - run-level:  status=completed (any conclusion)
@@ -40,7 +42,14 @@ REPO_ROOT = Path(__file__).resolve().parent
 RUNS_DIR = REPO_ROOT / "runs"
 
 SOURCE_REPO = "sgl-project/sglang"
-WORKFLOW_NAME = "PR Test"
+# `PR Test` is the per-commit pipeline; `PR Test Extra` is the label-gated
+# nightly-class pipeline introduced in sglang#24725. Both eventually
+# expose schedule/workflow_dispatch runs on main, so scrape unions them
+# (deduped by run_id) and writes to the same runs/ archive layout. A
+# workflow that doesn't yet have a schedule trigger contributes 0 runs,
+# making this forward-compatible with sglang adding `schedule:` to
+# pr-test-extra.yml.
+WORKFLOW_NAMES = ("PR Test", "PR Test Extra")
 EVENTS = ("schedule", "workflow_dispatch")
 
 MAX_NEW_RUNS = 50
@@ -66,38 +75,62 @@ def gh_api(endpoint, raw=False):
     return result.stdout if raw else json.loads(result.stdout)
 
 
-def get_workflow_id(repo):
-    data = gh_api(f"/repos/{repo}/actions/workflows")
-    for wf in data["workflows"]:
-        if wf["name"] == WORKFLOW_NAME:
-            return wf["id"]
-    raise RuntimeError(f"Workflow '{WORKFLOW_NAME}' not found in {repo}")
+def get_workflow_ids(repo):
+    """Resolve every WORKFLOW_NAMES entry that currently exists in repo.
+
+    sglang has >100 workflows so the workflows endpoint must be paginated
+    -- a single un-paginated GET silently finds only id-earliest matches.
+    Stop when every WORKFLOW_NAMES entry is matched or pages run out.
+    Missing names are not an error (e.g. pr-test-extra.yml may not exist
+    on a release branch), but having zero matches is, since it likely
+    indicates the workflow was renamed.
+    """
+    want = set(WORKFLOW_NAMES)
+    found = {}
+    page = 1
+    while want and page <= 10:  # 10 pages * 100 = 1000 workflows, sane cap
+        data = gh_api(f"/repos/{repo}/actions/workflows?per_page=100&page={page}")
+        batch = data["workflows"]
+        if not batch:
+            break
+        for wf in batch:
+            if wf["name"] in want:
+                found[wf["name"]] = wf["id"]
+                want.discard(wf["name"])
+        page += 1
+    if not found:
+        raise RuntimeError(
+            f"None of {WORKFLOW_NAMES} found in {repo}; the workflow may have been renamed"
+        )
+    # Preserve WORKFLOW_NAMES order for deterministic logs.
+    return [(name, found[name]) for name in WORKFLOW_NAMES if name in found]
 
 
-def list_recent_runs(repo, workflow_id, lookback_hours=LOOKBACK_HOURS):
-    """Union of completed runs across allowed events, within a rolling window.
+def list_recent_runs(repo, workflow_ids, lookback_hours=LOOKBACK_HOURS):
+    """Union of completed runs across (workflow, event), within a rolling window.
 
-    GitHub's event= filter only accepts a single value, so query each event
-    separately and dedup by run_id. Runs whose started_at predates
-    `now - lookback_hours` are dropped (anything older than the operational
-    window is "ancient history" and shouldn't be backfilled).
+    GitHub's event= filter only accepts a single value, so query each
+    (workflow, event) pair separately and dedup by run_id (run_id is
+    globally unique across workflows in a repo). Runs whose started_at
+    predates `now - lookback_hours` are dropped.
     """
     cutoff = datetime.now(timezone.utc) - timedelta(hours=lookback_hours)
     seen = {}
-    for event in EVENTS:
-        data = gh_api(
-            f"/repos/{repo}/actions/workflows/{workflow_id}/runs"
-            f"?branch=main&status=completed&event={event}&per_page=100"
-        )
-        for run in data["workflow_runs"]:
-            started = datetime.fromisoformat(
-                run["run_started_at"].replace("Z", "+00:00")
+    for _wf_name, workflow_id in workflow_ids:
+        for event in EVENTS:
+            data = gh_api(
+                f"/repos/{repo}/actions/workflows/{workflow_id}/runs"
+                f"?branch=main&status=completed&event={event}&per_page=100"
             )
-            if started < cutoff:
-                continue
-            if PR_RERUN_TITLE_RE.match(run.get("display_title") or ""):
-                continue
-            seen.setdefault(run["id"], run)
+            for run in data["workflow_runs"]:
+                started = datetime.fromisoformat(
+                    run["run_started_at"].replace("Z", "+00:00")
+                )
+                if started < cutoff:
+                    continue
+                if PR_RERUN_TITLE_RE.match(run.get("display_title") or ""):
+                    continue
+                seen.setdefault(run["id"], run)
     return sorted(seen.values(), key=lambda r: r["run_started_at"], reverse=True)
 
 
@@ -265,10 +298,12 @@ def sync_run(repo, run):
 
 def sync_runs(repo, max_new_runs):
     """Sync every candidate run in the lookback window to disk."""
-    workflow_id = get_workflow_id(repo)
-    runs = list_recent_runs(repo, workflow_id)[:max_new_runs]
+    workflow_ids = get_workflow_ids(repo)
+    wf_summary = ", ".join(f"{n} (id={i})" for n, i in workflow_ids)
+    runs = list_recent_runs(repo, workflow_ids)[:max_new_runs]
     print(
-        f"{len(runs)} candidate runs in last {LOOKBACK_HOURS}h from {repo}",
+        f"{len(runs)} candidate runs in last {LOOKBACK_HOURS}h "
+        f"from {repo} across [{wf_summary}]",
         file=sys.stderr,
     )
 
