@@ -121,13 +121,17 @@ def job_logs_text(repo, job_id):
 # ---------- per-job parsing ----------
 
 def job_name_to_suite(job_name):
-    # Reusable-workflow nesting: leaf is the last `/`-separated token.
-    leaf = job_name.split(" / ")[-1]
-    return re.sub(r"\s*\(\d+\)$", "", leaf)
+    # Reusable-workflow display: `caller / ... / leaf (N)`. The caller
+    # block id right before the leaf is `with.self_name`, which is also
+    # consumer's lookup key. Leaf id varies across sglang revisions
+    # (was `run`, now back to self_name) so don't trust it.
+    base = re.sub(r"\s*\(\d+\)$", "", job_name)
+    tokens = base.split(" / ")
+    return tokens[-2] if len(tokens) >= 2 else tokens[-1]
 
 
 def determine_backend(job_name):
-    name = job_name.split(" / ")[-1].lower()
+    name = job_name.lower()
     for backend in ("cpu", "amd", "npu"):
         if backend in name:
             return backend
