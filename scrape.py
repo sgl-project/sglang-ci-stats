@@ -149,12 +149,23 @@ def job_logs_text(repo, job_id):
 
 # ---------- per-job parsing ----------
 
+def job_name_leaf(job_name):
+    """Strip reusable-workflow caller prefixes (`a / b / leaf`) and the
+    partition `(N)` suffix, leaving the leaf job name as it appears in
+    the innermost `_pr-test-stage.yml`. Works for any nesting depth
+    (0, 1, 2, ...) because GitHub Actions always puts the leaf last."""
+    leaf = job_name.split(" / ")[-1]
+    return re.sub(r"\s*\(\d+\)$", "", leaf)
+
+
 def job_name_to_suite(job_name):
-    return re.sub(r"\s*\(\d+\)$", "", job_name)
+    return job_name_leaf(job_name)
 
 
 def determine_backend(job_name):
-    name = job_name.lower()
+    # Inspect the leaf only -- a caller-block id like "call-amd-stages"
+    # would otherwise mislabel every cuda job nested under it.
+    name = job_name_leaf(job_name).lower()
     for backend in ("cpu", "amd", "npu"):
         if backend in name:
             return backend
