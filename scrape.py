@@ -14,11 +14,7 @@ Layout:
       already on disk.
 
 Filter:
-  - workflow:   "PR Test" (nests pr-test-extra.yml + sibling workflows via
-                workflow_call, so extra-* leaf jobs land under the same
-                run_id; only `_pr-test-stage.yml` callers emit TIMINGS
-                blocks, so non-stage nested jobs are auto-filtered by
-                the empty-timings check in build_job_record)
+  - workflow:   "PR Test"
   - branch:     main
   - event:      schedule OR workflow_dispatch
   - run-level:  status=completed (any conclusion)
@@ -44,15 +40,7 @@ REPO_ROOT = Path(__file__).resolve().parent
 RUNS_DIR = REPO_ROOT / "runs"
 
 SOURCE_REPO = "sgl-project/sglang"
-# `PR Test` is the only watched workflow because sglang's `pr-test.yml`
-# nests `pr-test-extra.yml` (and a few other sibling workflows) as
-# reusable workflow_call jobs: schedule cron triggers `PR Test`, which
-# pulls extra-* leaf jobs under the same run_id. So extra suites are
-# captured here despite `pr-test-extra.yml` itself having no schedule
-# trigger. If upstream ever adds a standalone `schedule:` to extra,
-# extend this tuple to `("PR Test", "PR Test Extra")` -- the rest of the
-# pipeline is already generic over multiple workflows.
-WORKFLOW_NAMES = ("PR Test",)
+WORKFLOW_NAME = "PR Test"
 EVENTS = ("schedule", "workflow_dispatch")
 
 MAX_NEW_RUNS = 50
@@ -78,62 +66,42 @@ def gh_api(endpoint, raw=False):
     return result.stdout if raw else json.loads(result.stdout)
 
 
-def get_workflow_ids(repo):
-    """Resolve every WORKFLOW_NAMES entry that currently exists in repo.
-
-    sglang has >100 workflows so the workflows endpoint must be paginated
-    -- a single un-paginated GET silently finds only id-earliest matches.
-    Stop when every WORKFLOW_NAMES entry is matched or pages run out.
-    Missing names are not an error (e.g. pr-test-extra.yml may not exist
-    on a release branch), but having zero matches is, since it likely
-    indicates the workflow was renamed.
-    """
-    want = set(WORKFLOW_NAMES)
-    found = {}
-    page = 1
-    while want and page <= 10:  # 10 pages * 100 = 1000 workflows, sane cap
+def get_workflow_id(repo):
+    # sglang has >100 workflows; paginate so the match isn't id-luck.
+    for page in range(1, 11):
         data = gh_api(f"/repos/{repo}/actions/workflows?per_page=100&page={page}")
-        batch = data["workflows"]
-        if not batch:
+        if not data["workflows"]:
             break
-        for wf in batch:
-            if wf["name"] in want:
-                found[wf["name"]] = wf["id"]
-                want.discard(wf["name"])
-        page += 1
-    if not found:
-        raise RuntimeError(
-            f"None of {WORKFLOW_NAMES} found in {repo}; the workflow may have been renamed"
-        )
-    # Preserve WORKFLOW_NAMES order for deterministic logs.
-    return [(name, found[name]) for name in WORKFLOW_NAMES if name in found]
+        for wf in data["workflows"]:
+            if wf["name"] == WORKFLOW_NAME:
+                return wf["id"]
+    raise RuntimeError(f"Workflow '{WORKFLOW_NAME}' not found in {repo}")
 
 
-def list_recent_runs(repo, workflow_ids, lookback_hours=LOOKBACK_HOURS):
-    """Union of completed runs across (workflow, event), within a rolling window.
+def list_recent_runs(repo, workflow_id, lookback_hours=LOOKBACK_HOURS):
+    """Union of completed runs across allowed events, within a rolling window.
 
-    GitHub's event= filter only accepts a single value, so query each
-    (workflow, event) pair separately and dedup by run_id (run_id is
-    globally unique across workflows in a repo). Runs whose started_at
-    predates `now - lookback_hours` are dropped.
+    GitHub's event= filter only accepts a single value, so query each event
+    separately and dedup by run_id. Runs whose started_at predates
+    `now - lookback_hours` are dropped (anything older than the operational
+    window is "ancient history" and shouldn't be backfilled).
     """
     cutoff = datetime.now(timezone.utc) - timedelta(hours=lookback_hours)
     seen = {}
-    for _wf_name, workflow_id in workflow_ids:
-        for event in EVENTS:
-            data = gh_api(
-                f"/repos/{repo}/actions/workflows/{workflow_id}/runs"
-                f"?branch=main&status=completed&event={event}&per_page=100"
+    for event in EVENTS:
+        data = gh_api(
+            f"/repos/{repo}/actions/workflows/{workflow_id}/runs"
+            f"?branch=main&status=completed&event={event}&per_page=100"
+        )
+        for run in data["workflow_runs"]:
+            started = datetime.fromisoformat(
+                run["run_started_at"].replace("Z", "+00:00")
             )
-            for run in data["workflow_runs"]:
-                started = datetime.fromisoformat(
-                    run["run_started_at"].replace("Z", "+00:00")
-                )
-                if started < cutoff:
-                    continue
-                if PR_RERUN_TITLE_RE.match(run.get("display_title") or ""):
-                    continue
-                seen.setdefault(run["id"], run)
+            if started < cutoff:
+                continue
+            if PR_RERUN_TITLE_RE.match(run.get("display_title") or ""):
+                continue
+            seen.setdefault(run["id"], run)
     return sorted(seen.values(), key=lambda r: r["run_started_at"], reverse=True)
 
 
@@ -152,23 +120,14 @@ def job_logs_text(repo, job_id):
 
 # ---------- per-job parsing ----------
 
-def job_name_leaf(job_name):
-    """Strip reusable-workflow caller prefixes (`a / b / leaf`) and the
-    partition `(N)` suffix, leaving the leaf job name as it appears in
-    the innermost `_pr-test-stage.yml`. Works for any nesting depth
-    (0, 1, 2, ...) because GitHub Actions always puts the leaf last."""
+def job_name_to_suite(job_name):
+    # Reusable-workflow nesting: leaf is the last `/`-separated token.
     leaf = job_name.split(" / ")[-1]
     return re.sub(r"\s*\(\d+\)$", "", leaf)
 
 
-def job_name_to_suite(job_name):
-    return job_name_leaf(job_name)
-
-
 def determine_backend(job_name):
-    # Inspect the leaf only -- a caller-block id like "call-amd-stages"
-    # would otherwise mislabel every cuda job nested under it.
-    name = job_name_leaf(job_name).lower()
+    name = job_name.split(" / ")[-1].lower()
     for backend in ("cpu", "amd", "npu"):
         if backend in name:
             return backend
@@ -312,12 +271,10 @@ def sync_run(repo, run):
 
 def sync_runs(repo, max_new_runs):
     """Sync every candidate run in the lookback window to disk."""
-    workflow_ids = get_workflow_ids(repo)
-    wf_summary = ", ".join(f"{n} (id={i})" for n, i in workflow_ids)
-    runs = list_recent_runs(repo, workflow_ids)[:max_new_runs]
+    workflow_id = get_workflow_id(repo)
+    runs = list_recent_runs(repo, workflow_id)[:max_new_runs]
     print(
-        f"{len(runs)} candidate runs in last {LOOKBACK_HOURS}h "
-        f"from {repo} across [{wf_summary}]",
+        f"{len(runs)} candidate runs in last {LOOKBACK_HOURS}h from {repo}",
         file=sys.stderr,
     )
 

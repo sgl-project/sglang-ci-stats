@@ -44,7 +44,7 @@ Clone the repo and walk `runs/` directly, or `curl` individual files via `raw.gi
 
 ## Filter / parser
 
-- workflow: `PR Test` only. `pr-test.yml` nests `pr-test-extra.yml` ([sglang#24725](https://github.com/sgl-project/sglang/pull/24725)) and several sibling workflows as `workflow_call` jobs, so `extra-a-*` / `extra-b-*` leaf jobs land under the same `PR Test` run_id on schedule cron. Non-stage nested jobs (sgl-kernel / jit-kernel / multimodal-gen / pr-gate) don't emit `TIMINGS` blocks so they're auto-filtered.
+- workflow: `PR Test`
 - branch: `main`
 - event: `schedule` or `workflow_dispatch` (PR-triggered runs excluded)
 - run-level: `status=completed` (any conclusion)
