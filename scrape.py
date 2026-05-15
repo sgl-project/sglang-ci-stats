@@ -14,9 +14,11 @@ Layout:
       already on disk.
 
 Filter:
-  - workflow:   "PR Test" OR "PR Test Extra" (label-gated, sglang#24725;
-                empty until upstream adds a `schedule:` trigger to
-                pr-test-extra.yml, then automatically picked up here)
+  - workflow:   "PR Test" (nests pr-test-extra.yml + sibling workflows via
+                workflow_call, so extra-* leaf jobs land under the same
+                run_id; only `_pr-test-stage.yml` callers emit TIMINGS
+                blocks, so non-stage nested jobs are auto-filtered by
+                the empty-timings check in build_job_record)
   - branch:     main
   - event:      schedule OR workflow_dispatch
   - run-level:  status=completed (any conclusion)
@@ -42,14 +44,15 @@ REPO_ROOT = Path(__file__).resolve().parent
 RUNS_DIR = REPO_ROOT / "runs"
 
 SOURCE_REPO = "sgl-project/sglang"
-# `PR Test` is the per-commit pipeline; `PR Test Extra` is the label-gated
-# nightly-class pipeline introduced in sglang#24725. Both eventually
-# expose schedule/workflow_dispatch runs on main, so scrape unions them
-# (deduped by run_id) and writes to the same runs/ archive layout. A
-# workflow that doesn't yet have a schedule trigger contributes 0 runs,
-# making this forward-compatible with sglang adding `schedule:` to
-# pr-test-extra.yml.
-WORKFLOW_NAMES = ("PR Test", "PR Test Extra")
+# `PR Test` is the only watched workflow because sglang's `pr-test.yml`
+# nests `pr-test-extra.yml` (and a few other sibling workflows) as
+# reusable workflow_call jobs: schedule cron triggers `PR Test`, which
+# pulls extra-* leaf jobs under the same run_id. So extra suites are
+# captured here despite `pr-test-extra.yml` itself having no schedule
+# trigger. If upstream ever adds a standalone `schedule:` to extra,
+# extend this tuple to `("PR Test", "PR Test Extra")` -- the rest of the
+# pipeline is already generic over multiple workflows.
+WORKFLOW_NAMES = ("PR Test",)
 EVENTS = ("schedule", "workflow_dispatch")
 
 MAX_NEW_RUNS = 50
