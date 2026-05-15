@@ -67,10 +67,14 @@ def gh_api(endpoint, raw=False):
 
 
 def get_workflow_id(repo):
-    data = gh_api(f"/repos/{repo}/actions/workflows")
-    for wf in data["workflows"]:
-        if wf["name"] == WORKFLOW_NAME:
-            return wf["id"]
+    # sglang has >100 workflows; paginate so the match isn't id-luck.
+    for page in range(1, 11):
+        data = gh_api(f"/repos/{repo}/actions/workflows?per_page=100&page={page}")
+        if not data["workflows"]:
+            break
+        for wf in data["workflows"]:
+            if wf["name"] == WORKFLOW_NAME:
+                return wf["id"]
     raise RuntimeError(f"Workflow '{WORKFLOW_NAME}' not found in {repo}")
 
 
@@ -117,11 +121,13 @@ def job_logs_text(repo, job_id):
 # ---------- per-job parsing ----------
 
 def job_name_to_suite(job_name):
-    return re.sub(r"\s*\(\d+\)$", "", job_name)
+    # Reusable-workflow nesting: leaf is the last `/`-separated token.
+    leaf = job_name.split(" / ")[-1]
+    return re.sub(r"\s*\(\d+\)$", "", leaf)
 
 
 def determine_backend(job_name):
-    name = job_name.lower()
+    name = job_name.split(" / ")[-1].lower()
     for backend in ("cpu", "amd", "npu"):
         if backend in name:
             return backend
