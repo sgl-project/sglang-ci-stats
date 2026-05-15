@@ -2,7 +2,7 @@
   "version": 1,
   "data_as_of": "2026-05-08T00:00:00Z",
   "fit_window_days": 7,
-  "n_runs": 9,
+  "n_runs": 10,
   "est": {
     "stage-a-test-1-gpu-small": {
       "test/registered/language/test_srt_backend.py": 110
@@ -12,11 +12,12 @@
       "test/registered/bench_fn/test_benchmark_datasets_api.py": 6,
       "test/registered/function_call/test_kimik2_detector.py": 7,
       "test/registered/quant/test_is_layer_skipped.py": 9,
-      "test/registered/quant/test_quant_config_parsing.py": 14,
+      "test/registered/quant/test_quant_config_parsing.py": 15,
       "test/registered/rl/test_pause_generation_tensor_consistency.py": 7,
       "test/registered/scheduler/test_abort_with_metrics.py": 7,
       "test/registered/unit/bench/test_mmmu_eval_utils.py": 7,
       "test/registered/unit/configs/test_linear_attn_model_registry.py": 7,
+      "test/registered/unit/configs/test_model_config_parser_registry.py": 8,
       "test/registered/unit/constrained/test_base_grammar_backend.py": 12,
       "test/registered/unit/constrained/test_grammar_manager.py": 7,
       "test/registered/unit/constrained/test_reasoner_grammar_backend.py": 7,
@@ -26,7 +27,7 @@
       "test/registered/unit/entrypoints/openai/test_matched_stop.py": 6,
       "test/registered/unit/entrypoints/openai/test_protocol.py": 7,
       "test/registered/unit/entrypoints/openai/test_serving_chat.py": 14,
-      "test/registered/unit/entrypoints/openai/test_serving_completions.py": 10,
+      "test/registered/unit/entrypoints/openai/test_serving_completions.py": 11,
       "test/registered/unit/entrypoints/openai/test_serving_embedding.py": 10,
       "test/registered/unit/entrypoints/openai/test_serving_transcription.py": 11,
       "test/registered/unit/entrypoints/openai/test_whisper_adapter.py": 10,
@@ -34,7 +35,7 @@
       "test/registered/unit/entrypoints/test_v1_loads_aggregate.py": 10,
       "test/registered/unit/eplb/test_balanced_packing.py": 7,
       "test/registered/unit/eplb/test_compute_logical_to_rank_dispatch_physical_map.py": 7,
-      "test/registered/unit/function_call/test_function_call_parser.py": 24,
+      "test/registered/unit/function_call/test_function_call_parser.py": 26,
       "test/registered/unit/function_call/test_hermes_detector.py": 7,
       "test/registered/unit/function_call/test_hunyuan_detector.py": 7,
       "test/registered/unit/function_call/test_json_schema_constraint.py": 7,
@@ -43,7 +44,7 @@
       "test/registered/unit/function_call/test_parallel_tool_calls.py": 7,
       "test/registered/unit/function_call/test_poolside_v1_detector.py": 7,
       "test/registered/unit/function_call/test_unknown_tool_name.py": 8,
-      "test/registered/unit/hardware_backend/mlx/test_quantization.py": 8,
+      "test/registered/unit/hardware_backend/mlx/test_quantization.py": 9,
       "test/registered/unit/layers/quantization/test_fp4_kv_cache_quant_method.py": 26,
       "test/registered/unit/layers/test_pooler_score_and_pool.py": 9,
       "test/registered/unit/managers/test_dp_budget.py": 10,
@@ -60,7 +61,7 @@
       "test/registered/unit/model_loader/test_runai_model_streamer_loader.py": 9,
       "test/registered/unit/models/test_nemotron_h_weight_loading.py": 10,
       "test/registered/unit/models/test_qwen3_5_packed_weight_loader.py": 9,
-      "test/registered/unit/observability/test_forward_pass_metrics.py": 10,
+      "test/registered/unit/observability/test_forward_pass_metrics.py": 9,
       "test/registered/unit/observability/test_func_timer.py": 6,
       "test/registered/unit/observability/test_label_transform.py": 6,
       "test/registered/unit/observability/test_metrics_utils.py": 6,
@@ -86,7 +87,7 @@
       "test/registered/unit/spec/test_spec_registry.py": 7,
       "test/registered/unit/spec/test_spec_utils_traverse_tree.py": 9,
       "test/registered/unit/test_bench_long_context.py": 7,
-      "test/registered/unit/test_no_bare_pytest_main.py": 19,
+      "test/registered/unit/test_no_bare_pytest_main.py": 20,
       "test/registered/unit/test_runai_utils.py": 7,
       "test/registered/unit/tokenizer/test_tiktoken_tokenizer.py": 7,
       "test/registered/unit/tools/test_docker_build_metadata_args.py": 0,
@@ -96,7 +97,7 @@
       "test/registered/unit/utils/test_hf_transformers.py": 6,
       "test/registered/unit/utils/test_hf_transformers_fastokens.py": 12,
       "test/registered/unit/utils/test_http_server_auth.py": 6,
-      "test/registered/unit/utils/test_json_response.py": 6,
+      "test/registered/unit/utils/test_json_response.py": 7,
       "test/registered/unit/utils/test_subprocess_watchdog.py": 9,
       "test/registered/utils/test_log_utils.py": 6,
       "test/registered/utils/test_network_address.py": 7,
@@ -362,6 +363,12 @@
     }
   },
   "fit": {
+    "run": {
+      "coeff": 0.9361,
+      "bias": 186.0,
+      "r_squared": 0.9528,
+      "n_samples": 16
+    },
     "stage-a-test-1-gpu-small": {
       "coeff": 0.622,
       "bias": 123.4,
@@ -369,9 +376,9 @@
       "n_samples": 6
     },
     "stage-a-test-cpu": {
-      "coeff": 0.7519,
-      "bias": 198.0,
-      "r_squared": 0.2172,
+      "coeff": 0.6718,
+      "bias": 220.8,
+      "r_squared": 0.0754,
       "n_samples": 16
     },
     "stage-b-test-1-gpu-large": {
