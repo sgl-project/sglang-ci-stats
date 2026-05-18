@@ -14,7 +14,9 @@ Layout:
       already on disk.
 
 Filter:
-  - workflow:   "PR Test"
+  - workflow:   .github/workflows/pr-test.yml (matched by path, not display
+                name -- sglang renames the name occasionally, e.g. "PR Test"
+                -> "PR Test Base" in #25420)
   - branch:     main
   - event:      schedule OR workflow_dispatch
   - run-level:  status=completed (any conclusion)
@@ -40,7 +42,7 @@ REPO_ROOT = Path(__file__).resolve().parent
 RUNS_DIR = REPO_ROOT / "runs"
 
 SOURCE_REPO = "sgl-project/sglang"
-WORKFLOW_NAME = "PR Test"
+WORKFLOW_PATH = ".github/workflows/pr-test.yml"
 EVENTS = ("schedule", "workflow_dispatch")
 
 MAX_NEW_RUNS = 50
@@ -67,15 +69,18 @@ def gh_api(endpoint, raw=False):
 
 
 def get_workflow_id(repo):
+    # Match by source-file path, not display name. sglang renames the
+    # workflow name from time to time (e.g. "PR Test" -> "PR Test Base"
+    # in #25420); the .github/workflows/*.yml path is the stable key.
     # sglang has >100 workflows; paginate so the match isn't id-luck.
     for page in range(1, 11):
         data = gh_api(f"/repos/{repo}/actions/workflows?per_page=100&page={page}")
         if not data["workflows"]:
             break
         for wf in data["workflows"]:
-            if wf["name"] == WORKFLOW_NAME:
+            if wf["path"] == WORKFLOW_PATH:
                 return wf["id"]
-    raise RuntimeError(f"Workflow '{WORKFLOW_NAME}' not found in {repo}")
+    raise RuntimeError(f"Workflow '{WORKFLOW_PATH}' not found in {repo}")
 
 
 def list_recent_runs(repo, workflow_id, lookback_hours=LOOKBACK_HOURS):
@@ -273,12 +278,12 @@ def sync_run(repo, run):
 
 # ---------- driver ----------
 
-def sync_runs(repo, max_new_runs):
+def sync_runs(repo, max_new_runs, lookback_hours):
     """Sync every candidate run in the lookback window to disk."""
     workflow_id = get_workflow_id(repo)
-    runs = list_recent_runs(repo, workflow_id)[:max_new_runs]
+    runs = list_recent_runs(repo, workflow_id, lookback_hours)[:max_new_runs]
     print(
-        f"{len(runs)} candidate runs in last {LOOKBACK_HOURS}h from {repo}",
+        f"{len(runs)} candidate runs in last {lookback_hours}h from {repo}",
         file=sys.stderr,
     )
 
@@ -315,6 +320,12 @@ def main():
         default=MAX_NEW_RUNS,
         help="Cap on number of new runs archived per invocation",
     )
+    parser.add_argument(
+        "--lookback-hours",
+        type=int,
+        default=LOOKBACK_HOURS,
+        help="Rolling window of run start times to consider",
+    )
     args = parser.parse_args()
 
     if not (os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")):
@@ -323,7 +334,7 @@ def main():
             file=sys.stderr,
         )
 
-    sync_runs(args.repo, args.max_new_runs)
+    sync_runs(args.repo, args.max_new_runs, args.lookback_hours)
 
 
 if __name__ == "__main__":

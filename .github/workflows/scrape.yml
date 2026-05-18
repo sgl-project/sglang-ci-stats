@@ -10,6 +10,10 @@ on:
         description: "Cap on number of new runs to archive this invocation"
         required: false
         default: "50"
+      lookback_hours:
+        description: "Rolling window of run start times to consider"
+        required: false
+        default: "48"
 
 permissions:
   contents: write
@@ -33,7 +37,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MAX_NEW_RUNS: ${{ github.event.inputs.max_new_runs || '50' }}
-        run: python scrape.py --max-new-runs "$MAX_NEW_RUNS"
+          LOOKBACK_HOURS: ${{ github.event.inputs.lookback_hours || '48' }}
+        run: python scrape.py --max-new-runs "$MAX_NEW_RUNS" --lookback-hours "$LOOKBACK_HOURS"
 
       - name: Derive partition model
         run: python derive.py
