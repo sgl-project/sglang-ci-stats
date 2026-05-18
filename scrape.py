@@ -35,7 +35,9 @@ import os
 import re
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
+from functools import partial
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent
@@ -47,6 +49,8 @@ EVENTS = ("schedule", "workflow_dispatch")
 
 MAX_NEW_RUNS = 50
 LOOKBACK_HOURS = 48  # only fetch runs that started within this rolling window
+LOG_FETCH_WORKERS = 8  # parallel log downloads per run; IO-bound, well under
+                       # GitHub's 5000/hr authenticated API rate-limit
 
 LOG_PATTERN = re.compile(
     r"filename='[^']*?/sglang/((?:test|python)/[^']+\.py)', elapsed=(\d+),"
@@ -250,13 +254,14 @@ def sync_run(repo, run):
         }
         known_job_ids = set()
 
-    new_jobs = []
-    for job in get_successful_jobs(repo, run_id):
-        if job["id"] in known_job_ids:
-            continue
-        built = build_job_record(repo, job)
-        if built is not None:
-            new_jobs.append(built)
+    todo = [
+        j for j in get_successful_jobs(repo, run_id)
+        if j["id"] not in known_job_ids
+    ]
+    # Parallelize the per-job log download (the wall-time hot spot:
+    # each gh API call is ~1.3s, almost entirely network roundtrip).
+    with ThreadPoolExecutor(max_workers=LOG_FETCH_WORKERS) as pool:
+        new_jobs = [r for r in pool.map(partial(build_job_record, repo), todo) if r]
 
     if not new_jobs and existing_path is not None:
         return record, 0
