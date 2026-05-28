@@ -8,10 +8,13 @@ view they want from `runs/*.json`.
 Layout:
 
   runs/<YYYY-MM-DD>T<HH-MM-SS>Z__<run_id>.json
-      Idempotent at job_id granularity: every invocation re-scans each
+      Idempotent at job-name granularity: every invocation re-scans each
       run in the lookback window and appends any newly-successful job
-      (e.g. picked up from a "Re-run failed jobs" rerun) that isn't
-      already on disk.
+      (e.g. picked up from a "Re-run failed jobs" rerun) whose name isn't
+      already on disk. Dedup is by name, not job_id: "Re-run failed jobs"
+      carries each already-passed job forward into the new attempt under a
+      *new* job_id but the *same* name and original timings, so a job_id
+      key would double-count every carried-forward success on the rescan.
 
 Filter:
   - workflow:   .github/workflows/pr-test.yml (matched by path, not display
@@ -234,14 +237,14 @@ def sync_run(repo, run):
     """Ensure one run's successful jobs are persisted to disk.
 
     Idempotent: if the run is already archived, re-scan and append any
-    newly-successful job not yet on disk (e.g. picked up from a "Re-run
-    failed jobs" rerun). Returns (record, n_new_jobs).
+    newly-successful job whose name isn't yet on disk (e.g. picked up from
+    a "Re-run failed jobs" rerun). Returns (record, n_new_jobs).
     """
     run_id = run["id"]
     existing_path = find_archive_path(run_id)
     if existing_path is not None:
         record = json.loads(existing_path.read_text())
-        known_job_ids = {j["job_id"] for j in record.get("jobs", [])}
+        known_names = {j["name"] for j in record.get("jobs", [])}
     else:
         record = {
             "run_id": run_id,
@@ -252,11 +255,14 @@ def sync_run(repo, run):
             "display_title": run.get("display_title", ""),
             "jobs": [],
         }
-        known_job_ids = set()
+        known_names = set()
 
+    # Dedup by name, not job_id: a "Re-run failed jobs" carries every
+    # already-passed job into the new attempt under a fresh job_id but the
+    # same name, so keying on job_id would re-append (double-count) each one.
     todo = [
         j for j in get_successful_jobs(repo, run_id)
-        if j["id"] not in known_job_ids
+        if j["name"] not in known_names
     ]
     # Parallelize the per-job log download (the wall-time hot spot:
     # each gh API call is ~1.3s, almost entirely network roundtrip).
