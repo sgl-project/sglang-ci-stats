@@ -1,23 +1,11 @@
 #!/usr/bin/env python3
-"""Render runs/*.json time_stats into an interactive HTML trend page.
+"""Render runs/*.json into a single-file HTML trend page (Chart.js via CDN).
 
-Each run carries a `time_stats` data point (written by scrape.py):
+Three line charts -- total / per-stage / per-runner CI time over time. Runs
+predating scrape.py's time_stats field are summarized on the fly via
+scrape.summarize_run_times, so this works against any runs/ snapshot.
 
-    total_wall_seconds   sum of every job's wall-clock (runner-time)
-    per_stage            that total split by suite
-    per_runner           that total split by runner type
-
-demo.py walks every run, sorts by start time, and emits a single-file HTML
-(Chart.js loaded from a CDN) with three line charts (total / per-stage /
-per-runner) so you can see how CI time consumption moves over time. Series
-are independent legend toggles; missing points leave gaps rather than
-dropping to zero.
-
-Older runs predating the time_stats field are summarized on the fly via
-scrape.summarize_run_times, so demo.py works against any runs/ snapshot.
-
-Usage:
-    python demo.py [--out demo.html] [--open]
+Usage: python demo.py [--out demo.html] [--open]
 """
 
 import argparse
@@ -38,28 +26,17 @@ FORWARD_FILL_MAX_GAP = 3  # runs; ~18-24h at the ~6-8h scrape cadence
 def compute_stage_test(records):
     """Per-(suite, basename) forward-filled `elapsed` sums, one dict per run.
 
-    To mask shard-failure dips: when a file is missing in run T (its shard
-    failed -- only successful jobs are archived), substitute the most recent
-    prior elapsed for the same (suite, basename). Stale entries are evicted
-    after FORWARD_FILL_MAX_GAP runs of absence, which auto-cleans removed
-    tests; otherwise the phantoms would inflate the baseline forever.
+    Masks shard-failure dips: a file missing in run T (only successful jobs
+    are archived) reuses its most recent prior elapsed, evicted after
+    FORWARD_FILL_MAX_GAP runs so removed tests auto-clean.
 
-    Why key on basename, not full path: a file moved to a different directory
-    (sglang does this regularly, e.g. `dsv4/foo.py` -> `models_e2e/foo.py`)
-    keeps the same basename. Path keying would treat it as two distinct files
-    -- if the old path overlapped briefly with the new during transition, we
-    would double-count. Within one suite, basenames are unique by sglang test
-    convention, so basename is the right invariant key.
+    Keyed on basename, not path: sglang moves files between dirs but keeps the
+    basename, and basenames are unique within a suite -- path keying would
+    double-count during a transition.
 
-    The reported value for a file is its actual elapsed in this run (or the
-    most recent prior run if missing this run). Per-test wall-clock varies
-    2-3x even on the same file (model loading, cache state, GPU contention);
-    we keep that real signal rather than smoothing it away.
-
-    Returns list aligned with `records` (chronological): each item is
-    {suite: total_seconds}. A suite only appears if at least one of its
-    jobs ran in that record (so a never-triggered suite stays a gap, not a
-    zombie carried-forward number).
+    Returns a list aligned with `records`; each item is {suite: total_seconds},
+    a suite present only if one of its jobs ran in that record (so a
+    never-triggered suite stays a gap, not a carried-forward zombie).
     """
     last_idx = defaultdict(dict)    # last_idx[suite][basename] = run index
     last_val = defaultdict(dict)    # last_val[suite][basename] = elapsed
@@ -83,7 +60,7 @@ def compute_stage_test(records):
 
 
 def load_points():
-    """One sorted-by-time point per run: {label, html_url, total, per_*}."""
+    """One sorted-by-time point per run: {started_at, label, total_min, per_*}."""
     records = sorted(
         (json.loads(p.read_text()) for p in RUNS_DIR.glob("*.json")),
         key=lambda r: r["started_at"],
@@ -97,14 +74,10 @@ def load_points():
         points.append(
             {
                 "started_at": started,
-                # "MM-DD HH:MM" reads cleanly on a category axis without a
-                # date adapter; full ISO stays in the tooltip-friendly url.
+                # "MM-DD HH:MM" -- reads cleanly on a category axis (no date adapter)
                 "label": started[5:16].replace("T", " "),
-                "html_url": rec.get("html_url", ""),
                 "total_min": round(ts["total_wall_seconds"] / SECONDS_PER_MIN, 1),
-                # per-runner stays wall-clock (a hardware-cost view); the
-                # per-stage drill-down uses forward-filled test time to mask
-                # shard-failure dips.
+                # total/per_runner are wall-clock; stage_test is forward-filled test time
                 "per_runner": {
                     k: round(v / SECONDS_PER_MIN, 1)
                     for k, v in ts["per_runner"].items()
@@ -125,21 +98,14 @@ def series_for(points, field):
 
 
 def stage_family(suite):
-    """Collapse a suite to its stage family: the part before "-test".
-
-    "base-c-test-deepep-4-gpu-h100" -> "base-c"; "stage-a-test-cpu" -> "stage-a".
-    Keeps the ~34 sharded/gpu-specific suites down to ~8 readable lines.
-    """
+    """Stage family = the part before "-test" ("base-c-test-deepep..." -> "base-c")."""
     return suite.split("-test")[0]
 
 
 def family_series(points):
-    """{family: {short_suite: aligned col}}, one entry per base-*/extra-* family.
-
-    Each family gets its own chart; within it, one line per suite (i.e. per
-    gpu type / deepep / dsv4 variant). The line label drops the redundant
-    "<family>-test-" prefix: "base-c-test-deepep-4-gpu-h100" -> "deepep-4-gpu-h100".
-    Legacy stage-a/b/c suites (renamed around 2026-05-15) are dropped.
+    """{family: {short_suite: aligned col}} -- one chart per base-*/extra-* family,
+    one line per suite within it. Short label drops the "<family>-test-" prefix.
+    Legacy stage-a/b/c suites (renamed ~2026-05-15) are dropped.
     """
     suites = sorted({s for pt in points for s in pt["stage_test"]})
     families = {}
@@ -265,8 +231,7 @@ def render(points):
         "families": family_series(points),
         "per_runner": series_for(points, "per_runner"),
     }
-    # Escape "</" so a stray "</script>" in any string (suite/file path)
-    # can't terminate the inline <script> block.
+    # Escape "</" so a "</script>" in any path can't break out of the script block
     data_json = json.dumps(data).replace("</", "<\\/")
     return HTML_TEMPLATE.format(
         n_runs=len(points),

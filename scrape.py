@@ -216,12 +216,9 @@ def runner_type(labels):
 def summarize_run_times(record):
     """Per-run wall-clock totals: one data point in the time series.
 
-    wall-clock per job = completed_at - started_at. Parallel jobs are
-    summed -- this is runner-time consumed, not end-to-end latency.
-    per_stage (by suite) and per_runner (by runner type) are two
-    partitions of the same total, so each sums back to total_wall_seconds.
-
-    Jobs missing either timestamp are skipped.
+    wall-clock per job = completed_at - started_at; parallel jobs are summed
+    (runner-time consumed, not end-to-end latency). per_stage and per_runner
+    are two partitions of the same total. Jobs missing a timestamp are skipped.
     """
     per_stage = defaultdict(float)
     per_runner = defaultdict(float)

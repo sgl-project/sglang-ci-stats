@@ -41,8 +41,7 @@ MIN_FIT_SAMPLES = 3
 MAX_SAMPLES = 16  # newest-first cap per bin; tracks ~one weekly rotation
 
 
-# parse_iso lives in scrape.py (the data producer); derive and demo both
-# reuse it so the ISO-with-Z parsing convention has a single source.
+# parse_iso lives in scrape.py (single source for the ISO-with-Z convention)
 from scrape import parse_iso
 
 
