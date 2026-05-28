@@ -485,18 +485,5 @@
       ]
     }
   ],
-  "last_scraped_at": "2026-05-18T23:14:54Z",
-  "time_stats": {
-    "total_wall_seconds": 3000,
-    "per_stage": {
-      "base-a-test-1-gpu-small": 167,
-      "base-a-test-cpu": 1410,
-      "extra-b-test-deepep-8-gpu-h200": 1423
-    },
-    "per_runner": {
-      "1-gpu-5090": 167,
-      "8-gpu-h200-deepep": 1423,
-      "ubuntu-latest": 1410
-    }
-  }
+  "last_scraped_at": "2026-05-18T23:14:54Z"
 }

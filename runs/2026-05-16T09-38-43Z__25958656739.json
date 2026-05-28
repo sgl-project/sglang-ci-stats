@@ -1834,40 +1834,5 @@
       ]
     }
   ],
-  "last_scraped_at": "2026-05-18T23:16:00Z",
-  "time_stats": {
-    "total_wall_seconds": 47449,
-    "per_stage": {
-      "base-a-test-1-gpu-small": 176,
-      "base-a-test-cpu": 1437,
-      "base-b-test-1-gpu-large": 7617,
-      "base-b-test-1-gpu-small": 6839,
-      "base-b-test-2-gpu-large": 3521,
-      "base-b-test-4-gpu-b200": 1388,
-      "base-c-test-4-gpu-b200": 3418,
-      "base-c-test-4-gpu-h100": 2706,
-      "base-c-test-8-gpu-h20": 1456,
-      "base-c-test-8-gpu-h200": 2448,
-      "base-c-test-deepep-4-gpu-h100": 702,
-      "base-c-test-dsv4-4-gpu-b200": 936,
-      "base-c-test-dsv4-8-gpu-h200": 1166,
-      "extra-a-test-1-gpu-large": 5842,
-      "extra-a-test-2-gpu-large": 2188,
-      "extra-b-test-4-gpu-b200": 1697,
-      "extra-b-test-4-gpu-h100": 915,
-      "extra-b-test-8-gpu-h200": 1734,
-      "extra-b-test-deepep-8-gpu-h200": 1263
-    },
-    "per_runner": {
-      "1-gpu-5090": 7015,
-      "1-gpu-h100": 13459,
-      "2-gpu-h100": 5709,
-      "4-gpu-b200": 7439,
-      "4-gpu-h100": 4323,
-      "8-gpu-h20": 1456,
-      "8-gpu-h200": 5348,
-      "8-gpu-h200-deepep": 1263,
-      "ubuntu-latest": 1437
-    }
-  }
+  "last_scraped_at": "2026-05-18T23:16:00Z"
 }

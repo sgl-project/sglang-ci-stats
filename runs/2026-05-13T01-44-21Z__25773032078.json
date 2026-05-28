@@ -6,10 +6,5 @@
   "html_url": "https://github.com/sgl-project/sglang/actions/runs/25773032078",
   "display_title": "PR Test",
   "jobs": [],
-  "last_scraped_at": "2026-05-14T05:54:59Z",
-  "time_stats": {
-    "total_wall_seconds": 0,
-    "per_stage": {},
-    "per_runner": {}
-  }
+  "last_scraped_at": "2026-05-14T05:54:59Z"
 }
