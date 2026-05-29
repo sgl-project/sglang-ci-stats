@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Scrape per-test elapsed times from sglang main-branch CI runs.
 
-Output: one JSON file per archived run in `runs/`, raw form only. No
-aggregation here -- consumers are responsible for deriving whatever
-view they want from `runs/*.json`.
+Output: one JSON file per archived run in `runs/`. Mostly raw form;
+the only derived field is `time_stats`, an intra-run wall-clock summary
+(total / per-stage / per-runner) materialized as that run's data point
+in the time series. No cross-run aggregation here -- consumers derive
+whatever trend view they want from `runs/*.json` (see demo.py).
 
 Layout:
 
@@ -38,6 +40,7 @@ import os
 import re
 import subprocess
 import sys
+from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from functools import partial
@@ -199,6 +202,42 @@ def parse_job_timings(log_text):
     return [{"file": f, "elapsed": e} for f, e in last_seen.items()]
 
 
+# ---------- per-run time summary ----------
+
+def parse_iso(s):
+    return datetime.fromisoformat(s.replace("Z", "+00:00"))
+
+
+def runner_type(labels):
+    """Collapse a job's runner labels into one key (e.g. "1-gpu-h100")."""
+    return "+".join(sorted(labels)) if labels else "unknown"
+
+
+def summarize_run_times(record):
+    """Per-run wall-clock totals: one data point in the time series.
+
+    wall-clock per job = completed_at - started_at; parallel jobs are summed
+    (runner-time consumed, not end-to-end latency). per_stage and per_runner
+    are two partitions of the same total. Jobs missing a timestamp are skipped.
+    """
+    per_stage = defaultdict(float)
+    per_runner = defaultdict(float)
+    total = 0.0
+    for job in record.get("jobs", []):
+        started, completed = job.get("started_at"), job.get("completed_at")
+        if not started or not completed:
+            continue
+        wall = (parse_iso(completed) - parse_iso(started)).total_seconds()
+        per_stage[job["suite"]] += wall
+        per_runner[runner_type(job.get("labels", []))] += wall
+        total += wall
+    return {
+        "total_wall_seconds": round(total),
+        "per_stage": {k: round(v) for k, v in sorted(per_stage.items())},
+        "per_runner": {k: round(v) for k, v in sorted(per_runner.items())},
+    }
+
+
 # ---------- runs/ archive I/O ----------
 
 def find_archive_path(run_id):
@@ -276,6 +315,7 @@ def sync_run(repo, run):
     record["last_scraped_at"] = datetime.now(timezone.utc).strftime(
         "%Y-%m-%dT%H:%M:%SZ"
     )
+    record["time_stats"] = summarize_run_times(record)
     RUNS_DIR.mkdir(exist_ok=True)
     if existing_path is None:
         # Filename: runs/<YYYY-MM-DD>T<HH-MM-SS>Z__<run_id>.json

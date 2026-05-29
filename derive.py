@@ -41,8 +41,8 @@ MIN_FIT_SAMPLES = 3
 MAX_SAMPLES = 16  # newest-first cap per bin; tracks ~one weekly rotation
 
 
-def parse_iso(s):
-    return datetime.fromisoformat(s.replace("Z", "+00:00"))
+# parse_iso lives in scrape.py (single source for the ISO-with-Z convention)
+from scrape import parse_iso
 
 
 def load_runs(cutoff):
