@@ -54,3 +54,43 @@ jobs:
             git commit -m "scrape+derive: $(date -u +%FT%TZ)"
             git push
           fi
+
+  # Render demo.html from the freshly-scraped runs/ and publish to Pages.
+  # Runs even if scrape failed (if: always()) so a transient scrape error
+  # leaves the last good page up rather than blocking redeploys. Checks out
+  # ref: main to pick up the commit the scrape job just pushed -- the default
+  # checkout would see the pre-scrape SHA the run was triggered at.
+  deploy-pages:
+    needs: scrape
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Render demo.html
+        run: python demo.py --out public/index.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - uses: actions/deploy-pages@v4
+        id: deployment

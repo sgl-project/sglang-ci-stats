@@ -249,6 +249,7 @@ def main():
 
     points = load_points()
     out_path = Path(args.out)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(render(points))
     print(f"wrote {out_path}: {len(points)} runs")
     if args.open:
