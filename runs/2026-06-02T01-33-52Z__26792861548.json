@@ -2462,11 +2462,53 @@
           "elapsed": 109
         }
       ]
+    },
+    {
+      "job_id": 79064049247,
+      "name": "call-jit-kernel-tests / jit-kernel-multigpu-unit-test",
+      "suite": "call-jit-kernel-tests",
+      "backend": "cuda",
+      "started_at": "2026-06-02T11:43:28Z",
+      "completed_at": "2026-06-02T11:49:50Z",
+      "labels": [
+        "8-gpu-h200"
+      ],
+      "timings": [
+        {
+          "file": "python/sglang/jit_kernel/tests/test_custom_all_reduce.py",
+          "elapsed": 166
+        },
+        {
+          "file": "python/sglang/jit_kernel/tests/test_tp_qknorm.py",
+          "elapsed": 111
+        }
+      ]
+    },
+    {
+      "job_id": 79064049902,
+      "name": "base-c-test-4-gpu-h100 / base-c-test-4-gpu-h100 (0)",
+      "suite": "base-c-test-4-gpu-h100",
+      "backend": "cuda",
+      "started_at": "2026-06-02T12:01:59Z",
+      "completed_at": "2026-06-02T12:23:17Z",
+      "labels": [
+        "4-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_mamba.py",
+          "elapsed": 1034
+        },
+        {
+          "file": "test/registered/models_e2e/test_gpt_oss_4gpu_mxfp4.py",
+          "elapsed": 149
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-06-02T07:59:03Z",
+  "last_scraped_at": "2026-06-03T01:31:43Z",
   "time_stats": {
-    "total_wall_seconds": 45893,
+    "total_wall_seconds": 47553,
     "per_stage": {
       "base-a-test-1-gpu-small": 355,
       "base-a-test-cpu": 1555,
@@ -2475,22 +2517,22 @@
       "base-b-test-2-gpu-large": 4980,
       "base-b-test-4-gpu-b200": 2521,
       "base-c-test-4-gpu-b200": 4135,
-      "base-c-test-4-gpu-h100": 2280,
+      "base-c-test-4-gpu-h100": 3558,
       "base-c-test-8-gpu-h20": 1753,
       "base-c-test-8-gpu-h200": 3057,
       "base-c-test-deepep-4-gpu-b200": 797,
       "base-c-test-deepep-4-gpu-h100": 1005,
       "base-c-test-deepep-8-gpu-h200": 1219,
-      "call-jit-kernel-tests": 2156
+      "call-jit-kernel-tests": 2538
     },
     "per_runner": {
       "1-gpu-5090": 9419,
       "1-gpu-h100": 12978,
       "2-gpu-h100": 4980,
       "4-gpu-b200": 7647,
-      "4-gpu-h100": 3285,
+      "4-gpu-h100": 4563,
       "8-gpu-h20": 1753,
-      "8-gpu-h200": 4276,
+      "8-gpu-h200": 4658,
       "ubuntu-latest": 1555
     }
   }
