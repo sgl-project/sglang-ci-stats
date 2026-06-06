@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "data_as_of": "2026-05-30T00:00:00Z",
+  "fit_window_start": "2026-05-30T00:00:00Z",
   "fit_window_days": 7,
   "n_runs": 18,
   "est": {
