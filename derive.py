@@ -15,9 +15,11 @@ Where:
   r_squared  diagnostic for whether the linear fit is meaningful.
 
 The output is a deterministic function of (runs/, code, fit window).
-`data_as_of` is pinned to UTC midnight (not wall-clock now) so two
-invocations on the same UTC day with unchanged runs/ produce
-byte-identical JSON -- the workflow can simply diff & commit.
+`fit_window_start` is the window's inclusive lower bound (UTC midnight,
+today - fit_window_days; end = start + fit_window_days). Pinned to UTC
+midnight (not wall-clock now) so two invocations on the same UTC day
+with unchanged runs/ produce byte-identical JSON -- the workflow can
+simply diff & commit.
 
 Consumers should fall back to coeff=1.0, bias=0 (and the in-source
 static est_time) whenever a lookup is missing or r_squared is too low.
@@ -179,7 +181,7 @@ def main():
 
     payload = {
         "version": 1,
-        "data_as_of": cutoff.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "fit_window_start": cutoff.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "fit_window_days": args.fit_window_days,
         "n_runs": len(records),
         "est": est,
