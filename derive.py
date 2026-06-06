@@ -15,11 +15,10 @@ Where:
   r_squared  diagnostic for whether the linear fit is meaningful.
 
 The output is a deterministic function of (runs/, code, fit window).
-`fit_window_start` is the inclusive lower bound of the fit window
-(today's UTC midnight minus fit_window_days); the window end is
-`fit_window_start + fit_window_days`. It is pinned to UTC midnight
-(not wall-clock now) so two invocations on the same UTC day with
-unchanged runs/ produce byte-identical JSON -- the workflow can
+`fit_window_start` is the window's inclusive lower bound (UTC midnight,
+today - fit_window_days; end = start + fit_window_days). Pinned to UTC
+midnight (not wall-clock now) so two invocations on the same UTC day
+with unchanged runs/ produce byte-identical JSON -- the workflow can
 simply diff & commit.
 
 Consumers should fall back to coeff=1.0, bias=0 (and the in-source
