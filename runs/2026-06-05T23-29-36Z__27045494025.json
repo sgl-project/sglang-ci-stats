@@ -2706,16 +2706,81 @@
           "elapsed": 75
         }
       ]
+    },
+    {
+      "job_id": 79911145566,
+      "name": "base-b-test-1-gpu-small / base-b-test-1-gpu-small (7)",
+      "suite": "base-b-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-06-06T22:05:00Z",
+      "completed_at": "2026-06-06T22:25:38Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/scheduler/test_retract_decode.py",
+          "elapsed": 371
+        },
+        {
+          "file": "test/registered/spec/dflash/test_dflash.py",
+          "elapsed": 315
+        },
+        {
+          "file": "test/registered/hicache/test_hicache_storage.py",
+          "elapsed": 150
+        },
+        {
+          "file": "test/registered/prefill_only/test_score_engine.py",
+          "elapsed": 123
+        },
+        {
+          "file": "test/registered/radix_cache/test_radix_cache_hit.py",
+          "elapsed": 54
+        },
+        {
+          "file": "test/registered/openai_server/basic/test_serving_transcription.py",
+          "elapsed": 52
+        },
+        {
+          "file": "test/registered/core/test_engine_child_pids.py",
+          "elapsed": 34
+        },
+        {
+          "file": "test/registered/lora/test_virtual_experts_kernels.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/kernels/test_sm120_paged_mqa_logits.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/unit/models/test_llava.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/lora/test_mem_pool_ep_unit.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_swa_lock_release_lifecycle.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/auto_benchmark/test_search_tools.py",
+          "elapsed": 6
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-06-06T07:23:09Z",
+  "last_scraped_at": "2026-06-07T01:26:37Z",
   "time_stats": {
-    "total_wall_seconds": 69554,
+    "total_wall_seconds": 70792,
     "per_stage": {
       "base-a-test-1-gpu-small": 352,
       "base-a-test-cpu": 1733,
       "base-b-test-1-gpu-large": 10894,
-      "base-b-test-1-gpu-small": 8802,
+      "base-b-test-1-gpu-small": 10040,
       "base-b-test-2-gpu-large": 4781,
       "base-b-test-4-gpu-b200": 2343,
       "base-c-test-4-gpu-b200": 4763,
@@ -2735,7 +2800,7 @@
       "extra-b-test-deepep-8-gpu-h200": 1829
     },
     "per_runner": {
-      "1-gpu-5090": 12389,
+      "1-gpu-5090": 13627,
       "1-gpu-h100": 17172,
       "2-gpu-h100": 8572,
       "4-gpu-b200": 11022,
