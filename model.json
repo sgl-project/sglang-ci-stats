@@ -144,7 +144,7 @@
       "test/registered/attention/unittests/dense/test_hybrid_attn.py": 11,
       "test/registered/attention/unittests/dense/test_tbo.py": 10,
       "test/registered/attention/unittests/dense/test_torch_native.py": 26,
-      "test/registered/attention/unittests/dense/test_triton.py": 43,
+      "test/registered/attention/unittests/dense/test_triton.py": 42,
       "test/registered/attention/unittests/dense/test_trtllm_mha.py": 18,
       "test/registered/attention/unittests/dsa/test_dsa.py": 34,
       "test/registered/attention/unittests/dsv4/test_deepseek_v4.py": 10,
@@ -203,7 +203,7 @@
       "test/registered/spec/eagle/test_eagle_constrained_decoding.py": 123,
       "test/registered/spec/eagle/test_spec_eagle_fa3.py": 466,
       "test/registered/spec/eagle/test_spec_eagle_parity.py": 163,
-      "test/registered/spec/eagle/test_spec_eagle_stress.py": 839,
+      "test/registered/spec/eagle/test_spec_eagle_stress.py": 837,
       "test/registered/spec/test_frozen_kv_mtp.py": 168,
       "test/registered/spec/test_spec_ngram.py": 82,
       "test/registered/spec/test_spec_standalone.py": 222,
@@ -214,8 +214,8 @@
       "test/registered/unit/mem_cache/test_swa_eviction_boundary.py": 12,
       "test/registered/unit/mem_cache/test_swa_unittest.py": 9,
       "test/registered/unit/model_loader/test_modelopt_export.py": 12,
-      "test/registered/vlm/test_token_id_retokenize_e2e.py": 103,
-      "test/registered/vlm/test_vision_chunked_prefill.py": 155,
+      "test/registered/vlm/test_token_id_retokenize_e2e.py": 102,
+      "test/registered/vlm/test_vision_chunked_prefill.py": 154,
       "test/registered/vlm/test_vision_openai_server_a.py": 831,
       "test/registered/vlm/test_vlm_input_format.py": 692
     },
@@ -567,9 +567,9 @@
       "n_samples": 16
     },
     "base-b-test-1-gpu-large": {
-      "coeff": 1.1584,
-      "bias": -48.3,
-      "r_squared": 0.9952,
+      "coeff": 1.1877,
+      "bias": -80.8,
+      "r_squared": 0.9939,
       "n_samples": 16
     },
     "base-b-test-1-gpu-small": {
