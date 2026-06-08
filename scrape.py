@@ -40,6 +40,7 @@ import os
 import re
 import subprocess
 import sys
+import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
@@ -58,6 +59,13 @@ LOOKBACK_HOURS = 48  # only fetch runs that started within this rolling window
 LOG_FETCH_WORKERS = 8  # parallel log downloads per run; IO-bound, well under
                        # GitHub's 5000/hr authenticated API rate-limit
 
+# GitHub intermittently 502s on the jobs-listing endpoint for large
+# multi-attempt runs (~90 jobs). A single such blip would otherwise abort
+# the whole scrape, so gh_api retries 5xx/429 with exponential backoff.
+API_MAX_ATTEMPTS = 6
+API_BACKOFF_BASE = 2.0  # seconds; doubles per retry (2, 4, 8, ...)
+API_BACKOFF_CAP = 20.0
+
 LOG_PATTERN = re.compile(
     r"filename='[^']*?/sglang/((?:test|python)/[^']+\.py)', elapsed=(\d+),"
 )
@@ -72,10 +80,47 @@ PR_RERUN_TITLE_RE = re.compile(r"^\[[^\]]+\] [0-9a-f]{40}$")
 
 # ---------- gh api helpers ----------
 
+# gh prints the HTTP status into stderr, e.g. "gh: Server Error (HTTP 502)".
+_HTTP_STATUS_RE = re.compile(r"\(HTTP (\d{3})\)")
+
+
+def _is_retryable(stderr_msg):
+    # Retry transient server errors (5xx) and rate-limit (429). Surface 4xx
+    # immediately -- they won't fix themselves. No parseable code means a
+    # network blip / timeout, which is worth a retry.
+    m = _HTTP_STATUS_RE.search(stderr_msg)
+    if not m:
+        return True
+    code = int(m.group(1))
+    return code == 429 or 500 <= code < 600
+
+
 def gh_api(endpoint, raw=False):
     cmd = ["gh", "api", endpoint]
-    result = subprocess.run(cmd, capture_output=True, text=not raw, check=True)
-    return result.stdout if raw else json.loads(result.stdout)
+    for attempt in range(API_MAX_ATTEMPTS):
+        result = subprocess.run(cmd, capture_output=True, text=not raw)
+        if result.returncode == 0:
+            return result.stdout if raw else json.loads(result.stdout)
+        stderr = result.stderr
+        msg = (
+            stderr.decode("utf-8", errors="replace")
+            if isinstance(stderr, bytes)
+            else (stderr or "")
+        ).strip()
+        last_attempt = attempt == API_MAX_ATTEMPTS - 1
+        if last_attempt or not _is_retryable(msg):
+            # Preserve the original contract: callers (e.g. job_logs_text)
+            # catch subprocess.CalledProcessError.
+            raise subprocess.CalledProcessError(
+                result.returncode, cmd, result.stdout, stderr
+            )
+        delay = min(API_BACKOFF_BASE * 2**attempt, API_BACKOFF_CAP)
+        print(
+            f"gh api {endpoint}: {msg}; retry "
+            f"{attempt + 1}/{API_MAX_ATTEMPTS - 1} in {delay:.0f}s",
+            file=sys.stderr,
+        )
+        time.sleep(delay)
 
 
 def get_workflow_id(repo):
