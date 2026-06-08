@@ -1,0 +1,15 @@
+{
+  "run_id": 27164906953,
+  "started_at": "2026-06-08T20:27:26Z",
+  "event": "workflow_dispatch",
+  "head_sha": "dc24a26821904064e9fe8fc1a8eeda8479c128ad",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/27164906953",
+  "display_title": "Manual run by hnyls2002",
+  "jobs": [],
+  "last_scraped_at": "2026-06-08T20:50:03Z",
+  "time_stats": {
+    "total_wall_seconds": 0,
+    "per_stage": {},
+    "per_runner": {}
+  }
+}
