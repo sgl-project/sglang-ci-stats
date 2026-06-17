@@ -588,10 +588,10 @@
       "test/registered/8-gpu-models/test_deepseek_v32_indexcache.py": 613,
       "test/registered/disaggregation/test_disaggregation_hybrid_attention.py": 369,
       "test/registered/models_e2e/test_dsa_dsv32_dp_mtp.py": 248,
-      "test/registered/models_e2e/test_dsa_dsv32_tp_mtp.py": 461,
+      "test/registered/models_e2e/test_dsa_dsv32_tp_mtp.py": 460,
       "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16.py": 218,
       "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16_mtp.py": 226,
-      "test/registered/models_e2e/test_step3p5_flash_chain_mtp.py": 401,
+      "test/registered/models_e2e/test_step3p5_flash_chain_mtp.py": 395,
       "test/registered/rl/test_return_indexer_topk.py": 234
     },
     "extra-b-test-deepep-4-gpu-b200": {
@@ -722,9 +722,9 @@
       "n_samples": 14
     },
     "extra-b-test-8-gpu-h200": {
-      "coeff": 0.9974,
-      "bias": 95.1,
-      "r_squared": 0.9995,
+      "coeff": 0.9969,
+      "bias": 95.7,
+      "r_squared": 0.9994,
       "n_samples": 16
     },
     "extra-b-test-deepep-4-gpu-b200": {

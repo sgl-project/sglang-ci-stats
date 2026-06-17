@@ -2933,11 +2933,40 @@
           "elapsed": 62
         }
       ]
+    },
+    {
+      "job_id": 81811457587,
+      "name": "call-pr-test-extra / extra-b-test-8-gpu-h200 / extra-b-test-8-gpu-h200 (1)",
+      "suite": "extra-b-test-8-gpu-h200",
+      "backend": "cuda",
+      "started_at": "2026-06-17T05:50:34Z",
+      "completed_at": "2026-06-17T06:12:16Z",
+      "labels": [
+        "8-gpu-h200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/models_e2e/test_dsa_dsv32_tp_mtp.py",
+          "elapsed": 439
+        },
+        {
+          "file": "test/registered/models_e2e/test_step3p5_flash_chain_mtp.py",
+          "elapsed": 354
+        },
+        {
+          "file": "test/registered/models_e2e/test_dsa_dsv32_dp_mtp.py",
+          "elapsed": 208
+        },
+        {
+          "file": "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16.py",
+          "elapsed": 209
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-06-17T01:30:57Z",
+  "last_scraped_at": "2026-06-17T08:13:25Z",
   "time_stats": {
-    "total_wall_seconds": 66450,
+    "total_wall_seconds": 67752,
     "per_stage": {
       "base-a-test-1-gpu-small": 314,
       "base-a-test-cpu": 1865,
@@ -2958,7 +2987,7 @@
       "extra-a-test-2-gpu-large": 3751,
       "extra-b-test-4-gpu-b200": 2302,
       "extra-b-test-4-gpu-h100": 1791,
-      "extra-b-test-8-gpu-h200": 1402,
+      "extra-b-test-8-gpu-h200": 2704,
       "extra-b-test-deepep-4-gpu-b200": 792,
       "extra-b-test-deepep-8-gpu-h200": 2029
     },
@@ -2970,7 +2999,7 @@
       "4-gpu-gb300": 1163,
       "4-gpu-h100": 8278,
       "8-gpu-h20": 1683,
-      "8-gpu-h200": 7809,
+      "8-gpu-h200": 9111,
       "ubuntu-latest": 1865
     }
   }
