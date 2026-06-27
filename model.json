@@ -293,7 +293,7 @@
       "test/registered/core/test_srt_endpoint.py": 160,
       "test/registered/cuda_graph/piecewise/test_pcg_with_speculative_decoding_dflash.py": 72,
       "test/registered/disaggregation/test_specv2_kvcache_offloading.py": 8,
-      "test/registered/hicache/test_hicache_storage.py": 169,
+      "test/registered/hicache/test_hicache_storage.py": 177,
       "test/registered/input_embedding/test_input_embeddings.py": 57,
       "test/registered/input_embedding/test_input_embeds_chunked.py": 58,
       "test/registered/kernels/test_gather_spec_extras.py": 8,
@@ -325,7 +325,7 @@
       "test/registered/prefill_only/test_multi_item_scoring.py": 244,
       "test/registered/prefill_only/test_openai_embedding.py": 101,
       "test/registered/prefill_only/test_pooled_hidden_states.py": 123,
-      "test/registered/prefill_only/test_reward_models.py": 232,
+      "test/registered/prefill_only/test_reward_models.py": 236,
       "test/registered/prefill_only/test_score_api.py": 81,
       "test/registered/prefill_only/test_score_engine.py": 108,
       "test/registered/profiling/test_start_profile.py": 52,
@@ -344,7 +344,7 @@
       "test/registered/sampling/test_pytorch_sampling_backend.py": 90,
       "test/registered/scheduler/test_mixed_chunked_prefill.py": 173,
       "test/registered/scheduler/test_retract_decode.py": 349,
-      "test/registered/scheduler/test_scheduler_control.py": 394,
+      "test/registered/scheduler/test_scheduler_control.py": 398,
       "test/registered/scripted_runtime/test_scripted_runtime_core.py": 281,
       "test/registered/spec/dflash/test_dflash.py": 511,
       "test/registered/spec/eagle/test_spec_eagle.py": 530,
@@ -495,10 +495,10 @@
       "test/registered/lora/test_lora_tp.py": 346,
       "test/registered/models_e2e/test_deepseek_v3_mtp.py": 239,
       "test/registered/models_e2e/test_dsa_glm5_dp_mtp.py": 433,
-      "test/registered/models_e2e/test_dsa_glm5_tp_mtp.py": 430,
-      "test/registered/models_e2e/test_mimo_v2.py": 349,
+      "test/registered/models_e2e/test_dsa_glm5_tp_mtp.py": 426,
+      "test/registered/models_e2e/test_mimo_v2.py": 343,
       "test/registered/models_e2e/test_mimo_v2_flash.py": 308,
-      "test/registered/models_e2e/test_minimax_m25_basic.py": 254
+      "test/registered/models_e2e/test_minimax_m25_basic.py": 258
     },
     "base-c-test-deepep-4-gpu-b200": {
       "test/registered/models_e2e/test_deepseek_v4_flash_fp4_b200.py": 634
@@ -627,9 +627,10 @@
     },
     "extra-b-test-8-gpu-h200": {
       "test/registered/8-gpu-models/test_deepseek_v32_indexcache.py": 584,
+      "test/registered/dcp/test_dsv31_dcp8_gsm8k.py": 383,
       "test/registered/disaggregation/test_disaggregation_hybrid_attention.py": 374,
       "test/registered/models_e2e/test_dsa_dsv32_dp_mtp.py": 282,
-      "test/registered/models_e2e/test_dsa_dsv32_tp_mtp.py": 304,
+      "test/registered/models_e2e/test_dsa_dsv32_tp_mtp.py": 303,
       "test/registered/models_e2e/test_dsa_glm5_hisparse.py": 574,
       "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16.py": 216,
       "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16_mtp.py": 165,
@@ -668,9 +669,9 @@
       "n_samples": 16
     },
     "base-b-test-1-gpu-small": {
-      "coeff": 1.5684,
-      "bias": -489.2,
-      "r_squared": 0.4461,
+      "coeff": 0.9684,
+      "bias": 145.0,
+      "r_squared": 0.6544,
       "n_samples": 16
     },
     "base-b-test-2-gpu-large": {
@@ -710,9 +711,9 @@
       "n_samples": 16
     },
     "base-c-test-8-gpu-h200": {
-      "coeff": 1.0006,
-      "bias": 109.8,
-      "r_squared": 0.977,
+      "coeff": 1.014,
+      "bias": 104.5,
+      "r_squared": 0.9674,
       "n_samples": 16
     },
     "base-c-test-deepep-4-gpu-b200": {
@@ -764,9 +765,9 @@
       "n_samples": 16
     },
     "extra-b-test-8-gpu-h200": {
-      "coeff": 1.0074,
-      "bias": 91.3,
-      "r_squared": 0.9773,
+      "coeff": 1.008,
+      "bias": 91.0,
+      "r_squared": 0.9762,
       "n_samples": 16
     },
     "extra-b-test-deepep-4-gpu-b200": {
