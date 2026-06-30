@@ -1,0 +1,15 @@
+{
+  "run_id": 28406390382,
+  "started_at": "2026-06-29T22:18:22Z",
+  "event": "workflow_dispatch",
+  "head_sha": "6bdecb8206b8d066e9cfb4ed6032e5a1e9b14340",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/28406390382",
+  "display_title": "Manual run by Fridge003",
+  "jobs": [],
+  "last_scraped_at": "2026-06-30T01:19:13Z",
+  "time_stats": {
+    "total_wall_seconds": 0,
+    "per_stage": {},
+    "per_runner": {}
+  }
+}
