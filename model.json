@@ -653,15 +653,15 @@
     "extra-b-test-4-gpu-h100": {
       "test/registered/attention/test_qwen35_deterministic.py": 95,
       "test/registered/chunked_prefill/test_scripted_core_4gpu.py": 114,
-      "test/registered/cp/test_gqa_prefill_cp_legacy.py": 313,
-      "test/registered/cp/test_gqa_preill_cp.py": 631,
-      "test/registered/hicache/test_qwen35_hicache.py": 550,
-      "test/registered/pp/test_pp_parallel_compat.py": 514,
-      "test/registered/pp/test_pp_single_node_extra.py": 344,
-      "test/registered/radix_cache/test_int8_mamba_checkpoint_e2e.py": 176,
+      "test/registered/cp/test_gqa_prefill_cp_legacy.py": 306,
+      "test/registered/cp/test_gqa_preill_cp.py": 629,
+      "test/registered/hicache/test_qwen35_hicache.py": 545,
+      "test/registered/pp/test_pp_parallel_compat.py": 510,
+      "test/registered/pp/test_pp_single_node_extra.py": 340,
+      "test/registered/radix_cache/test_int8_mamba_checkpoint_e2e.py": 178,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_cp.py": 285,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4.py": 931,
-      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_mamba.py": 868,
+      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_mamba.py": 870,
       "test/registered/rl/test_multi_instance_release_memory_occupation.py": 73,
       "test/registered/rl/test_return_routed_experts.py": 405,
       "test/registered/spec/eagle/test_eagle_dp_attention.py": 118
@@ -801,8 +801,8 @@
       "n_samples": 16
     },
     "extra-b-test-4-gpu-h100": {
-      "coeff": 0.9788,
-      "bias": 144.5,
+      "coeff": 0.978,
+      "bias": 145.3,
       "r_squared": 0.9994,
       "n_samples": 16
     },

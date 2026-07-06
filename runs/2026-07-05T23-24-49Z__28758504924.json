@@ -3293,11 +3293,77 @@
           "elapsed": 34
         }
       ]
+    },
+    {
+      "job_id": 85289402610,
+      "name": "call-pr-test-extra / extra-b-test-4-gpu-h100 / extra-b-test-4-gpu-h100 (2)",
+      "suite": "extra-b-test-4-gpu-h100",
+      "backend": "cuda",
+      "started_at": "2026-07-06T04:03:40Z",
+      "completed_at": "2026-07-06T04:34:08Z",
+      "labels": [
+        "4-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/cp/test_gqa_preill_cp.py",
+          "elapsed": 562
+        },
+        {
+          "file": "test/registered/hicache/test_qwen35_hicache.py",
+          "elapsed": 534
+        },
+        {
+          "file": "test/registered/pp/test_pp_single_node_extra.py",
+          "elapsed": 335
+        },
+        {
+          "file": "test/registered/radix_cache/test_int8_mamba_checkpoint_e2e.py",
+          "elapsed": 195
+        },
+        {
+          "file": "test/registered/attention/test_qwen35_deterministic.py",
+          "elapsed": 95
+        }
+      ]
+    },
+    {
+      "job_id": 85289402642,
+      "name": "call-pr-test-extra / extra-b-test-4-gpu-h100 / extra-b-test-4-gpu-h100 (1)",
+      "suite": "extra-b-test-4-gpu-h100",
+      "backend": "cuda",
+      "started_at": "2026-07-06T04:34:11Z",
+      "completed_at": "2026-07-06T05:06:43Z",
+      "labels": [
+        "4-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_mamba.py",
+          "elapsed": 870
+        },
+        {
+          "file": "test/registered/pp/test_pp_parallel_compat.py",
+          "elapsed": 502
+        },
+        {
+          "file": "test/registered/cp/test_gqa_prefill_cp_legacy.py",
+          "elapsed": 292
+        },
+        {
+          "file": "test/registered/spec/eagle/test_eagle_dp_attention.py",
+          "elapsed": 117
+        },
+        {
+          "file": "test/registered/rl/test_multi_instance_release_memory_occupation.py",
+          "elapsed": 69
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-07-06T01:06:03Z",
+  "last_scraped_at": "2026-07-06T07:52:33Z",
   "time_stats": {
-    "total_wall_seconds": 67138,
+    "total_wall_seconds": 70918,
     "per_stage": {
       "base-a-test-1-gpu-small": 544,
       "base-a-test-cpu": 3176,
@@ -3316,7 +3382,7 @@
       "extra-a-test-1-gpu-small": 3152,
       "extra-a-test-2-gpu-large": 3641,
       "extra-b-test-4-gpu-b200": 2108,
-      "extra-b-test-4-gpu-h100": 1541,
+      "extra-b-test-4-gpu-h100": 5321,
       "extra-b-test-8-gpu-h200": 3131,
       "extra-b-test-deepep-4-gpu-b200": 777,
       "extra-b-test-deepep-8-gpu-h200": 2076
@@ -3327,7 +3393,7 @@
       "2-gpu-h100": 8221,
       "4-gpu-b200": 9733,
       "4-gpu-gb300": 1746,
-      "4-gpu-h100": 5563,
+      "4-gpu-h100": 9343,
       "8-gpu-h200": 9052,
       "ubuntu-latest": 3176
     }
