@@ -3359,11 +3359,53 @@
           "elapsed": 69
         }
       ]
+    },
+    {
+      "job_id": 85533062622,
+      "name": "base-c-test-8-gpu-h20 / base-c-test-8-gpu-h20 (0)",
+      "suite": "base-c-test-8-gpu-h20",
+      "backend": "cuda",
+      "started_at": "2026-07-07T03:58:48Z",
+      "completed_at": "2026-07-07T04:14:05Z",
+      "labels": [
+        "8-gpu-h20"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_different_tp.py",
+          "elapsed": 450
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_dp_attention.py",
+          "elapsed": 155
+        }
+      ]
+    },
+    {
+      "job_id": 85533063166,
+      "name": "base-c-test-8-gpu-h20 / base-c-test-8-gpu-h20 (1)",
+      "suite": "base-c-test-8-gpu-h20",
+      "backend": "cuda",
+      "started_at": "2026-07-07T02:37:15Z",
+      "completed_at": "2026-07-07T02:52:42Z",
+      "labels": [
+        "8-gpu-h20"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_decode_radix_cache.py",
+          "elapsed": 391
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_pp.py",
+          "elapsed": 228
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-07-06T07:52:33Z",
+  "last_scraped_at": "2026-07-07T07:28:12Z",
   "time_stats": {
-    "total_wall_seconds": 70918,
+    "total_wall_seconds": 72762,
     "per_stage": {
       "base-a-test-1-gpu-small": 544,
       "base-a-test-cpu": 3176,
@@ -3374,6 +3416,7 @@
       "base-c-test-4-gpu-b200": 5048,
       "base-c-test-4-gpu-gb300": 1746,
       "base-c-test-4-gpu-h100": 3248,
+      "base-c-test-8-gpu-h20": 1844,
       "base-c-test-8-gpu-h200": 2909,
       "base-c-test-deepep-4-gpu-b200": 753,
       "base-c-test-deepep-4-gpu-h100": 774,
@@ -3394,6 +3437,7 @@
       "4-gpu-b200": 9733,
       "4-gpu-gb300": 1746,
       "4-gpu-h100": 9343,
+      "8-gpu-h20": 1844,
       "8-gpu-h200": 9052,
       "ubuntu-latest": 3176
     }
