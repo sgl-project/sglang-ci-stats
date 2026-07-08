@@ -324,7 +324,7 @@
       "test/registered/core/test_srt_endpoint.py": 161,
       "test/registered/cuda_graph/piecewise/test_pcg_with_speculative_decoding_dflash.py": 81,
       "test/registered/disaggregation/test_specv2_kvcache_offloading.py": 8,
-      "test/registered/hicache/test_hicache_storage.py": 169,
+      "test/registered/hicache/test_hicache_storage.py": 168,
       "test/registered/input_embedding/test_input_embeddings.py": 52,
       "test/registered/input_embedding/test_input_embeds_chunked.py": 54,
       "test/registered/kernels/test_gather_spec_extras.py": 9,
@@ -353,11 +353,11 @@
       "test/registered/perf/test_vlm_perf_5090.py": 430,
       "test/registered/prefill_only/test_embed_overrides.py": 9,
       "test/registered/prefill_only/test_embedding_models.py": 135,
-      "test/registered/prefill_only/test_multi_item_scoring.py": 247,
+      "test/registered/prefill_only/test_multi_item_scoring.py": 245,
       "test/registered/prefill_only/test_openai_embedding.py": 93,
-      "test/registered/prefill_only/test_pooled_hidden_states.py": 113,
+      "test/registered/prefill_only/test_pooled_hidden_states.py": 112,
       "test/registered/prefill_only/test_reward_models.py": 189,
-      "test/registered/prefill_only/test_score_api.py": 81,
+      "test/registered/prefill_only/test_score_api.py": 87,
       "test/registered/prefill_only/test_score_engine.py": 102,
       "test/registered/profiling/test_start_profile.py": 52,
       "test/registered/quant/test_block_int8.py": 48,
@@ -675,14 +675,14 @@
       "test/registered/spec/eagle/test_eagle_dp_attention.py": 118
     },
     "extra-b-test-8-gpu-h200": {
-      "test/registered/8-gpu-models/test_deepseek_v32_indexcache.py": 562,
-      "test/registered/dcp/test_dsv31_dcp8_gsm8k.py": 237,
-      "test/registered/dcp/test_reduce_scatter_along_dim.py": 54,
+      "test/registered/8-gpu-models/test_deepseek_v32_indexcache.py": 561,
+      "test/registered/dcp/test_dsv31_dcp8_gsm8k.py": 277,
+      "test/registered/dcp/test_reduce_scatter_along_dim.py": 53,
       "test/registered/disaggregation/test_disaggregation_hybrid_attention.py": 416,
       "test/registered/models_e2e/test_dsa_glm52_hisparse.py": 540,
       "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16.py": 212,
       "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16_mtp.py": 171,
-      "test/registered/models_e2e/test_step3p5_flash_chain_mtp.py": 379,
+      "test/registered/models_e2e/test_step3p5_flash_chain_mtp.py": 377,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4_pp.py": 564,
       "test/registered/rl/test_return_indexer_topk.py": 257
     },
@@ -719,9 +719,9 @@
       "n_samples": 16
     },
     "base-b-test-1-gpu-small": {
-      "coeff": 1.0915,
-      "bias": 4.0,
-      "r_squared": 0.94,
+      "coeff": 1.0982,
+      "bias": -3.1,
+      "r_squared": 0.9404,
       "n_samples": 16
     },
     "base-b-test-2-gpu-large": {
@@ -785,10 +785,10 @@
       "n_samples": 13
     },
     "call-jit-kernel-tests": {
-      "coeff": 0.989,
-      "bias": 155.9,
-      "r_squared": 0.9018,
-      "n_samples": 7
+      "coeff": 1.0179,
+      "bias": 134.1,
+      "r_squared": 0.9187,
+      "n_samples": 8
     },
     "extra-a-test-1-gpu-large": {
       "coeff": 1.0427,
@@ -821,9 +821,9 @@
       "n_samples": 16
     },
     "extra-b-test-8-gpu-h200": {
-      "coeff": 0.9594,
-      "bias": 161.0,
-      "r_squared": 0.9881,
+      "coeff": 0.9638,
+      "bias": 153.7,
+      "r_squared": 0.9872,
       "n_samples": 16
     },
     "extra-b-test-deepep-4-gpu-b200": {
