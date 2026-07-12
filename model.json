@@ -716,13 +716,13 @@
       "test/registered/attention/test_hybrid_attn_backend.py": 424,
       "test/registered/attention/test_triton_sliding_window.py": 139,
       "test/registered/backends/test_torch_compile.py": 163,
-      "test/registered/chunked_prefill/test_scripted_swa_1gpu.py": 125,
+      "test/registered/chunked_prefill/test_scripted_swa_1gpu.py": 124,
       "test/registered/hicache/test_hicache_spec_file_storage.py": 143,
       "test/registered/kernels/test_cp_prefix_len_fa3_parity.py": 10,
       "test/registered/kernels/test_mla_cp_fa3_parity.py": 10,
       "test/registered/kv_canary/test_self_e2e_bench_speed.py": 317,
       "test/registered/lora/test_lora_qwen3_5_4b_logprob_diff.py": 37,
-      "test/registered/lora/test_lora_qwen3_8b_logprob_diff.py": 38,
+      "test/registered/lora/test_lora_qwen3_8b_logprob_diff.py": 40,
       "test/registered/models/test_compressed_tensors_models.py": 63,
       "test/registered/models/test_generation_models.py": 127,
       "test/registered/models/test_vlm_models.py": 166,
@@ -731,8 +731,8 @@
       "test/registered/page_major/test_page_major_qwen_hybrid.py": 85,
       "test/registered/perf/test_bench_serving_1gpu_large.py": 290,
       "test/registered/perf/test_bench_serving_1gpu_part1.py": 1247,
-      "test/registered/perf/test_bench_serving_1gpu_part2.py": 909,
-      "test/registered/quant/test_autoround_quantization.py": 306,
+      "test/registered/perf/test_bench_serving_1gpu_part2.py": 906,
+      "test/registered/quant/test_autoround_quantization.py": 298,
       "test/registered/quant/test_fp8kv_triton.py": 63,
       "test/registered/quant/test_gptqmodel_dynamic.py": 99,
       "test/registered/quant/test_w8a8_quantization.py": 198,
@@ -741,7 +741,7 @@
       "test/registered/sessions/test_session_latency.py": 103,
       "test/registered/sessions/test_streaming_session_extra.py": 441,
       "test/registered/spec/test_spec_ngram_extra.py": 173,
-      "test/registered/spec/test_spec_standalone_extra.py": 207
+      "test/registered/spec/test_spec_standalone_extra.py": 206
     },
     "extra-a-test-1-gpu-small": {
       "test/registered/attention/test_torch_native_attention_backend.py": 154,
@@ -900,9 +900,9 @@
       "n_samples": 16
     },
     "base-c-test-4-gpu-gb300": {
-      "coeff": 0.9871,
-      "bias": 280.4,
-      "r_squared": 0.9923,
+      "coeff": 0.9988,
+      "bias": 273.3,
+      "r_squared": 0.9932,
       "n_samples": 16
     },
     "base-c-test-4-gpu-h100": {
@@ -948,9 +948,9 @@
       "n_samples": 16
     },
     "extra-a-test-1-gpu-large": {
-      "coeff": 1.0091,
-      "bias": 105.9,
-      "r_squared": 0.9753,
+      "coeff": 1.0375,
+      "bias": 53.6,
+      "r_squared": 0.975,
       "n_samples": 16
     },
     "extra-a-test-1-gpu-small": {
