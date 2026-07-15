@@ -551,7 +551,7 @@
     "base-c-test-4-gpu-gb300": {
       "test/registered/4-gpu-models/test_deepseek_v3_cutedsl_4gpu.py": 487,
       "test/registered/disaggregation/test_disaggregation_aarch64.py": 102,
-      "test/registered/ep/test_flashinfer_a2a.py": 671,
+      "test/registered/ep/test_flashinfer_a2a.py": 669,
       "test/registered/unit/layers/test_flashinfer_comm_fusion.py": 12,
       "test/registered/utils/test_numa_utils.py": 8
     },
@@ -735,31 +735,31 @@
       "test/registered/jit/test_tp_qknorm.py": 91
     },
     "extra-a-test-1-gpu-large": {
-      "test/registered/attention/test_hybrid_attn_backend.py": 422,
+      "test/registered/attention/test_hybrid_attn_backend.py": 424,
       "test/registered/attention/test_triton_sliding_window.py": 140,
       "test/registered/backends/test_torch_compile.py": 164,
       "test/registered/chunked_prefill/test_scripted_swa_1gpu.py": 123,
       "test/registered/hicache/test_hicache_spec_file_storage.py": 140,
       "test/registered/kernels/test_cp_prefix_len_fa3_parity.py": 10,
       "test/registered/kernels/test_mla_cp_fa3_parity.py": 10,
-      "test/registered/kv_canary/test_self_e2e_bench_speed.py": 299,
+      "test/registered/kv_canary/test_self_e2e_bench_speed.py": 298,
       "test/registered/lora/test_lora_qwen3_5_4b_logprob_diff.py": 39,
       "test/registered/lora/test_lora_qwen3_8b_logprob_diff.py": 40,
       "test/registered/models/test_compressed_tensors_models.py": 63,
-      "test/registered/models/test_generation_models.py": 143,
-      "test/registered/models/test_vlm_models.py": 180,
+      "test/registered/models/test_generation_models.py": 144,
+      "test/registered/models/test_vlm_models.py": 178,
       "test/registered/models/test_zaya.py": 7,
       "test/registered/page_major/test_page_major_gpt_oss.py": 90,
       "test/registered/page_major/test_page_major_qwen_hybrid.py": 85,
       "test/registered/perf/test_bench_serving_1gpu_large.py": 287,
       "test/registered/perf/test_bench_serving_1gpu_part1.py": 1247,
       "test/registered/perf/test_bench_serving_1gpu_part2.py": 844,
-      "test/registered/quant/test_autoround_quantization.py": 295,
+      "test/registered/quant/test_autoround_quantization.py": 285,
       "test/registered/quant/test_fp8kv_triton.py": 62,
       "test/registered/quant/test_gptqmodel_dynamic.py": 100,
       "test/registered/quant/test_w8a8_quantization.py": 215,
       "test/registered/rl/test_lora_load_from_tensor.py": 87,
-      "test/registered/sessions/test_session_control.py": 88,
+      "test/registered/sessions/test_session_control.py": 89,
       "test/registered/sessions/test_session_latency.py": 103,
       "test/registered/sessions/test_streaming_session_extra.py": 436,
       "test/registered/spec/test_spec_ngram_extra.py": 175,
@@ -854,15 +854,15 @@
     },
     "extra-b-test-8-gpu-h200": {
       "test/registered/8-gpu-models/test_deepseek_v32_indexcache.py": 471,
-      "test/registered/dcp/test_dsv31_dcp8_gsm8k.py": 205,
+      "test/registered/dcp/test_dsv31_dcp8_gsm8k.py": 207,
       "test/registered/dcp/test_reduce_scatter_along_dim.py": 67,
       "test/registered/disaggregation/test_disaggregation_hybrid_attention.py": 422,
       "test/registered/models_e2e/test_dsa_glm52_hisparse.py": 496,
-      "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16.py": 236,
+      "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16.py": 230,
       "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16_mtp.py": 240,
       "test/registered/models_e2e/test_step3p5_flash_chain_mtp.py": 397,
-      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4_pp.py": 582,
-      "test/registered/rl/test_return_indexer_topk.py": 200
+      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4_pp.py": 581,
+      "test/registered/rl/test_return_indexer_topk.py": 221
     },
     "extra-b-test-deepep-4-gpu-b200": {
       "test/registered/cp/test_deepseek_v4_flash_fp4_b200_cp.py": 310,
@@ -925,9 +925,9 @@
       "n_samples": 16
     },
     "base-c-test-4-gpu-gb300": {
-      "coeff": 0.9817,
-      "bias": 285.8,
-      "r_squared": 0.9911,
+      "coeff": 0.9568,
+      "bias": 300.4,
+      "r_squared": 0.9892,
       "n_samples": 16
     },
     "base-c-test-4-gpu-h100": {
@@ -973,9 +973,9 @@
       "n_samples": 16
     },
     "extra-a-test-1-gpu-large": {
-      "coeff": 1.0638,
-      "bias": 7.4,
-      "r_squared": 0.9876,
+      "coeff": 1.0644,
+      "bias": 6.3,
+      "r_squared": 0.9872,
       "n_samples": 16
     },
     "extra-a-test-1-gpu-small": {
@@ -1003,9 +1003,9 @@
       "n_samples": 16
     },
     "extra-b-test-8-gpu-h200": {
-      "coeff": 0.9754,
-      "bias": 138.2,
-      "r_squared": 0.9853,
+      "coeff": 0.9751,
+      "bias": 138.4,
+      "r_squared": 0.9855,
       "n_samples": 16
     },
     "extra-b-test-deepep-4-gpu-b200": {
