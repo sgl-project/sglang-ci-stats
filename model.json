@@ -592,7 +592,7 @@
     },
     "base-c-test-deepep-8-gpu-h200": {
       "test/registered/disaggregation/test_disaggregation_dsv4.py": 169,
-      "test/registered/models_e2e/test_deepseek_v4_flash_fp4_h200.py": 763
+      "test/registered/models_e2e/test_deepseek_v4_flash_fp4_h200.py": 759
     },
     "call-jit-kernel-tests": {
       "test/registered/attention/test_gdn_prefill_cutedsl.py": 21,
@@ -961,10 +961,10 @@
       "n_samples": 14
     },
     "base-c-test-deepep-8-gpu-h200": {
-      "coeff": 1.1371,
-      "bias": 140.9,
-      "r_squared": 0.9135,
-      "n_samples": 11
+      "coeff": 1.1319,
+      "bias": 145.6,
+      "r_squared": 0.9147,
+      "n_samples": 12
     },
     "call-jit-kernel-tests": {
       "coeff": 0.997,
