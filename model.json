@@ -893,148 +893,172 @@
   },
   "fit": {
     "base-a-test-1-gpu-small": {
-      "coeff": -0.4013,
-      "bias": 666.9,
-      "r_squared": 0.0131,
-      "n_samples": 13
+      "coeff": 1.0,
+      "bias": 104.0,
+      "r_squared": -0.2068,
+      "n_samples": 13,
+      "method": "overhead"
     },
     "base-a-test-cpu": {
-      "coeff": 0.5095,
-      "bias": 317.6,
-      "r_squared": 0.1293,
-      "n_samples": 16
+      "coeff": 1.0,
+      "bias": 153.5,
+      "r_squared": -0.1334,
+      "n_samples": 16,
+      "method": "overhead"
     },
     "base-b-test-1-gpu-large": {
       "coeff": 1.279,
       "bias": -168.2,
       "r_squared": 0.9319,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "base-b-test-1-gpu-small": {
       "coeff": 0.9499,
       "bias": 146.5,
       "r_squared": 0.9872,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "base-b-test-2-gpu-large": {
       "coeff": 1.0225,
       "bias": 115.4,
       "r_squared": 0.9827,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "base-b-test-4-gpu-b200": {
-      "coeff": -0.1271,
-      "bias": 1206.9,
-      "r_squared": 0.0041,
-      "n_samples": 12
+      "coeff": 1.0,
+      "bias": 294.5,
+      "r_squared": -0.3892,
+      "n_samples": 12,
+      "method": "overhead"
     },
     "base-c-test-4-gpu-b200": {
-      "coeff": 0.8785,
-      "bias": 306.6,
-      "r_squared": 0.3347,
-      "n_samples": 16
+      "coeff": 1.0,
+      "bias": 108.0,
+      "r_squared": -0.0291,
+      "n_samples": 16,
+      "method": "overhead"
     },
     "base-c-test-4-gpu-gb300": {
       "coeff": 1.1542,
       "bias": 223.1,
       "r_squared": 0.6945,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "base-c-test-4-gpu-h100": {
       "coeff": 0.9338,
       "bias": 173.4,
       "r_squared": 0.9965,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "base-c-test-8-gpu-h20": {
       "coeff": 1.0551,
       "bias": 273.5,
       "r_squared": 0.9989,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "base-c-test-8-gpu-h200": {
       "coeff": 1.0346,
       "bias": 85.7,
       "r_squared": 0.9588,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "base-c-test-deepep-4-gpu-b200": {
-      "coeff": -1.2093,
-      "bias": 1462.2,
-      "r_squared": 0.2399,
-      "n_samples": 11
+      "coeff": 1.0,
+      "bias": 268.0,
+      "r_squared": -1.2721,
+      "n_samples": 11,
+      "method": "overhead"
     },
     "base-c-test-deepep-4-gpu-h100": {
       "coeff": 1.1641,
       "bias": 155.8,
       "r_squared": 0.9996,
-      "n_samples": 13
+      "n_samples": 13,
+      "method": "ols"
     },
     "base-c-test-deepep-8-gpu-h200": {
       "coeff": 1.1424,
       "bias": 141.4,
       "r_squared": 0.9565,
-      "n_samples": 11
+      "n_samples": 11,
+      "method": "ols"
     },
     "call-jit-kernel-tests": {
       "coeff": 1.0057,
       "bias": 116.6,
       "r_squared": 0.9945,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "extra-a-test-1-gpu-large": {
       "coeff": 1.0753,
       "bias": -16.3,
       "r_squared": 0.9851,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "extra-a-test-1-gpu-small": {
       "coeff": 0.9871,
       "bias": 125.8,
       "r_squared": 0.9902,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "extra-a-test-2-gpu-large": {
       "coeff": 1.0287,
       "bias": 98.2,
       "r_squared": 0.9834,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "extra-b-test-4-gpu-b200": {
       "coeff": 1.1153,
       "bias": 145.0,
       "r_squared": 0.8569,
-      "n_samples": 12
+      "n_samples": 12,
+      "method": "ols"
     },
     "extra-b-test-4-gpu-h100": {
       "coeff": 0.9915,
       "bias": 127.0,
       "r_squared": 0.9998,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "extra-b-test-8-gpu-h200": {
       "coeff": 0.9833,
       "bias": 126.2,
       "r_squared": 0.9852,
-      "n_samples": 16
+      "n_samples": 16,
+      "method": "ols"
     },
     "extra-b-test-deepep-4-gpu-b200": {
-      "coeff": 0.9083,
-      "bias": 400.1,
-      "r_squared": 0.3226,
-      "n_samples": 11
+      "coeff": 1.0,
+      "bias": 245.0,
+      "r_squared": -0.0926,
+      "n_samples": 11,
+      "method": "overhead"
     },
     "extra-b-test-deepep-4-gpu-h100": {
       "coeff": 1.2446,
       "bias": 55.8,
       "r_squared": 0.9981,
-      "n_samples": 6
+      "n_samples": 6,
+      "method": "ols"
     },
     "extra-b-test-deepep-8-gpu-h200": {
       "coeff": 1.1332,
       "bias": 8.5,
       "r_squared": 0.98,
-      "n_samples": 11
+      "n_samples": 11,
+      "method": "ols"
     }
   }
 }
