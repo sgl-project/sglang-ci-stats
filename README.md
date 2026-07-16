@@ -7,7 +7,7 @@ Auto-scraped per-test elapsed-time history for [`sgl-project/sglang`](https://gi
 | Path | Contents |
 | --- | --- |
 | `runs/<YYYY-MM-DD>T<HH-MM-SS>Z__<run_id>.json` | Per-run archive. One file per scraped CI run; jobs grow append-only as reruns succeed. Each file also carries a `time_stats` block (this run's wall-clock data point). |
-| `model.json` | Derived partition model: per-(file, suite, backend) `est` (p90) and per-suite OLS `(coeff, bias, r_squared)` fitting `wall_clock = coeff * sum(elapsed) + bias`. Deterministic function of `runs/` within the same UTC day. `git log model.json` is the historical archive. |
+| `model.json` | Derived partition model: per-(file, suite, backend) `est` (p90) and per-suite `(coeff, bias, r_squared, method)` fitting `wall_clock = coeff * sum(elapsed) + bias`. OLS is emitted only when identifiable and explanatory (`coeff > 0`, `r_squared >= 0.5`); otherwise the constant-overhead model (`coeff=1.0`, `bias=median(wall - sum_elapsed)`, `method="overhead"`). Deterministic function of `runs/` within the same UTC day. `git log model.json` is the historical archive. |
 | `scrape.py` | The scraper. Pulls completed `PR Test` runs on `main` (events: `schedule` + `workflow_dispatch`) within a 48h rolling window and writes `runs/*.json`, each stamped with a per-run `time_stats` summary. No cross-run aggregation. |
 | `derive.py` | The deriver. Reads `runs/*.json` and emits one fresh `models/*.json` snapshot per invocation. |
 | `demo.py` | Trend viewer. Walks every run's `time_stats` and renders a single-file `demo.html` (Chart.js via CDN) with line charts of CI time over time (total / per-stage / per-runner). The generated `demo.html` is gitignored. |

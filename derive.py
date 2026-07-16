@@ -21,8 +21,16 @@ midnight (not wall-clock now) so two invocations on the same UTC day
 with unchanged runs/ produce byte-identical JSON -- the workflow can
 simply diff & commit.
 
-Consumers should fall back to coeff=1.0, bias=0 (and the in-source
-static est_time) whenever a lookup is missing or r_squared is too low.
+A fitted line is emitted only when it is identifiable and explanatory
+(coeff > 0 and r_squared >= R2_MIN); otherwise the suite gets the
+constant-overhead model (coeff=1.0, bias=median(wall - sum_elapsed),
+method="overhead"). On suites whose shards all carry near-identical
+est totals (e.g. single-file suites) the OLS slope is unidentifiable
+and returns noise; trusting it once pushed a suite's bias past the
+consumer's bias >= target guard and failed check-changes repo-wide.
+
+Consumers should still fall back to coeff=1.0, bias=0 (and the
+in-source static est_time) whenever a lookup is missing.
 
 Usage:
     python derive.py [--fit-window-days 7]
@@ -41,6 +49,7 @@ RUNS_DIR = REPO_ROOT / "runs"
 MIN_EST_SAMPLES = 3
 MIN_FIT_SAMPLES = 3
 MAX_SAMPLES = 16  # newest-first cap per bin; tracks ~one weekly rotation
+R2_MIN = 0.5  # below this the OLS line explains nothing; use the overhead model
 
 
 # parse_iso lives in scrape.py (single source for the ISO-with-Z convention)
@@ -123,7 +132,45 @@ def ols_fit(samples):
         "bias": round(bias, 1),
         "r_squared": round(r_squared, 4),
         "n_samples": n,
+        "method": "ols",
     }
+
+
+def overhead_fit(samples):
+    """Constant-overhead model: pred = sum_elapsed + median(wall - sum_elapsed).
+
+    The right shape when the slope is unidentifiable: with files running
+    sequentially inside a shard, wall = per-shard setup + content, so pin
+    coeff to 1.0 and measure the setup empirically."""
+    n = len(samples)
+    bias = max(0.0, statistics.median(w - se for se, w in samples))
+    ys = [s[1] for s in samples]
+    mean_y = sum(ys) / n
+    ss_tot = sum((y - mean_y) ** 2 for y in ys)
+    ss_res = sum((y - (se + bias)) ** 2 for se, y in samples)
+    r_squared = 1 - ss_res / ss_tot if ss_tot > 0 else 1.0
+    return {
+        "coeff": 1.0,
+        "bias": round(bias, 1),
+        "r_squared": round(r_squared, 4),
+        "n_samples": n,
+        "method": "overhead",
+    }
+
+
+def fit_suite(samples):
+    """Trust the OLS line only when it is identifiable and explanatory:
+    coeff > 0 (a negative slope -- more work, less wall time -- is
+    impossible under any execution model) and r_squared >= R2_MIN.
+    Anything else gets the constant-overhead model instead of a noise
+    line whose runaway bias can trip the consumer's bias >= target
+    guard."""
+    if len(samples) < MIN_FIT_SAMPLES:
+        return None
+    ols = ols_fit(samples)
+    if ols is not None and ols["coeff"] > 0 and ols["r_squared"] >= R2_MIN:
+        return ols
+    return overhead_fit(samples)
 
 
 def p90(values):
@@ -175,7 +222,7 @@ def main():
     fit = {}
     for suite, samples in sorted(fit_bins.items()):
         recent = samples[:MAX_SAMPLES]
-        f = ols_fit(recent)
+        f = fit_suite(recent)
         if f is not None:
             fit[suite] = f
 
