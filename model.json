@@ -869,7 +869,7 @@
       "test/registered/pp/test_pp_single_node_extra.py": 337,
       "test/registered/radix_cache/test_int8_mamba_checkpoint_e2e.py": 305,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_cp.py": 283,
-      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4.py": 863,
+      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4.py": 862,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_mamba.py": 910,
       "test/registered/rl/test_multi_instance_release_memory_occupation.py": 67,
       "test/registered/rl/test_return_routed_experts.py": 423,
@@ -1042,9 +1042,9 @@
       "method": "ols"
     },
     "extra-b-test-4-gpu-h100": {
-      "coeff": 0.9914,
-      "bias": 129.1,
-      "r_squared": 0.9996,
+      "coeff": 0.9972,
+      "bias": 118.0,
+      "r_squared": 0.9997,
       "n_samples": 16,
       "method": "ols"
     },
