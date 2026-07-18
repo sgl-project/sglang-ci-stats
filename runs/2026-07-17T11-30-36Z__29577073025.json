@@ -4179,11 +4179,64 @@
           "elapsed": 150
         }
       ]
+    },
+    {
+      "job_id": 87994837377,
+      "name": "call-pr-test-extra / extra-a-test-2-gpu-large / extra-a-test-2-gpu-large (1)",
+      "suite": "extra-a-test-2-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-07-17T21:13:26Z",
+      "completed_at": "2026-07-17T21:40:56Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/models_e2e/test_ministral4_models.py",
+          "elapsed": 277
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_pp_perturb.py",
+          "elapsed": 274
+        },
+        {
+          "file": "test/registered/perf/test_bench_one_batch_2gpu.py",
+          "elapsed": 184
+        },
+        {
+          "file": "test/registered/hicache/test_hicache_spec_mooncake_storage.py",
+          "elapsed": 174
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_pd_perturb.py",
+          "elapsed": 150
+        },
+        {
+          "file": "test/registered/model_loading/test_load_weights_from_remote_instance.py",
+          "elapsed": 121
+        },
+        {
+          "file": "test/registered/rl/test_update_weights_from_distributed.py",
+          "elapsed": 112
+        },
+        {
+          "file": "test/registered/spec/test_gemma4_dflash_31b_extra.py",
+          "elapsed": 88
+        },
+        {
+          "file": "test/registered/moe/test_moe_ep_extra.py",
+          "elapsed": 75
+        },
+        {
+          "file": "test/registered/mock_model/test_e2e_pp.py",
+          "elapsed": 55
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-07-17T18:37:36Z",
+  "last_scraped_at": "2026-07-18T00:50:48Z",
   "time_stats": {
-    "total_wall_seconds": 74036,
+    "total_wall_seconds": 75686,
     "per_stage": {
       "base-a-test-1-gpu-small": 493,
       "base-a-test-cpu": 3962,
@@ -4202,7 +4255,7 @@
       "call-jit-kernel-tests": 2338,
       "extra-a-test-1-gpu-large": 6035,
       "extra-a-test-1-gpu-small": 3061,
-      "extra-a-test-2-gpu-large": 1526,
+      "extra-a-test-2-gpu-large": 3176,
       "extra-b-test-4-gpu-b200": 2481,
       "extra-b-test-4-gpu-h100": 4346,
       "extra-b-test-8-gpu-h200": 3527,
@@ -4213,7 +4266,7 @@
     "per_runner": {
       "1-gpu-5090": 13932,
       "1-gpu-h100": 17304,
-      "2-gpu-h100": 6284,
+      "2-gpu-h100": 7934,
       "4-gpu-b200": 11135,
       "4-gpu-gb300": 1888,
       "4-gpu-h100": 8561,
