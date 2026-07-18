@@ -385,7 +385,7 @@
       "test/registered/core/test_engine_child_pids.py": 32,
       "test/registered/core/test_hidden_states.py": 30,
       "test/registered/core/test_request_queue_validation.py": 63,
-      "test/registered/core/test_srt_endpoint.py": 158,
+      "test/registered/core/test_srt_endpoint.py": 157,
       "test/registered/disaggregation/test_specv2_kvcache_offloading.py": 9,
       "test/registered/hicache/test_hicache_storage.py": 170,
       "test/registered/input_embedding/test_input_embeddings.py": 52,
@@ -450,7 +450,7 @@
       "test/registered/spec/dspark/test_dspark_kernel_parity.py": 10,
       "test/registered/spec/dspark/test_ragged_verify_backend_capability.py": 10,
       "test/registered/spec/eagle/test_spec_eagle.py": 528,
-      "test/registered/spec/eagle/test_spec_eagle_page.py": 391,
+      "test/registered/spec/eagle/test_spec_eagle_page.py": 390,
       "test/registered/spec/eagle/test_spec_eagle_topk.py": 986,
       "test/registered/spec/eagle/test_spec_eagle_topk_page.py": 554,
       "test/registered/spec/eagle/test_spec_eagle_triton.py": 457,
@@ -496,7 +496,7 @@
       "test/registered/unit/utils/test_profile_merger.py": 9,
       "test/registered/unit/utils/test_weight_checker.py": 10,
       "test/registered/unit/utils/test_weight_checker_comparator.py": 9,
-      "test/registered/utils/test_phase_checker.py": 16,
+      "test/registered/utils/test_phase_checker.py": 17,
       "test/registered/vlm/test_evs.py": 11
     },
     "base-b-test-2-gpu-large": {
@@ -773,12 +773,12 @@
       "test/registered/attention/test_triton_sliding_window.py": 98,
       "test/registered/backends/test_torch_compile.py": 163,
       "test/registered/chunked_prefill/test_scripted_swa_1gpu.py": 124,
-      "test/registered/hicache/test_hicache_spec_file_storage.py": 141,
+      "test/registered/hicache/test_hicache_spec_file_storage.py": 140,
       "test/registered/kernels/test_cp_prefix_len_fa3_parity.py": 8,
       "test/registered/kernels/test_mla_cp_fa3_parity.py": 10,
       "test/registered/kv_canary/test_self_e2e_bench_speed.py": 292,
       "test/registered/lora/test_lora_qwen3_5_4b_logprob_diff.py": 39,
-      "test/registered/lora/test_lora_qwen3_8b_logprob_diff.py": 41,
+      "test/registered/lora/test_lora_qwen3_8b_logprob_diff.py": 40,
       "test/registered/models/test_compressed_tensors_models.py": 63,
       "test/registered/models/test_generation_models.py": 139,
       "test/registered/models/test_vlm_models.py": 185,
@@ -942,9 +942,9 @@
       "method": "ols"
     },
     "base-b-test-1-gpu-small": {
-      "coeff": 1.1967,
-      "bias": -95.7,
-      "r_squared": 0.7397,
+      "coeff": 1.2133,
+      "bias": -112.1,
+      "r_squared": 0.7809,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1026,9 +1026,9 @@
       "method": "ols"
     },
     "extra-a-test-1-gpu-large": {
-      "coeff": 0.9848,
-      "bias": 147.3,
-      "r_squared": 0.9977,
+      "coeff": 0.9878,
+      "bias": 143.3,
+      "r_squared": 0.9978,
       "n_samples": 16,
       "method": "ols"
     },
