@@ -350,7 +350,7 @@
       "test/registered/mla/test_mla_int8_deepseek_v3.py": 197,
       "test/registered/model_loading/test_utils_update_weights.py": 41,
       "test/registered/moe/test_fused_append_remap_per_rank_shared_slots.py": 10,
-      "test/registered/moe/test_fused_moe.py": 88,
+      "test/registered/moe/test_fused_moe.py": 87,
       "test/registered/moe/test_topk_padded_region.py": 9,
       "test/registered/moe/test_torch_compile_moe.py": 190,
       "test/registered/moe/test_triton_fused_moe.py": 11,
@@ -637,9 +637,9 @@
       "test/registered/lora/test_lora_tp.py": 236,
       "test/registered/models_e2e/test_deepseek_v3_mtp.py": 370,
       "test/registered/models_e2e/test_dsa_glm52_dp_mtp.py": 399,
-      "test/registered/models_e2e/test_dsa_glm52_tp_mtp.py": 427,
-      "test/registered/models_e2e/test_mimo_v2.py": 334,
-      "test/registered/models_e2e/test_mimo_v2_flash.py": 319,
+      "test/registered/models_e2e/test_dsa_glm52_tp_mtp.py": 421,
+      "test/registered/models_e2e/test_mimo_v2.py": 332,
+      "test/registered/models_e2e/test_mimo_v2_flash.py": 318,
       "test/registered/models_e2e/test_minimax_m25_basic.py": 204
     },
     "base-c-test-deepep-4-gpu-b200": {
@@ -651,7 +651,7 @@
     },
     "base-c-test-deepep-8-gpu-h200": {
       "test/registered/disaggregation/test_disaggregation_dsv4.py": 172,
-      "test/registered/models_e2e/test_deepseek_v4_flash_fp4_h200.py": 758
+      "test/registered/models_e2e/test_deepseek_v4_flash_fp4_h200.py": 757
     },
     "call-jit-kernel-tests": {
       "test/registered/attention/test_gdn_prefill_cutedsl.py": 19,
@@ -801,14 +801,14 @@
       "test/registered/lora/test_lora_qwen3_8b_logprob_diff.py": 41,
       "test/registered/models/test_compressed_tensors_models.py": 65,
       "test/registered/models/test_generation_models.py": 138,
-      "test/registered/models/test_vlm_models.py": 174,
+      "test/registered/models/test_vlm_models.py": 173,
       "test/registered/models/test_zaya.py": 8,
       "test/registered/page_major/test_page_major_gpt_oss.py": 90,
-      "test/registered/page_major/test_page_major_qwen_hybrid.py": 79,
+      "test/registered/page_major/test_page_major_qwen_hybrid.py": 78,
       "test/registered/perf/test_bench_serving_1gpu_large.py": 285,
       "test/registered/perf/test_bench_serving_1gpu_part1.py": 1242,
       "test/registered/perf/test_bench_serving_1gpu_part2.py": 834,
-      "test/registered/quant/test_autoround_quantization.py": 288,
+      "test/registered/quant/test_autoround_quantization.py": 278,
       "test/registered/quant/test_fp8kv_triton.py": 63,
       "test/registered/quant/test_gptqmodel_dynamic.py": 100,
       "test/registered/quant/test_w8a8_quantization.py": 201,
@@ -913,15 +913,15 @@
       "test/registered/dcp/test_dsv31_dcp8_gsm8k.py": 216,
       "test/registered/dcp/test_reduce_scatter_along_dim.py": 66,
       "test/registered/disaggregation/test_disaggregation_hybrid_attention.py": 465,
-      "test/registered/jit/test_custom_all_reduce.py": 72,
-      "test/registered/jit/test_symm_mem_all_gather.py": 47,
-      "test/registered/jit/test_tp_qknorm.py": 100,
-      "test/registered/models_e2e/test_dsa_glm52_hisparse.py": 576,
-      "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16.py": 190,
+      "test/registered/jit/test_custom_all_reduce.py": 70,
+      "test/registered/jit/test_symm_mem_all_gather.py": 46,
+      "test/registered/jit/test_tp_qknorm.py": 99,
+      "test/registered/models_e2e/test_dsa_glm52_hisparse.py": 571,
+      "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16.py": 189,
       "test/registered/models_e2e/test_nvidia_nemotron_3_super_bf16_mtp.py": 178,
       "test/registered/models_e2e/test_step3p5_flash_chain_mtp.py": 400,
-      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4_pp.py": 586,
-      "test/registered/rl/test_return_indexer_topk.py": 239
+      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4_pp.py": 585,
+      "test/registered/rl/test_return_indexer_topk.py": 242
     },
     "extra-b-test-deepep-4-gpu-b200": {
       "test/registered/cp/test_deepseek_v4_flash_fp4_b200_cp.py": 372,
@@ -932,11 +932,11 @@
       "test/registered/rl/test_return_routed_experts.py": 433
     },
     "extra-b-test-deepep-8-gpu-h200": {
-      "test/registered/cp/test_deepseek_v32_cp_single_node.py": 616,
-      "test/registered/cp/test_deepseek_v3_cp_single_node.py": 256,
-      "test/registered/disaggregation/test_disaggregation_hisparse.py": 233,
-      "test/registered/ep/test_deepep_large.py": 542,
-      "test/registered/ep/test_tbo_shared_experts_fusion.py": 205,
+      "test/registered/cp/test_deepseek_v32_cp_single_node.py": 615,
+      "test/registered/cp/test_deepseek_v3_cp_single_node.py": 255,
+      "test/registered/disaggregation/test_disaggregation_hisparse.py": 232,
+      "test/registered/ep/test_deepep_large.py": 538,
+      "test/registered/ep/test_tbo_shared_experts_fusion.py": 204,
       "test/registered/models_e2e/test_deepseek_v4_flash_fp8_h200.py": 152
     }
   },
@@ -1012,9 +1012,9 @@
       "method": "ols"
     },
     "base-c-test-8-gpu-h200": {
-      "coeff": 0.9994,
-      "bias": 123.0,
-      "r_squared": 0.982,
+      "coeff": 1.0041,
+      "bias": 119.6,
+      "r_squared": 0.9793,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1033,10 +1033,10 @@
       "method": "ols"
     },
     "base-c-test-deepep-8-gpu-h200": {
-      "coeff": 0.8979,
-      "bias": 350.9,
-      "r_squared": 0.7719,
-      "n_samples": 14,
+      "coeff": 0.8544,
+      "bias": 391.1,
+      "r_squared": 0.7475,
+      "n_samples": 15,
       "method": "ols"
     },
     "call-jit-kernel-tests": {
@@ -1047,9 +1047,9 @@
       "method": "ols"
     },
     "extra-a-test-1-gpu-large": {
-      "coeff": 1.031,
-      "bias": 92.2,
-      "r_squared": 0.9835,
+      "coeff": 1.0228,
+      "bias": 108.6,
+      "r_squared": 0.9844,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1082,9 +1082,9 @@
       "method": "ols"
     },
     "extra-b-test-8-gpu-h200": {
-      "coeff": 1.0302,
-      "bias": 68.8,
-      "r_squared": 0.9935,
+      "coeff": 1.0129,
+      "bias": 101.5,
+      "r_squared": 0.9874,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1103,10 +1103,10 @@
       "method": "ols"
     },
     "extra-b-test-deepep-8-gpu-h200": {
-      "coeff": 0.9953,
-      "bias": 261.1,
+      "coeff": 0.9951,
+      "bias": 261.3,
       "r_squared": 0.9953,
-      "n_samples": 15,
+      "n_samples": 16,
       "method": "ols"
     }
   }
