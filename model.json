@@ -536,14 +536,14 @@
     },
     "base-b-test-2-gpu-large": {
       "test/registered/attention/test_gemma4_swa_triton_oob_regression.py": 84,
-      "test/registered/backends/test_flashinfer_fusion_preflight.py": 28,
+      "test/registered/backends/test_flashinfer_fusion_preflight.py": 29,
       "test/registered/core/test_no_extra_forked_cuda_context.py": 54,
       "test/registered/cuda_graph/breakable/test_bcg_with_speculative_decoding.py": 101,
       "test/registered/disaggregation/test_disaggregation_basic.py": 468,
-      "test/registered/disaggregation/test_disaggregation_decode_offload.py": 260,
+      "test/registered/disaggregation/test_disaggregation_decode_offload.py": 259,
       "test/registered/disaggregation/test_disaggregation_optimistic_prefill.py": 112,
       "test/registered/dp_attn/test_dp_attention.py": 473,
-      "test/registered/dp_attn/test_dp_attention_bcg_kl.py": 157,
+      "test/registered/dp_attn/test_dp_attention_bcg_kl.py": 156,
       "test/registered/dp_engine/test_data_parallelism.py": 81,
       "test/registered/eplb/test_lplb_distributed.py": 20,
       "test/registered/hicache/test_hicache_storage_file_backend.py": 202,
@@ -643,10 +643,10 @@
       "test/registered/lora/test_lora_tp.py": 233,
       "test/registered/models_e2e/test_deepseek_v3_mtp.py": 380,
       "test/registered/models_e2e/test_dsa_glm52_dp_mtp.py": 391,
-      "test/registered/models_e2e/test_dsa_glm52_tp_mtp.py": 433,
-      "test/registered/models_e2e/test_mimo_v2.py": 335,
+      "test/registered/models_e2e/test_dsa_glm52_tp_mtp.py": 427,
+      "test/registered/models_e2e/test_mimo_v2.py": 334,
       "test/registered/models_e2e/test_mimo_v2_flash.py": 312,
-      "test/registered/models_e2e/test_minimax_m25_basic.py": 205
+      "test/registered/models_e2e/test_minimax_m25_basic.py": 204
     },
     "base-c-test-deepep-4-gpu-b200": {
       "test/registered/models_e2e/test_deepseek_v4_flash_fp4_b200.py": 542
@@ -988,9 +988,9 @@
       "method": "overhead"
     },
     "base-b-test-2-gpu-large": {
-      "coeff": 0.8389,
-      "bias": 348.1,
-      "r_squared": 0.6745,
+      "coeff": 0.834,
+      "bias": 353.2,
+      "r_squared": 0.677,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1030,9 +1030,9 @@
       "method": "ols"
     },
     "base-c-test-8-gpu-h200": {
-      "coeff": 0.9966,
-      "bias": 135.6,
-      "r_squared": 0.986,
+      "coeff": 1.0256,
+      "bias": 110.5,
+      "r_squared": 0.9906,
       "n_samples": 16,
       "method": "ols"
     },
