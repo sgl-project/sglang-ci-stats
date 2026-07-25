@@ -4461,15 +4461,64 @@
           "elapsed": 391
         }
       ]
+    },
+    {
+      "job_id": 89627789660,
+      "name": "base-b-test-1-gpu-large / base-b-test-1-gpu-large (0)",
+      "suite": "base-b-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-07-25T01:34:25Z",
+      "completed_at": "2026-07-25T01:53:24Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/spec/eagle/test_spec_eagle_stress.py",
+          "elapsed": 785
+        },
+        {
+          "file": "test/registered/cuda_graph/full_prefill/test_full_cuda_graph_prefill.py",
+          "elapsed": 89
+        },
+        {
+          "file": "test/registered/moe/test_hpc_ops_moe.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/vlm/test_unlimited_ocr_server.py",
+          "elapsed": 49
+        },
+        {
+          "file": "test/registered/lora/test_fused_moe_lora_kernel.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_swa_eviction_boundary.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/moe/test_triton_fused_moe.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/moe/test_fused_append_remap_per_rank_shared_slots.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/quant/test_fp8_utils.py",
+          "elapsed": 8
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-07-25T00:55:07Z",
+  "last_scraped_at": "2026-07-25T07:03:29Z",
   "time_stats": {
-    "total_wall_seconds": 80302,
+    "total_wall_seconds": 81441,
     "per_stage": {
       "base-a-test-1-gpu-small": 743,
       "base-a-test-cpu": 4689,
-      "base-b-test-1-gpu-large": 9455,
+      "base-b-test-1-gpu-large": 10594,
       "base-b-test-1-gpu-small": 11775,
       "base-b-test-2-gpu-large": 4942,
       "base-b-test-4-gpu-b200": 1261,
@@ -4493,7 +4542,7 @@
     },
     "per_runner": {
       "1-gpu-5090": 16321,
-      "1-gpu-h100": 17328,
+      "1-gpu-h100": 18467,
       "2-gpu-h100": 8579,
       "4-gpu-b200": 12380,
       "4-gpu-h100": 9862,

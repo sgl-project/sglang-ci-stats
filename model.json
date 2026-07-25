@@ -332,7 +332,7 @@
       "test/registered/core/test_basic_sanity_dspark.py": 77,
       "test/registered/core/test_srt_engine.py": 283,
       "test/registered/cuda_graph/breakable/test_breakable_cuda_graph.py": 91,
-      "test/registered/cuda_graph/full_prefill/test_full_cuda_graph_prefill.py": 88,
+      "test/registered/cuda_graph/full_prefill/test_full_cuda_graph_prefill.py": 90,
       "test/registered/dllm/test_dllm_batching_fdfo.py": 125,
       "test/registered/dllm/test_dllm_fdfo_joint_threshold.py": 131,
       "test/registered/gemm/test_linear_bf16_fp32_hpc.py": 8,
@@ -393,7 +393,7 @@
       "test/registered/spec/eagle/test_eagle_constrained_decoding.py": 97,
       "test/registered/spec/eagle/test_spec_eagle_fa3.py": 284,
       "test/registered/spec/eagle/test_spec_eagle_parity.py": 118,
-      "test/registered/spec/eagle/test_spec_eagle_stress.py": 810,
+      "test/registered/spec/eagle/test_spec_eagle_stress.py": 809,
       "test/registered/spec/test_frozen_kv_mtp.py": 118,
       "test/registered/spec/test_spec_ngram.py": 68,
       "test/registered/spec/test_spec_standalone.py": 184,
@@ -1125,9 +1125,9 @@
       "method": "overhead"
     },
     "base-b-test-1-gpu-large": {
-      "coeff": 1.0366,
-      "bias": 124.3,
-      "r_squared": 0.9564,
+      "coeff": 1.0399,
+      "bias": 120.7,
+      "r_squared": 0.9563,
       "n_samples": 16,
       "method": "ols"
     },
