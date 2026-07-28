@@ -672,7 +672,7 @@
       "test/registered/disaggregation/test_disaggregation_different_tp.py": 502,
       "test/registered/disaggregation/test_disaggregation_dp_attention.py": 157,
       "test/registered/disaggregation/test_disaggregation_nixl.py": 404,
-      "test/registered/disaggregation/test_disaggregation_pp.py": 213
+      "test/registered/disaggregation/test_disaggregation_pp.py": 214
     },
     "base-c-test-8-gpu-h200": {
       "test/registered/lora/test_lora_tp.py": 232,
@@ -1179,9 +1179,9 @@
       "method": "ols"
     },
     "base-c-test-8-gpu-h20": {
-      "coeff": 1.1772,
-      "bias": 214.3,
-      "r_squared": 0.851,
+      "coeff": 1.1692,
+      "bias": 220.8,
+      "r_squared": 0.8547,
       "n_samples": 16,
       "method": "ols"
     },
