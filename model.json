@@ -579,7 +579,7 @@
     },
     "base-b-test-2-gpu-large": {
       "test/registered/attention/test_gemma4_swa_triton_oob_regression.py": 83,
-      "test/registered/backends/test_flashinfer_fusion_preflight.py": 30,
+      "test/registered/backends/test_flashinfer_fusion_preflight.py": 29,
       "test/registered/core/test_no_extra_forked_cuda_context.py": 54,
       "test/registered/cuda_graph/breakable/test_bcg_with_speculative_decoding.py": 112,
       "test/registered/disaggregation/test_disaggregation_basic.py": 473,
@@ -601,7 +601,7 @@
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_full.py": 250,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_swa.py": 295,
       "test/registered/rl/test_patch_torch.py": 15,
-      "test/registered/scheduler/test_load_snapshot_server.py": 224,
+      "test/registered/scheduler/test_load_snapshot_server.py": 223,
       "test/registered/spec/eagle/test_eagle_reject_sampling.py": 79,
       "test/registered/spec/test_constrained_decoding_spec_reasoning.py": 121,
       "test/registered/unit/distributed/test_vmm_utils.py": 17
@@ -676,7 +676,7 @@
       "test/registered/disaggregation/test_disaggregation_decode_radix_cache.py": 386,
       "test/registered/disaggregation/test_disaggregation_different_tp.py": 505,
       "test/registered/disaggregation/test_disaggregation_dp_attention.py": 158,
-      "test/registered/disaggregation/test_disaggregation_nixl.py": 404,
+      "test/registered/disaggregation/test_disaggregation_nixl.py": 403,
       "test/registered/disaggregation/test_disaggregation_pp.py": 214
     },
     "base-c-test-8-gpu-h200": {
@@ -935,22 +935,22 @@
       "test/registered/model_loading/test_weight_cache_daemon.py": 141,
       "test/registered/models_e2e/test_ministral4_models.py": 397,
       "test/registered/moe/test_moe_ep_extra.py": 86,
-      "test/registered/perf/test_bench_one_batch_2gpu.py": 215,
-      "test/registered/perf/test_bench_serving_2gpu.py": 697,
+      "test/registered/perf/test_bench_one_batch_2gpu.py": 214,
+      "test/registered/perf/test_bench_serving_2gpu.py": 696,
       "test/registered/rl/test_update_weights_from_distributed.py": 120,
-      "test/registered/spec/test_gemma4_dflash_31b_extra.py": 80,
+      "test/registered/spec/test_gemma4_dflash_31b_extra.py": 79,
       "test/registered/spec/test_gemma4_mtp_31b_extra.py": 207
     },
     "extra-b-test-4-gpu-b200": {
       "test/registered/cp/test_glm52_cp_index_share.py": 393,
       "test/registered/cp/test_gpt_oss_4gpu_mxfp4_cp.py": 100,
-      "test/registered/disaggregation/test_disaggregation_dwdp_gpt_oss.py": 124,
+      "test/registered/disaggregation/test_disaggregation_dwdp_gpt_oss.py": 123,
       "test/registered/lora/test_lora_gpt_oss_20b_logprob_diff.py": 117,
       "test/registered/lora/test_lora_nemotron_3_super_120b_a12b_logprob_diff.py": 144,
       "test/registered/lora/test_lora_qwen3_30b_a3b_instruct_2507_logprob_diff.py": 86,
       "test/registered/moe/test_cutedsl_moe.py": 26,
-      "test/registered/moe/test_flashinfer_a2a_cutedsl_v2.py": 536,
-      "test/registered/quant/test_deepseek_v3_fp4_4gpu_extra.py": 368,
+      "test/registered/moe/test_flashinfer_a2a_cutedsl_v2.py": 535,
+      "test/registered/quant/test_deepseek_v3_fp4_4gpu_extra.py": 364,
       "test/registered/quant/test_fp8_blockwise_gemm.py": 405,
       "test/registered/rl/test_update_weights_from_disk_blackwell.py": 336
     },
@@ -984,7 +984,7 @@
       "test/registered/rl/test_return_indexer_topk.py": 257
     },
     "extra-b-test-deepep-4-gpu-b200": {
-      "test/registered/cp/test_deepseek_v4_flash_fp4_b200_cp.py": 500,
+      "test/registered/cp/test_deepseek_v4_flash_fp4_b200_cp.py": 495,
       "test/registered/models_e2e/test_deepseek_v4_flash_fp4_megamoe_b200.py": 250
     },
     "extra-b-test-deepep-4-gpu-h100": {
@@ -1034,7 +1034,7 @@
     "base-b-test-2-gpu-large": {
       "coeff": 1.0,
       "bias": 204.5,
-      "r_squared": -0.2758,
+      "r_squared": -0.2644,
       "n_samples": 16,
       "method": "overhead"
     },
@@ -1060,9 +1060,9 @@
       "method": "ols"
     },
     "base-c-test-8-gpu-h20": {
-      "coeff": 1.1593,
-      "bias": 230.0,
-      "r_squared": 0.7583,
+      "coeff": 0.9966,
+      "bias": 371.7,
+      "r_squared": 0.5937,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1095,9 +1095,9 @@
       "method": "ols"
     },
     "call-jit-kernel-tests": {
-      "coeff": 0.93,
-      "bias": 254.1,
-      "r_squared": 0.8841,
+      "coeff": 0.8865,
+      "bias": 297.7,
+      "r_squared": 0.7976,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1116,16 +1116,16 @@
       "method": "overhead"
     },
     "extra-a-test-2-gpu-large": {
-      "coeff": 0.8755,
-      "bias": 395.6,
-      "r_squared": 0.7068,
+      "coeff": 1.0,
+      "bias": 183.5,
+      "r_squared": 0.2608,
       "n_samples": 16,
-      "method": "ols"
+      "method": "overhead"
     },
     "extra-b-test-4-gpu-b200": {
       "coeff": 1.0,
-      "bias": 294.0,
-      "r_squared": 0.134,
+      "bias": 270.0,
+      "r_squared": 0.1235,
       "n_samples": 16,
       "method": "overhead"
     },
@@ -1145,9 +1145,9 @@
     },
     "extra-b-test-deepep-4-gpu-b200": {
       "coeff": 1.0,
-      "bias": 287.0,
-      "r_squared": -0.3654,
-      "n_samples": 13,
+      "bias": 348.0,
+      "r_squared": 0.0175,
+      "n_samples": 14,
       "method": "overhead"
     },
     "extra-b-test-deepep-4-gpu-h100": {
