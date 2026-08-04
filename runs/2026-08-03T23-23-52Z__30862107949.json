@@ -5,11 +5,155 @@
   "head_sha": "22c2e2bcad68368bdc333ef280b151babe92b89c",
   "html_url": "https://github.com/sgl-project/sglang/actions/runs/30862107949",
   "display_title": "Scheduled Full Run",
-  "jobs": [],
-  "last_scraped_at": "2026-08-04T00:54:36Z",
+  "jobs": [
+    {
+      "job_id": 91871341388,
+      "name": "base-a-test-cpu (0)",
+      "suite": "base-a-test-cpu",
+      "backend": "cpu",
+      "started_at": "2026-08-04T02:00:55Z",
+      "completed_at": "2026-08-04T02:10:57Z",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/rust/test_cargo_workspace.py",
+          "elapsed": 100
+        },
+        {
+          "file": "test/registered/unit/entrypoints/openai/test_protocol.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/unit/hardware_backend/mlx/test_scheduler_mixin.py",
+          "elapsed": 5
+        }
+      ]
+    },
+    {
+      "job_id": 91871341413,
+      "name": "base-a-test-cpu (12)",
+      "suite": "base-a-test-cpu",
+      "backend": "cpu",
+      "started_at": "2026-08-04T02:00:54Z",
+      "completed_at": "2026-08-04T02:11:04Z",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/models/test_vit_pos_embed_interpolate.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/unit/managers/test_scheduler_flush_cache.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/mlx/models_e2e/test_qwen3_moe_mlx_correctness.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/unit/entrypoints/openai/test_serving_transcription.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/unit/managers/test_output_streamer_customized_info.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_tree_core_registry.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/unit/parser/test_conversation.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/unit/test_server_args_migration.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_embedding_cache_controller.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/unit/server_args/test_page_major_backend_allowlist.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/unit/test_flashinfer_sparse_mla.py",
+          "elapsed": 4
+        }
+      ]
+    },
+    {
+      "job_id": 91871341446,
+      "name": "base-a-test-cpu (16)",
+      "suite": "base-a-test-cpu",
+      "backend": "cpu",
+      "started_at": "2026-08-04T02:00:55Z",
+      "completed_at": "2026-08-04T02:09:49Z",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/unit/models/test_qwen3_embedding_registration.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/unit/managers/test_scheduler_chunked_req_gate.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/mlx/models_e2e/test_qwen2_moe_mlx_correctness.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/entrypoints/openai/test_serving_responses_stream.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/managers/test_multi_tokenizer_mixin.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_swa_alloc_extend_page_estimation.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/parser/test_code_completion_parser.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/test_server_args_cli_metadata.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_dllm_fdfo_kv_reuse.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/parser/test_template_manager.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/observability/test_label_transform.py",
+          "elapsed": 5
+        }
+      ]
+    }
+  ],
+  "last_scraped_at": "2026-08-04T04:52:01Z",
   "time_stats": {
-    "total_wall_seconds": 0,
-    "per_stage": {},
-    "per_runner": {}
+    "total_wall_seconds": 1746,
+    "per_stage": {
+      "base-a-test-cpu": 1746
+    },
+    "per_runner": {
+      "ubuntu-latest": 1746
+    }
   }
 }
