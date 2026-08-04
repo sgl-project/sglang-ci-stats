@@ -297,7 +297,7 @@
       "test/registered/unit/spec/test_eagle_draft_cuda_graph_runner.py": 11,
       "test/registered/unit/spec/test_eagle_worker_v2_topk1_fastpath.py": 14,
       "test/registered/unit/spec/test_ngram_corpus.py": 30,
-      "test/registered/unit/spec/test_ngram_mamba_verify_update.py": 21,
+      "test/registered/unit/spec/test_ngram_mamba_verify_update.py": 23,
       "test/registered/unit/spec/test_spec_cpu_overlap_constraint.py": 11,
       "test/registered/unit/spec/test_spec_registry.py": 11,
       "test/registered/unit/spec/test_spec_utils_traverse_tree.py": 11,
@@ -607,21 +607,21 @@
       "test/registered/disaggregation/test_disaggregation_decode_offload.py": 280,
       "test/registered/disaggregation/test_disaggregation_optimistic_prefill.py": 115,
       "test/registered/dp_attn/test_dp_attention.py": 469,
-      "test/registered/dp_attn/test_dp_attention_bcg_kl.py": 159,
+      "test/registered/dp_attn/test_dp_attention_bcg_kl.py": 158,
       "test/registered/dp_engine/test_data_parallelism.py": 91,
       "test/registered/eplb/test_lplb_distributed.py": 20,
       "test/registered/hicache/test_hicache_storage_file_backend.py": 201,
       "test/registered/hicache/test_hicache_storage_mooncake_backend.py": 390,
       "test/registered/hicache/test_hicache_storage_runtime_attach_detach.py": 205,
       "test/registered/layers/mamba/test_mamba2_mixer.py": 31,
-      "test/registered/models_e2e/test_kimi_linear_models.py": 314,
+      "test/registered/models_e2e/test_kimi_linear_models.py": 311,
       "test/registered/models_e2e/test_nvidia_nemotron_3_nano.py": 184,
       "test/registered/moe/test_glm4_moe_models.py": 138,
       "test/registered/moe/test_moe_ep.py": 87,
       "test/registered/observability/test_tracing_disaggregation.py": 66,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_full.py": 270,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_swa.py": 311,
-      "test/registered/rl/test_patch_torch.py": 16,
+      "test/registered/rl/test_patch_torch.py": 18,
       "test/registered/scheduler/test_load_snapshot_server.py": 225,
       "test/registered/spec/eagle/test_eagle_reject_sampling.py": 80,
       "test/registered/spec/test_constrained_decoding_spec_reasoning.py": 138,
@@ -913,9 +913,9 @@
       "test/registered/attention/test_torch_native_attention_backend.py": 156,
       "test/registered/chunked_prefill/test_scripted_core_1gpu.py": 102,
       "test/registered/kernels/ops/layernorm/test_fused_op_gpu_parity.py": 11,
-      "test/registered/kv_canary/test_self_e2e_baseline.py": 126,
+      "test/registered/kv_canary/test_self_e2e_baseline.py": 128,
       "test/registered/kv_canary/test_self_e2e_perturb_raise.py": 48,
-      "test/registered/kv_canary/test_self_e2e_perturb_real_kv_unused_cache.py": 417,
+      "test/registered/kv_canary/test_self_e2e_perturb_real_kv_unused_cache.py": 418,
       "test/registered/kv_canary/test_self_e2e_perturb_real_kv_used.py": 278,
       "test/registered/kv_canary/test_self_e2e_perturb_req_to_token.py": 188,
       "test/registered/kv_canary/test_self_e2e_pr_25015.py": 90,
@@ -925,7 +925,7 @@
       "test/registered/kv_canary/test_self_unit_future_tensor.py": 9,
       "test/registered/kv_canary/test_self_unit_perturb.py": 10,
       "test/registered/kv_canary/test_self_unit_plan_input.py": 10,
-      "test/registered/kv_canary/test_self_unit_pool_patcher.py": 9,
+      "test/registered/kv_canary/test_self_unit_pool_patcher.py": 10,
       "test/registered/kv_canary/test_self_unit_pool_patcher_utils.py": 9,
       "test/registered/kv_canary/test_self_unit_radix_walker.py": 9,
       "test/registered/kv_canary/test_self_unit_req_to_expected_token_ids_manager.py": 10,
@@ -939,7 +939,7 @@
       "test/registered/lora/test_lora_drainer.py": 50,
       "test/registered/lora/test_lora_eviction.py": 311,
       "test/registered/mock_model/test_e2e_spec_eagle.py": 86,
-      "test/registered/mock_model/test_self_e2e_perturb_next_token_swap.py": 50,
+      "test/registered/mock_model/test_self_e2e_perturb_next_token_swap.py": 51,
       "test/registered/mock_model/test_self_unit_canary_mock_wiring.py": 9,
       "test/registered/mock_model/test_self_unit_install.py": 9,
       "test/registered/mock_model/test_self_unit_oracle.py": 9,
@@ -989,16 +989,16 @@
     "extra-b-test-4-gpu-h100": {
       "test/registered/attention/test_qwen35_deterministic.py": 123,
       "test/registered/chunked_prefill/test_scripted_core_4gpu.py": 120,
-      "test/registered/cp/test_gqa_prefill_cp_legacy.py": 306,
+      "test/registered/cp/test_gqa_prefill_cp_legacy.py": 305,
       "test/registered/hicache/test_qwen35_hicache.py": 457,
       "test/registered/pp/test_pp_parallel_compat.py": 355,
-      "test/registered/pp/test_pp_single_node_extra.py": 347,
+      "test/registered/pp/test_pp_single_node_extra.py": 346,
       "test/registered/radix_cache/test_int8_mamba_checkpoint_e2e.py": 333,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_cp.py": 297,
       "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4.py": 899,
-      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_mamba.py": 921,
+      "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_mamba.py": 920,
       "test/registered/rl/test_multi_instance_release_memory_occupation.py": 68,
-      "test/registered/spec/eagle/test_eagle_dp_attention.py": 120
+      "test/registered/spec/eagle/test_eagle_dp_attention.py": 119
     },
     "extra-b-test-8-gpu-h200": {
       "test/registered/8-gpu-models/test_deepseek_v32_indexcache.py": 524,
@@ -1026,7 +1026,7 @@
     "extra-b-test-deepep-8-gpu-h200": {
       "test/registered/cp/test_deepseek_v32_cp_single_node.py": 696,
       "test/registered/cp/test_deepseek_v3_cp_single_node.py": 280,
-      "test/registered/cp/test_dsa_prefill_cp.py": 473,
+      "test/registered/cp/test_dsa_prefill_cp.py": 466,
       "test/registered/cp/test_dsa_prefill_cp_legacy.py": 632,
       "test/registered/disaggregation/test_disaggregation_hisparse.py": 203,
       "test/registered/ep/test_deepep_large.py": 554,
@@ -1064,9 +1064,9 @@
       "method": "overhead"
     },
     "base-b-test-2-gpu-large": {
-      "coeff": 1.1597,
-      "bias": 185.7,
-      "r_squared": 0.6887,
+      "coeff": 1.1332,
+      "bias": 189.2,
+      "r_squared": 0.6558,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1149,8 +1149,8 @@
     },
     "extra-a-test-1-gpu-small": {
       "coeff": 1.0,
-      "bias": 237.0,
-      "r_squared": 0.1636,
+      "bias": 229.0,
+      "r_squared": 0.1134,
       "n_samples": 16,
       "method": "overhead"
     },
@@ -1169,9 +1169,9 @@
       "method": "ols"
     },
     "extra-b-test-4-gpu-h100": {
-      "coeff": 0.9394,
-      "bias": 347.8,
-      "r_squared": 0.7512,
+      "coeff": 1.0829,
+      "bias": 55.6,
+      "r_squared": 0.8237,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1197,9 +1197,9 @@
       "method": "overhead"
     },
     "extra-b-test-deepep-8-gpu-h200": {
-      "coeff": 0.9934,
-      "bias": 380.7,
-      "r_squared": 0.9524,
+      "coeff": 1.0564,
+      "bias": 298.7,
+      "r_squared": 0.9526,
       "n_samples": 16,
       "method": "ols"
     }
