@@ -4671,11 +4671,69 @@
           "elapsed": 56
         }
       ]
+    },
+    {
+      "job_id": 93612880347,
+      "name": "base-c-test-8-gpu-h20 / base-c-test-8-gpu-h20 (0)",
+      "suite": "base-c-test-8-gpu-h20",
+      "backend": "cuda",
+      "started_at": "2026-08-10T22:06:46Z",
+      "completed_at": "2026-08-10T22:25:05Z",
+      "labels": [
+        "8-gpu-h20"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_different_tp.py",
+          "elapsed": 843
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_dp_attention.py",
+          "elapsed": 152
+        }
+      ]
+    },
+    {
+      "job_id": 93612880501,
+      "name": "base-c-test-4-gpu-b200 / base-c-test-4-gpu-b200 (2)",
+      "suite": "base-c-test-4-gpu-b200",
+      "backend": "cuda",
+      "started_at": "2026-08-10T22:06:44Z",
+      "completed_at": "2026-08-10T22:15:40Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/spec/eagle/test_deepseek_v3_fp4_mtp_small.py",
+          "elapsed": 206
+        },
+        {
+          "file": "test/registered/models_e2e/test_deepseek_v3_fp4.py",
+          "elapsed": 209
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_dsa_layer_split_broadcast.py",
+          "elapsed": 25
+        },
+        {
+          "file": "test/registered/kernels/ops/kimi_k3/test_collectives.py",
+          "elapsed": 20
+        },
+        {
+          "file": "test/registered/utils/test_numa_utils.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/unit/layers/test_flashinfer_comm_fusion.py",
+          "elapsed": 7
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-08-10T18:33:51Z",
+  "last_scraped_at": "2026-08-11T00:33:39Z",
   "time_stats": {
-    "total_wall_seconds": 66627,
+    "total_wall_seconds": 68262,
     "per_stage": {
       "base-a-test-1-gpu-small": 443,
       "base-a-test-cpu": 4560,
@@ -4683,11 +4741,11 @@
       "base-b-test-1-gpu-small": 8842,
       "base-b-test-2-gpu-large": 4375,
       "base-b-test-4-gpu-b200": 793,
-      "base-c-test-4-gpu-b200": 1923,
+      "base-c-test-4-gpu-b200": 2459,
       "base-c-test-4-gpu-gb300": 1955,
       "base-c-test-4-gpu-h100": 3982,
       "base-c-test-8-gpu-b300": 844,
-      "base-c-test-8-gpu-h20": 1085,
+      "base-c-test-8-gpu-h20": 2184,
       "base-c-test-8-gpu-h200": 2724,
       "call-jit-kernel-tests": 2579,
       "extra-a-test-1-gpu-large": 6488,
@@ -4701,11 +4759,11 @@
       "1-gpu-5090": 10889,
       "1-gpu-h100": 17273,
       "2-gpu-h100": 7763,
-      "4-gpu-b200": 5416,
+      "4-gpu-b200": 5952,
       "4-gpu-gb300": 1955,
       "4-gpu-h100": 8381,
       "8-gpu-b300": 844,
-      "8-gpu-h20": 1085,
+      "8-gpu-h20": 2184,
       "8-gpu-h200": 8461,
       "ubuntu-latest": 4560
     }
