@@ -747,7 +747,7 @@
       "test/registered/attention/unittests/swa/test_flashinfer.py": 13,
       "test/registered/attention/unittests/swa/test_torch_native.py": 11,
       "test/registered/attention/unittests/swa/test_triton.py": 12,
-      "test/registered/cuda_graph/full_prefill/test_full_cuda_graph_prefill.py": 155,
+      "test/registered/cuda_graph/full_prefill/test_full_cuda_graph_prefill.py": 158,
       "test/registered/dcp/test_tokenspeed_mla_dcp_metadata.py": 10,
       "test/registered/unit/layers/quantization/test_fp8_blockwise_linear_backends.py": 14,
       "test/registered/unit/layers/quantization/test_nvfp4_linear_backends.py": 12,
@@ -758,7 +758,7 @@
       "test/registered/models_e2e/test_deepseek_v3_fp4.py": 442,
       "test/registered/models_e2e/test_deepseek_v4_flash_fp4_b200.py": 502,
       "test/registered/models_e2e/test_dsa_glm52_nvfp4_dp_mtp.py": 362,
-      "test/registered/models_e2e/test_dsa_glm52_nvfp4_tp_mtp.py": 363,
+      "test/registered/models_e2e/test_dsa_glm52_nvfp4_tp_mtp.py": 362,
       "test/registered/models_e2e/test_gpt_oss_4gpu_mxfp4.py": 172,
       "test/registered/models_e2e/test_qwen35_fp4_mtp.py": 646,
       "test/registered/spec/eagle/test_deepseek_v3_fp4_mtp_small.py": 455,
@@ -1034,7 +1034,7 @@
       "test/registered/kv_canary/test_self_e2e_baseline.py": 130,
       "test/registered/kv_canary/test_self_e2e_perturb_raise.py": 48,
       "test/registered/kv_canary/test_self_e2e_perturb_real_kv_unused_cache.py": 427,
-      "test/registered/kv_canary/test_self_e2e_perturb_real_kv_used.py": 290,
+      "test/registered/kv_canary/test_self_e2e_perturb_real_kv_used.py": 289,
       "test/registered/kv_canary/test_self_e2e_perturb_req_to_token.py": 195,
       "test/registered/kv_canary/test_self_e2e_pr_25015.py": 90,
       "test/registered/kv_canary/test_self_e2e_pr_26329.py": 91,
@@ -1066,7 +1066,7 @@
       "test/registered/models_e2e/test_gpt_oss_sm120.py": 275,
       "test/registered/observability/test_tracing.py": 120,
       "test/registered/perf/test_vlm_perf_5090.py": 196,
-      "test/registered/quant/test_llama8b_nvfp4_kv_cache_sm120.py": 185,
+      "test/registered/quant/test_llama8b_nvfp4_kv_cache_sm120.py": 182,
       "test/registered/rl/test_update_weights_from_tensor.py": 153,
       "test/registered/scheduler/test_priority_scheduling.py": 162
     },
@@ -1199,16 +1199,16 @@
       "method": "ols"
     },
     "base-b-test-4-gpu-b200": {
-      "coeff": 1.896,
-      "bias": -587.4,
-      "r_squared": 0.7857,
-      "n_samples": 14,
-      "method": "ols"
+      "coeff": 1.0,
+      "bias": 65.0,
+      "r_squared": 0.1794,
+      "n_samples": 15,
+      "method": "overhead"
     },
     "base-c-test-4-gpu-b200": {
-      "coeff": 1.1052,
-      "bias": 3.9,
-      "r_squared": 0.741,
+      "coeff": 1.1358,
+      "bias": -19.6,
+      "r_squared": 0.742,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1283,9 +1283,9 @@
       "method": "ols"
     },
     "extra-a-test-1-gpu-small": {
-      "coeff": 0.9332,
-      "bias": 166.6,
-      "r_squared": 0.9183,
+      "coeff": 0.9524,
+      "bias": 136.8,
+      "r_squared": 0.9253,
       "n_samples": 16,
       "method": "ols"
     },
