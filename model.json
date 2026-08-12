@@ -1055,7 +1055,7 @@
     },
     "extra-a-test-2-gpu-large": {
       "test/registered/hicache/test_hicache_spec_mooncake_storage.py": 197,
-      "test/registered/kv_canary/test_self_e2e_pd_baseline.py": 120,
+      "test/registered/kv_canary/test_self_e2e_pd_baseline.py": 119,
       "test/registered/kv_canary/test_self_e2e_pd_perturb.py": 170,
       "test/registered/kv_canary/test_self_e2e_pp_baseline.py": 204,
       "test/registered/kv_canary/test_self_e2e_pp_perturb.py": 313,
@@ -1067,8 +1067,8 @@
       "test/registered/model_loading/test_weight_cache_daemon.py": 142,
       "test/registered/models_e2e/test_ministral4_models.py": 387,
       "test/registered/moe/test_moe_ep_extra.py": 94,
-      "test/registered/perf/test_bench_one_batch_2gpu.py": 188,
-      "test/registered/perf/test_bench_serving_2gpu.py": 784,
+      "test/registered/perf/test_bench_one_batch_2gpu.py": 187,
+      "test/registered/perf/test_bench_serving_2gpu.py": 774,
       "test/registered/rl/test_update_weights_from_distributed.py": 116,
       "test/registered/spec/test_gemma4_dflash_31b_extra.py": 89,
       "test/registered/spec/test_gemma4_mtp_31b_extra.py": 198
@@ -1272,9 +1272,9 @@
       "method": "ols"
     },
     "extra-a-test-2-gpu-large": {
-      "coeff": 0.9745,
-      "bias": 98.5,
-      "r_squared": 0.9865,
+      "coeff": 0.9748,
+      "bias": 97.5,
+      "r_squared": 0.9866,
       "n_samples": 16,
       "method": "ols"
     },
