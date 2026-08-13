@@ -5090,11 +5090,134 @@
           "elapsed": 110
         }
       ]
+    },
+    {
+      "job_id": 94310306278,
+      "name": "base-c-test-8-gpu-b300 / base-c-test-8-gpu-b300 (0)",
+      "suite": "base-c-test-8-gpu-b300",
+      "backend": "cuda",
+      "started_at": "2026-08-13T01:15:18Z",
+      "completed_at": "2026-08-13T01:28:26Z",
+      "labels": [
+        "8-gpu-b300"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/models_e2e/test_kimi_k3_b300.py",
+          "elapsed": 722
+        }
+      ]
+    },
+    {
+      "job_id": 94310306687,
+      "name": "call-pr-test-extra / extra-a-test-2-gpu-large / extra-a-test-2-gpu-large (0)",
+      "suite": "extra-a-test-2-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-08-13T00:53:51Z",
+      "completed_at": "2026-08-13T01:23:52Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/perf/test_bench_serving_2gpu.py",
+          "elapsed": 814
+        },
+        {
+          "file": "test/registered/spec/test_gemma4_mtp_31b_extra.py",
+          "elapsed": 158
+        },
+        {
+          "file": "test/registered/perf/test_bench_one_batch_2gpu.py",
+          "elapsed": 141
+        },
+        {
+          "file": "test/registered/mock_model/test_e2e_pd.py",
+          "elapsed": 168
+        },
+        {
+          "file": "test/registered/model_loading/test_load_weights_from_remote_instance.py",
+          "elapsed": 132
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_pd_baseline.py",
+          "elapsed": 112
+        },
+        {
+          "file": "test/registered/moe/test_moe_ep_extra.py",
+          "elapsed": 95
+        },
+        {
+          "file": "test/registered/mock_model/test_e2e_pp.py",
+          "elapsed": 63
+        },
+        {
+          "file": "test/registered/mock_model/test_e2e_tp.py",
+          "elapsed": 64
+        }
+      ]
+    },
+    {
+      "job_id": 94310306774,
+      "name": "call-pr-test-extra / extra-a-test-1-gpu-large / extra-a-test-1-gpu-large (2)",
+      "suite": "extra-a-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-08-13T00:53:51Z",
+      "completed_at": "2026-08-13T01:26:09Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/sessions/test_streaming_session_extra.py",
+          "elapsed": 464
+        },
+        {
+          "file": "test/registered/attention/test_hybrid_attn_backend.py",
+          "elapsed": 318
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_bench_speed.py",
+          "elapsed": 273
+        },
+        {
+          "file": "test/registered/quant/test_autoround_quantization.py",
+          "elapsed": 177
+        },
+        {
+          "file": "test/registered/models_e2e/test_vlm_models.py",
+          "elapsed": 139
+        },
+        {
+          "file": "test/registered/attention/test_triton_sliding_window.py",
+          "elapsed": 79
+        },
+        {
+          "file": "test/registered/hicache/test_hicache_spec_file_storage.py",
+          "elapsed": 124
+        },
+        {
+          "file": "test/registered/models_e2e/test_generation_models.py",
+          "elapsed": 126
+        },
+        {
+          "file": "test/registered/sessions/test_session_control.py",
+          "elapsed": 80
+        },
+        {
+          "file": "test/registered/quant/test_fp8kv_triton.py",
+          "elapsed": 62
+        },
+        {
+          "file": "test/registered/lora/test_lora_qwen3_5_4b_logprob_diff.py",
+          "elapsed": 47
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-08-13T00:39:48Z",
+  "last_scraped_at": "2026-08-13T06:47:31Z",
   "time_stats": {
-    "total_wall_seconds": 69182,
+    "total_wall_seconds": 73709,
     "per_stage": {
       "base-a-test-1-gpu-small": 458,
       "base-a-test-cpu": 5635,
@@ -5105,23 +5228,25 @@
       "base-c-test-4-gpu-b200": 2878,
       "base-c-test-4-gpu-gb300": 1767,
       "base-c-test-4-gpu-h100": 4254,
+      "base-c-test-8-gpu-b300": 788,
       "base-c-test-8-gpu-h20": 1852,
       "base-c-test-8-gpu-h200": 2787,
       "call-jit-kernel-tests": 2317,
-      "extra-a-test-1-gpu-large": 4243,
+      "extra-a-test-1-gpu-large": 6181,
       "extra-a-test-1-gpu-small": 3740,
-      "extra-a-test-2-gpu-large": 1580,
+      "extra-a-test-2-gpu-large": 3381,
       "extra-b-test-4-gpu-b200": 3981,
       "extra-b-test-4-gpu-h100": 4642,
       "extra-b-test-8-gpu-h200": 5711
     },
     "per_runner": {
       "1-gpu-5090": 13409,
-      "1-gpu-h100": 14832,
-      "2-gpu-h100": 6072,
+      "1-gpu-h100": 16770,
+      "2-gpu-h100": 7873,
       "4-gpu-b200": 8221,
       "4-gpu-gb300": 1767,
       "4-gpu-h100": 8896,
+      "8-gpu-b300": 788,
       "8-gpu-h20": 1852,
       "8-gpu-h200": 8498,
       "ubuntu-latest": 5635

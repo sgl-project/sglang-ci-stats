@@ -975,13 +975,13 @@
     },
     "extra-a-test-1-gpu-large": {
       "test/registered/attention/test_hybrid_attn_backend.py": 389,
-      "test/registered/attention/test_triton_sliding_window.py": 142,
+      "test/registered/attention/test_triton_sliding_window.py": 136,
       "test/registered/backends/test_torch_compile.py": 127,
       "test/registered/chunked_prefill/test_scripted_swa_1gpu.py": 128,
-      "test/registered/hicache/test_hicache_spec_file_storage.py": 145,
+      "test/registered/hicache/test_hicache_spec_file_storage.py": 144,
       "test/registered/kernels/ops/attention/test_cp_prefix_len_fa3_parity.py": 9,
       "test/registered/kernels/ops/attention/test_mla_cp_fa3_parity.py": 10,
-      "test/registered/kv_canary/test_self_e2e_bench_speed.py": 293,
+      "test/registered/kv_canary/test_self_e2e_bench_speed.py": 292,
       "test/registered/lora/test_lora_qwen3_5_4b_logprob_diff.py": 52,
       "test/registered/lora/test_lora_qwen3_8b_logprob_diff.py": 61,
       "test/registered/models_e2e/test_compressed_tensors_models.py": 63,
@@ -1057,18 +1057,18 @@
       "test/registered/kv_canary/test_self_e2e_pp_baseline.py": 198,
       "test/registered/kv_canary/test_self_e2e_pp_perturb.py": 305,
       "test/registered/lora/test_lora_moe_tp_logprob_diff.py": 126,
-      "test/registered/mock_model/test_e2e_pd.py": 167,
-      "test/registered/mock_model/test_e2e_pp.py": 65,
-      "test/registered/mock_model/test_e2e_tp.py": 63,
-      "test/registered/model_loading/test_load_weights_from_remote_instance.py": 128,
+      "test/registered/mock_model/test_e2e_pd.py": 168,
+      "test/registered/mock_model/test_e2e_pp.py": 66,
+      "test/registered/mock_model/test_e2e_tp.py": 64,
+      "test/registered/model_loading/test_load_weights_from_remote_instance.py": 131,
       "test/registered/model_loading/test_weight_cache_daemon.py": 139,
       "test/registered/models_e2e/test_ministral4_models.py": 373,
-      "test/registered/moe/test_moe_ep_extra.py": 94,
+      "test/registered/moe/test_moe_ep_extra.py": 95,
       "test/registered/perf/test_bench_one_batch_2gpu.py": 173,
-      "test/registered/perf/test_bench_serving_2gpu.py": 709,
+      "test/registered/perf/test_bench_serving_2gpu.py": 784,
       "test/registered/rl/test_update_weights_from_distributed.py": 116,
       "test/registered/spec/test_gemma4_dflash_31b_extra.py": 96,
-      "test/registered/spec/test_gemma4_mtp_31b_extra.py": 195
+      "test/registered/spec/test_gemma4_mtp_31b_extra.py": 193
     },
     "extra-b-test-4-gpu-b200": {
       "test/registered/cp/test_deepseek_v4_flash_fp4_b200_cp.py": 695,
@@ -1206,10 +1206,10 @@
       "method": "ols"
     },
     "base-c-test-8-gpu-b300": {
-      "coeff": 1.0209,
-      "bias": 62.7,
-      "r_squared": 0.9889,
-      "n_samples": 12,
+      "coeff": 1.0438,
+      "bias": 45.0,
+      "r_squared": 0.9739,
+      "n_samples": 13,
       "method": "ols"
     },
     "base-c-test-8-gpu-h20": {
@@ -1255,9 +1255,9 @@
       "method": "ols"
     },
     "extra-a-test-1-gpu-large": {
-      "coeff": 0.9931,
-      "bias": 64.0,
-      "r_squared": 0.9981,
+      "coeff": 0.9958,
+      "bias": 58.3,
+      "r_squared": 0.9985,
       "n_samples": 16,
       "method": "ols"
     },
@@ -1269,9 +1269,9 @@
       "method": "ols"
     },
     "extra-a-test-2-gpu-large": {
-      "coeff": 1.0035,
-      "bias": 49.4,
-      "r_squared": 0.9977,
+      "coeff": 1.0022,
+      "bias": 51.5,
+      "r_squared": 0.9979,
       "n_samples": 16,
       "method": "ols"
     },
