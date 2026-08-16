@@ -10,6 +10,7 @@ Usage: python demo.py [--out demo.html] [--open]
 
 import argparse
 import json
+import statistics
 import webbrowser
 from collections import defaultdict
 from pathlib import Path
@@ -22,21 +23,20 @@ RUNS_DIR = REPO_ROOT / "runs"
 SECONDS_PER_MIN = 60.0
 FORWARD_FILL_MAX_GAP = 3  # runs; ~18-24h at the ~6-8h scrape cadence
 
+# A run keeping fewer than this fraction of its neighbours' median archived-job
+# count didn't complete a full pass. The observed split is clean: partial runs
+# sit at ratio <= 0.27, healthy ones at >= 0.85, so 0.5 lands in empty space.
+MIN_JOB_RATIO = 0.5
+COMPLETENESS_WINDOW = 10  # runs looked at on each side for the median
+
 
 def compute_stage_test(records):
     """Per-(suite, basename) forward-filled `elapsed` sums, one dict per run.
 
-    Masks shard-failure dips: a file missing in run T (only successful jobs
-    are archived) reuses its most recent prior elapsed, evicted after
-    FORWARD_FILL_MAX_GAP runs so removed tests auto-clean.
-
-    Keyed on basename, not path: sglang moves files between dirs but keeps the
-    basename, and basenames are unique within a suite -- path keying would
-    double-count during a transition.
-
-    Returns a list aligned with `records`; each item is {suite: total_seconds},
-    a suite present only if one of its jobs ran in that record (so a
-    never-triggered suite stays a gap, not a carried-forward zombie).
+    Only successful jobs are archived, so a failed shard's files vanish from
+    run T -- reusing the last seen elapsed keeps that from reading as a
+    speedup. Keyed on basename because sglang moves files between dirs but
+    keeps the name; path keying would double-count across a move.
     """
     last_idx = defaultdict(dict)    # last_idx[suite][basename] = run index
     last_val = defaultdict(dict)    # last_val[suite][basename] = elapsed
@@ -59,12 +59,34 @@ def compute_stage_test(records):
     return per_run_totals
 
 
+def drop_partial_runs(records):
+    """Drop cancelled / infra-mass-failed runs, whose totals collapse toward zero.
+
+    Judged by job count, not `conclusion`: `failure` is the steady state for a
+    complete pass, and `cancelled` can land after every job already finished.
+    Local median because the job count grows 44 -> 66 over the archive.
+    """
+    counts = [len(r["jobs"]) for r in records]
+    kept = []
+    for i, rec in enumerate(records):
+        window = (
+            counts[max(0, i - COMPLETENESS_WINDOW):i]
+            + counts[i + 1:i + 1 + COMPLETENESS_WINDOW]
+        )
+        median = statistics.median(window) if window else 0
+        if median and counts[i] / median < MIN_JOB_RATIO:
+            continue
+        kept.append(rec)
+    return kept, len(records) - len(kept)
+
+
 def load_points():
     """One sorted-by-time point per run: {started_at, label, total_min, per_*}."""
     records = sorted(
         (json.loads(p.read_text()) for p in RUNS_DIR.glob("*.json")),
         key=lambda r: r["started_at"],
     )
+    records, n_dropped = drop_partial_runs(records)
     stage_test_per_run = compute_stage_test(records)
 
     points = []
@@ -88,7 +110,7 @@ def load_points():
                 },
             }
         )
-    return points
+    return points, n_dropped
 
 
 def series_for(points, field):
@@ -147,7 +169,9 @@ HTML_TEMPLATE = """<!doctype html>
 <h1>sglang CI time consumption over time</h1>
 <div class="meta">{n_runs} runs &middot; {first} &rarr; {last} &middot;
   wall-clock = sum of per-job (completed - started), i.e. runner-time, not
-  end-to-end latency &middot; click a legend entry to toggle a series</div>
+  end-to-end latency &middot; click a legend entry to toggle a series<br>
+  {n_dropped} partial runs excluded (cancelled, or mass-failed on infra:
+  fewer than half the neighbouring median of successful jobs)</div>
 
 <div class="card"><h2>Total runner-time per run &mdash; wall-clock (min)</h2>
   <canvas id="total"></canvas></div>
@@ -224,7 +248,7 @@ selectFamily(Object.keys(DATA.families)[0]);
 """
 
 
-def render(points):
+def render(points, n_dropped=0):
     data = {
         "labels": [pt["label"] for pt in points],
         "total": [pt["total_min"] for pt in points],
@@ -235,6 +259,7 @@ def render(points):
     data_json = json.dumps(data).replace("</", "<\\/")
     return HTML_TEMPLATE.format(
         n_runs=len(points),
+        n_dropped=n_dropped,
         first=points[0]["started_at"] if points else "-",
         last=points[-1]["started_at"] if points else "-",
         data_json=data_json,
@@ -247,11 +272,11 @@ def main():
     parser.add_argument("--open", action="store_true", help="open in browser")
     args = parser.parse_args()
 
-    points = load_points()
+    points, n_dropped = load_points()
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(render(points))
-    print(f"wrote {out_path}: {len(points)} runs")
+    out_path.write_text(render(points, n_dropped))
+    print(f"wrote {out_path}: {len(points)} runs, {n_dropped} partial dropped")
     if args.open:
         webbrowser.open(out_path.resolve().as_uri())
 
