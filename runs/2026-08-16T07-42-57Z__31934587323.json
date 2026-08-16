@@ -1,0 +1,15 @@
+{
+  "run_id": 31934587323,
+  "started_at": "2026-08-16T07:42:57Z",
+  "event": "workflow_dispatch",
+  "head_sha": "2ee0d38a8553d186faad9c50893480e3c1d79270",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/31934587323",
+  "display_title": "Manual run by mickqian",
+  "jobs": [],
+  "last_scraped_at": "2026-08-16T12:28:11Z",
+  "time_stats": {
+    "total_wall_seconds": 0,
+    "per_stage": {},
+    "per_runner": {}
+  }
+}
