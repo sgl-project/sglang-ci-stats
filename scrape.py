@@ -83,11 +83,39 @@ PR_RERUN_TITLE_RE = re.compile(r"^\[[^\]]+\] [0-9a-f]{40}$")
 # gh prints the HTTP status into stderr, e.g. "gh: Server Error (HTTP 502)".
 _HTTP_STATUS_RE = re.compile(r"\(HTTP (\d{3})\)")
 
+# gh >= 2.97 (security advisory GHSA-3m3g-3wcr-px46) refuses to print a
+# response body containing terminal escape sequences unless explicitly told
+# to. CI job logs are full of ANSI color codes, so every raw log fetch needs
+# the opt-in. Older gh has no such flag; _allow_escape latches off the first
+# time one rejects it, keeping the script runnable on both.
+ESCAPE_FLAG = "--allow-escape-sequences"
+_allow_escape = True
+
+# gh's own client-side refusals carry no HTTP status but are just as permanent
+# as a 4xx -- retrying only burns the backoff budget before reporting the same
+# failure. Matched against lowercased stderr.
+_PERMANENT_STDERR_MARKERS = (
+    "terminal escape sequences",
+    "unknown flag",
+    "unknown shorthand flag",
+    "gh auth login",
+)
+
+
+def _decode_stderr(stderr):
+    if isinstance(stderr, bytes):
+        return stderr.decode("utf-8", errors="replace").strip()
+    return (stderr or "").strip()
+
 
 def _is_retryable(stderr_msg):
     # Retry transient server errors (5xx) and rate-limit (429). Surface 4xx
     # immediately -- they won't fix themselves. No parseable code means a
-    # network blip / timeout, which is worth a retry.
+    # network blip / timeout, which is worth a retry, unless it is one of
+    # gh's own permanent refusals.
+    low = stderr_msg.lower()
+    if any(marker in low for marker in _PERMANENT_STDERR_MARKERS):
+        return False
     m = _HTTP_STATUS_RE.search(stderr_msg)
     if not m:
         return True
@@ -96,17 +124,23 @@ def _is_retryable(stderr_msg):
 
 
 def gh_api(endpoint, raw=False):
-    cmd = ["gh", "api", endpoint]
+    global _allow_escape
     for attempt in range(API_MAX_ATTEMPTS):
+        cmd = ["gh", "api", endpoint]
+        if raw and _allow_escape:
+            cmd.append(ESCAPE_FLAG)
         result = subprocess.run(cmd, capture_output=True, text=not raw)
+        if result.returncode != 0 and ESCAPE_FLAG in cmd:
+            if "unknown flag" in _decode_stderr(result.stderr).lower():
+                # Pre-2.97 gh: drop the opt-in for good and redo this attempt
+                # (a probe shouldn't eat one of the retry slots).
+                _allow_escape = False
+                cmd.remove(ESCAPE_FLAG)
+                result = subprocess.run(cmd, capture_output=True, text=not raw)
         if result.returncode == 0:
             return result.stdout if raw else json.loads(result.stdout)
         stderr = result.stderr
-        msg = (
-            stderr.decode("utf-8", errors="replace")
-            if isinstance(stderr, bytes)
-            else (stderr or "")
-        ).strip()
+        msg = _decode_stderr(stderr)
         last_attempt = attempt == API_MAX_ATTEMPTS - 1
         if last_attempt or not _is_retryable(msg):
             # Preserve the original contract: callers (e.g. job_logs_text)
@@ -173,7 +207,16 @@ def get_successful_jobs(repo, run_id):
 def job_logs_text(repo, job_id):
     try:
         raw = gh_api(f"/repos/{repo}/actions/jobs/{job_id}/logs", raw=True)
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as exc:
+        # An unreadable log drops the job from the archive entirely
+        # (build_job_record returns None on empty timings), so name it. A
+        # silent "" here is what turned the gh 2.97 escape-sequence refusal
+        # into six consecutive runs archived with `jobs: []`.
+        print(
+            f"job {job_id}: log fetch failed, job dropped: "
+            f"{_decode_stderr(exc.stderr)}",
+            file=sys.stderr,
+        )
         return ""
     return raw.decode("utf-8", errors="replace") if isinstance(raw, bytes) else raw
 
