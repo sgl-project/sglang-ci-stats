@@ -33,17 +33,10 @@ COMPLETENESS_WINDOW = 10  # runs looked at on each side for the median
 def compute_stage_test(records):
     """Per-(suite, basename) forward-filled `elapsed` sums, one dict per run.
 
-    Masks shard-failure dips: a file missing in run T (only successful jobs
-    are archived) reuses its most recent prior elapsed, evicted after
-    FORWARD_FILL_MAX_GAP runs so removed tests auto-clean.
-
-    Keyed on basename, not path: sglang moves files between dirs but keeps the
-    basename, and basenames are unique within a suite -- path keying would
-    double-count during a transition.
-
-    Returns a list aligned with `records`; each item is {suite: total_seconds},
-    a suite present only if one of its jobs ran in that record (so a
-    never-triggered suite stays a gap, not a carried-forward zombie).
+    Only successful jobs are archived, so a failed shard's files vanish from
+    run T -- reusing the last seen elapsed keeps that from reading as a
+    speedup. Keyed on basename because sglang moves files between dirs but
+    keeps the name; path keying would double-count across a move.
     """
     last_idx = defaultdict(dict)    # last_idx[suite][basename] = run index
     last_val = defaultdict(dict)    # last_val[suite][basename] = elapsed
@@ -67,20 +60,11 @@ def compute_stage_test(records):
 
 
 def drop_partial_runs(records):
-    """Drop runs that never completed a full CI pass. Returns (kept, n_dropped).
+    """Drop cancelled / infra-mass-failed runs, whose totals collapse toward zero.
 
-    A cancelled run -- or one mass-failed by infra -- archives only a handful
-    of successful jobs, so its wall-clock total collapses toward zero and
-    draws a spurious dip. Judged by archived-job count, not by the run's
-    `conclusion`: `failure` is the steady state for a *complete* pass (a few
-    flaky tests always fail), and a run can report `cancelled` after its jobs
-    already finished. Neither conclusion separates the two cases; the job
-    count does.
-
-    Median of the surrounding window rather than a global one: the job count
-    grows over the archive's lifetime (44 -> 66), so a global baseline would
-    misjudge early runs. Partial runs are ~6% of the archive, far too few to
-    drag the local median they are measured against.
+    Judged by job count, not `conclusion`: `failure` is the steady state for a
+    complete pass, and `cancelled` can land after every job already finished.
+    Local median because the job count grows 44 -> 66 over the archive.
     """
     counts = [len(r["jobs"]) for r in records]
     kept = []
@@ -97,11 +81,7 @@ def drop_partial_runs(records):
 
 
 def load_points():
-    """One sorted-by-time point per run: {started_at, label, total_min, per_*}.
-
-    Returns (points, n_dropped); partial runs are excluded outright rather
-    than plotted as a gap, so they don't consume FORWARD_FILL_MAX_GAP budget.
-    """
+    """One sorted-by-time point per run: {started_at, label, total_min, per_*}."""
     records = sorted(
         (json.loads(p.read_text()) for p in RUNS_DIR.glob("*.json")),
         key=lambda r: r["started_at"],
