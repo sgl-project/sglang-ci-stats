@@ -30,33 +30,51 @@ MIN_JOB_RATIO = 0.5
 COMPLETENESS_WINDOW = 10  # runs looked at on each side for the median
 
 
-def compute_stage_test(records):
-    """Per-(suite, basename) forward-filled `elapsed` sums, one dict per run.
+def forward_filled_totals(records, entries_of):
+    """Per-group forward-filled sums, one {group: total} per run.
 
-    Only successful jobs are archived, so a failed shard's files vanish from
-    run T -- reusing the last seen elapsed keeps that from reading as a
-    speedup. Keyed on basename because sglang moves files between dirs but
-    keeps the name; path keying would double-count across a move.
+    Only successful jobs are archived, so whatever a failed one would have
+    contributed vanishes from run T; reusing its last seen value keeps that
+    from reading as a speedup.
     """
-    last_idx = defaultdict(dict)    # last_idx[suite][basename] = run index
-    last_val = defaultdict(dict)    # last_val[suite][basename] = elapsed
+    last_idx = defaultdict(dict)    # last_idx[group][item] = run index
+    last_val = defaultdict(dict)    # last_val[group][item] = value
     per_run_totals = []
     for i, rec in enumerate(records):
-        suites_here = set()
-        for job in rec.get("jobs", []):
-            suites_here.add(job["suite"])
-            for t in job["timings"]:
-                bn = t["file"].rsplit("/", 1)[-1]
-                last_idx[job["suite"]][bn] = i
-                last_val[job["suite"]][bn] = t["elapsed"]
+        groups_here = set()
+        for group, item, value in entries_of(rec):
+            groups_here.add(group)
+            last_idx[group][item] = i
+            last_val[group][item] = value
         per_run_totals.append({
-            s: sum(
-                v for bn, v in last_val[s].items()
-                if i - last_idx[s][bn] < FORWARD_FILL_MAX_GAP
+            g: sum(
+                v for item, v in last_val[g].items()
+                if i - last_idx[g][item] < FORWARD_FILL_MAX_GAP
             )
-            for s in suites_here
+            for g in groups_here
         })
     return per_run_totals
+
+
+def stage_test_entries(record):
+    """(suite, test-file basename, elapsed) per archived timing.
+
+    Keyed on basename because sglang moves files between dirs but keeps the
+    name; path keying would double-count across a move.
+    """
+    for job in record.get("jobs", []):
+        for timing in job["timings"]:
+            yield job["suite"], timing["file"].rsplit("/", 1)[-1], timing["elapsed"]
+
+
+def runner_wall_entries(record):
+    """(runner type, job name, wall-clock seconds) per archived job."""
+    for job in record.get("jobs", []):
+        started, completed = job.get("started_at"), job.get("completed_at")
+        if not started or not completed:
+            continue
+        wall = (scrape.parse_iso(completed) - scrape.parse_iso(started)).total_seconds()
+        yield scrape.runner_type(job.get("labels", [])), job["name"], wall
 
 
 def drop_partial_runs(records):
@@ -87,10 +105,13 @@ def load_points():
         key=lambda r: r["started_at"],
     )
     records, n_dropped = drop_partial_runs(records)
-    stage_test_per_run = compute_stage_test(records)
+    stage_test_per_run = forward_filled_totals(records, stage_test_entries)
+    runner_wall_per_run = forward_filled_totals(records, runner_wall_entries)
 
     points = []
-    for rec, stage_test_secs in zip(records, stage_test_per_run):
+    for rec, stage_test_secs, runner_secs in zip(
+        records, stage_test_per_run, runner_wall_per_run
+    ):
         ts = rec.get("time_stats") or scrape.summarize_run_times(rec)
         started = rec["started_at"]
         points.append(
@@ -98,11 +119,12 @@ def load_points():
                 "started_at": started,
                 # "MM-DD HH:MM" -- reads cleanly on a category axis (no date adapter)
                 "label": started[5:16].replace("T", " "),
+                # total stays raw: it is the one number that must not be inflated
+                # by fill, since a partial run is already excluded outright.
                 "total_min": round(ts["total_wall_seconds"] / SECONDS_PER_MIN, 1),
-                # total/per_runner are wall-clock; stage_test is forward-filled test time
                 "per_runner": {
                     k: round(v / SECONDS_PER_MIN, 1)
-                    for k, v in ts["per_runner"].items()
+                    for k, v in runner_secs.items()
                 },
                 "stage_test": {
                     k: round(v / SECONDS_PER_MIN, 1)
@@ -185,6 +207,9 @@ HTML_TEMPLATE = """<!doctype html>
   </div>
 </div>
 <div class="card"><h2>Per typed runner &mdash; wall-clock (min)</h2>
+  <div class="meta">sum of per-job wall-clock; jobs missing from a run filled
+    with last-seen value of the same job name, evicted after 3 runs of
+    absence</div>
   <canvas id="runner"></canvas></div>
 
 <script>
