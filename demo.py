@@ -10,6 +10,7 @@ Usage: python demo.py [--out demo.html] [--open]
 
 import argparse
 import json
+import statistics
 import webbrowser
 from collections import defaultdict
 from pathlib import Path
@@ -21,6 +22,12 @@ RUNS_DIR = REPO_ROOT / "runs"
 
 SECONDS_PER_MIN = 60.0
 FORWARD_FILL_MAX_GAP = 3  # runs; ~18-24h at the ~6-8h scrape cadence
+
+# A run keeping fewer than this fraction of its neighbours' median archived-job
+# count didn't complete a full pass. The observed split is clean: partial runs
+# sit at ratio <= 0.27, healthy ones at >= 0.85, so 0.5 lands in empty space.
+MIN_JOB_RATIO = 0.5
+COMPLETENESS_WINDOW = 10  # runs looked at on each side for the median
 
 
 def compute_stage_test(records):
@@ -59,12 +66,47 @@ def compute_stage_test(records):
     return per_run_totals
 
 
+def drop_partial_runs(records):
+    """Drop runs that never completed a full CI pass. Returns (kept, n_dropped).
+
+    A cancelled run -- or one mass-failed by infra -- archives only a handful
+    of successful jobs, so its wall-clock total collapses toward zero and
+    draws a spurious dip. Judged by archived-job count, not by the run's
+    `conclusion`: `failure` is the steady state for a *complete* pass (a few
+    flaky tests always fail), and a run can report `cancelled` after its jobs
+    already finished. Neither conclusion separates the two cases; the job
+    count does.
+
+    Median of the surrounding window rather than a global one: the job count
+    grows over the archive's lifetime (44 -> 66), so a global baseline would
+    misjudge early runs. Partial runs are ~6% of the archive, far too few to
+    drag the local median they are measured against.
+    """
+    counts = [len(r["jobs"]) for r in records]
+    kept = []
+    for i, rec in enumerate(records):
+        window = (
+            counts[max(0, i - COMPLETENESS_WINDOW):i]
+            + counts[i + 1:i + 1 + COMPLETENESS_WINDOW]
+        )
+        median = statistics.median(window) if window else 0
+        if median and counts[i] / median < MIN_JOB_RATIO:
+            continue
+        kept.append(rec)
+    return kept, len(records) - len(kept)
+
+
 def load_points():
-    """One sorted-by-time point per run: {started_at, label, total_min, per_*}."""
+    """One sorted-by-time point per run: {started_at, label, total_min, per_*}.
+
+    Returns (points, n_dropped); partial runs are excluded outright rather
+    than plotted as a gap, so they don't consume FORWARD_FILL_MAX_GAP budget.
+    """
     records = sorted(
         (json.loads(p.read_text()) for p in RUNS_DIR.glob("*.json")),
         key=lambda r: r["started_at"],
     )
+    records, n_dropped = drop_partial_runs(records)
     stage_test_per_run = compute_stage_test(records)
 
     points = []
@@ -88,7 +130,7 @@ def load_points():
                 },
             }
         )
-    return points
+    return points, n_dropped
 
 
 def series_for(points, field):
@@ -147,7 +189,9 @@ HTML_TEMPLATE = """<!doctype html>
 <h1>sglang CI time consumption over time</h1>
 <div class="meta">{n_runs} runs &middot; {first} &rarr; {last} &middot;
   wall-clock = sum of per-job (completed - started), i.e. runner-time, not
-  end-to-end latency &middot; click a legend entry to toggle a series</div>
+  end-to-end latency &middot; click a legend entry to toggle a series<br>
+  {n_dropped} partial runs excluded (cancelled, or mass-failed on infra:
+  fewer than half the neighbouring median of successful jobs)</div>
 
 <div class="card"><h2>Total runner-time per run &mdash; wall-clock (min)</h2>
   <canvas id="total"></canvas></div>
@@ -224,7 +268,7 @@ selectFamily(Object.keys(DATA.families)[0]);
 """
 
 
-def render(points):
+def render(points, n_dropped=0):
     data = {
         "labels": [pt["label"] for pt in points],
         "total": [pt["total_min"] for pt in points],
@@ -235,6 +279,7 @@ def render(points):
     data_json = json.dumps(data).replace("</", "<\\/")
     return HTML_TEMPLATE.format(
         n_runs=len(points),
+        n_dropped=n_dropped,
         first=points[0]["started_at"] if points else "-",
         last=points[-1]["started_at"] if points else "-",
         data_json=data_json,
@@ -247,11 +292,11 @@ def main():
     parser.add_argument("--open", action="store_true", help="open in browser")
     args = parser.parse_args()
 
-    points = load_points()
+    points, n_dropped = load_points()
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(render(points))
-    print(f"wrote {out_path}: {len(points)} runs")
+    out_path.write_text(render(points, n_dropped))
+    print(f"wrote {out_path}: {len(points)} runs, {n_dropped} partial dropped")
     if args.open:
         webbrowser.open(out_path.resolve().as_uri())
 
