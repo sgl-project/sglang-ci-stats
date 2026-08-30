@@ -1,0 +1,15 @@
+{
+  "run_id": 33249400324,
+  "started_at": "2026-08-29T11:08:01Z",
+  "event": "schedule",
+  "head_sha": "46ccd7ce3e70455a971e6a7f7765cd78bc246322",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/33249400324",
+  "display_title": "Scheduled Full Run",
+  "jobs": [],
+  "last_scraped_at": "2026-08-30T01:03:35Z",
+  "time_stats": {
+    "total_wall_seconds": 0,
+    "per_stage": {},
+    "per_runner": {}
+  }
+}
