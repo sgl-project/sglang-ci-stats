@@ -5803,22 +5803,116 @@
           "elapsed": 5
         }
       ]
+    },
+    {
+      "job_id": 100490233552,
+      "name": "base-c-test-8-gpu-h20 / base-c-test-8-gpu-h20 (0)",
+      "suite": "base-c-test-8-gpu-h20",
+      "backend": "cuda",
+      "started_at": "2026-09-03T02:41:33Z",
+      "completed_at": "2026-09-03T03:04:17Z",
+      "labels": [
+        "8-gpu-h20"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_different_tp.py",
+          "elapsed": 859
+        }
+      ]
+    },
+    {
+      "job_id": 100490233753,
+      "name": "base-b-test-1-gpu-large / base-b-test-1-gpu-large (2)",
+      "suite": "base-b-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-09-03T01:37:06Z",
+      "completed_at": "2026-09-03T01:56:21Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/hicache/test_hicache_variants.py",
+          "elapsed": 464
+        },
+        {
+          "file": "test/registered/tokenizer/test_multi_tokenizer.py",
+          "elapsed": 216
+        },
+        {
+          "file": "test/registered/vlm/test_rust_native_mm_mmmu.py",
+          "elapsed": 109
+        },
+        {
+          "file": "test/registered/spec/eagle/test_eagle_constrained_decoding.py",
+          "elapsed": 96
+        },
+        {
+          "file": "test/registered/attention/test_unified_memory_deterministic.py",
+          "elapsed": 70
+        },
+        {
+          "file": "test/registered/vlm/test_rust_native_mm_e2e.py",
+          "elapsed": 38
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_cuda_ipc_transport.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/quant/test_kvfp4_quant_dequant.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_torch_native.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_swa_eviction_boundary.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_hicache_page_first_write_back.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_kvcacheio_asymmetric.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_linear_replayssm_decode.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_int8_linear_methods.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/prefill_only/test_serving_rerank.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/attention/test_chunk_gated_delta_rule.py",
+          "elapsed": 6
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-08-31T01:05:15Z",
+  "last_scraped_at": "2026-09-03T06:41:32Z",
   "time_stats": {
-    "total_wall_seconds": 76668,
+    "total_wall_seconds": 79187,
     "per_stage": {
       "base-a-test-1-gpu-small": 479,
       "base-a-test-cpu": 6935,
-      "base-b-test-1-gpu-large": 8350,
+      "base-b-test-1-gpu-large": 9505,
       "base-b-test-1-gpu-small": 10185,
       "base-b-test-2-gpu-large": 5190,
       "base-b-test-4-gpu-b200": 803,
       "base-c-test-4-gpu-b200": 2632,
       "base-c-test-4-gpu-h100": 3481,
       "base-c-test-8-gpu-b300": 2967,
-      "base-c-test-8-gpu-h20": 2056,
+      "base-c-test-8-gpu-h20": 3420,
       "base-c-test-8-gpu-h200": 2843,
       "call-jit-kernel-tests": 2392,
       "extra-a-test-1-gpu-large": 6322,
@@ -5830,12 +5924,12 @@
     },
     "per_runner": {
       "1-gpu-5090": 14178,
-      "1-gpu-h100": 16512,
+      "1-gpu-h100": 17667,
       "2-gpu-h100": 8741,
       "4-gpu-b200": 8691,
       "4-gpu-h100": 8353,
       "8-gpu-b300": 2967,
-      "8-gpu-h20": 2056,
+      "8-gpu-h20": 3420,
       "8-gpu-h200": 8235,
       "ubuntu-latest": 6935
     }
