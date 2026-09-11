@@ -33,9 +33,8 @@ COMPLETENESS_WINDOW = 10  # runs looked at on each side for the median
 def forward_filled_totals(records, entries_of):
     """Per-group forward-filled sums, one {group: total} per run.
 
-    Only successful jobs are archived, so whatever a failed one would have
-    contributed vanishes from run T; reusing its last seen value keeps that
-    from reading as a speedup.
+    A job with no archived timings vanishes from run T; reusing its last
+    seen value keeps that from reading as a speedup.
     """
     last_idx = defaultdict(dict)    # last_idx[group][item] = run index
     last_val = defaultdict(dict)    # last_val[group][item] = value
