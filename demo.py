@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Render runs/*.json into a single-file HTML trend page (Chart.js via CDN).
 
-Three line charts -- total / per-stage / per-runner CI time over time. Runs
+Three line charts -- total (split per pr-test.yml caller) / per-stage /
+per-runner CI time over time. Runs
 predating scrape.py's time_stats field are summarized on the fly via
 scrape.summarize_run_times, so this works against any runs/ snapshot.
 
@@ -54,6 +55,33 @@ def forward_filled_totals(records, entries_of):
             for g in groups_here
         })
     return per_run_totals
+
+
+def stage_group(suite):
+    """Which part of pr-test.yml a suite's time belongs to.
+
+    pr-test.yml runs its own base-* stages and calls pr-test-extra.yml,
+    plus one workflow per specialized suite, so one run's per_stage spans them all.
+    An unrecognized suite becomes its own group rather than joining a catch-all,
+    so a new caller shows up as a new line instead of inflating someone else's.
+    """
+    if suite.startswith("base-"):
+        return "base"
+    if suite.startswith("extra-"):
+        return "extra"
+    if suite.startswith("call-"):
+        return suite[len("call-"):]
+    if suite.startswith("stage-"):
+        return "legacy-stage"  # pre-2026-05-15 naming, predates the base/extra split
+    return suite
+
+
+def stage_split(per_stage):
+    """{group: minutes} over per_stage -- a partition, so the parts sum to total."""
+    totals = defaultdict(float)
+    for suite, seconds in per_stage.items():
+        totals[stage_group(suite)] += seconds
+    return {g: round(v / SECONDS_PER_MIN, 1) for g, v in totals.items()}
 
 
 def stage_test_entries(record):
@@ -122,6 +150,8 @@ def load_points():
                 # total stays raw: it is the one number that must not be inflated
                 # by fill, since a partial run is already excluded outright.
                 "total_min": round(ts["total_wall_seconds"] / SECONDS_PER_MIN, 1),
+                # same raw source as total_min, so the groups sum back to it
+                "split": stage_split(ts["per_stage"]),
                 "per_runner": {
                     k: round(v / SECONDS_PER_MIN, 1)
                     for k, v in runner_secs.items()
@@ -196,6 +226,9 @@ HTML_TEMPLATE = """<!doctype html>
   fewer than half the neighbouring median of successful jobs)</div>
 
 <div class="card"><h2>Total runner-time per run &mdash; wall-clock (min)</h2>
+  <div class="meta">split by the part of pr-test.yml that owns the job: its own
+    <code>base-*</code> stages, the called <code>pr-test-extra.yml</code>, and one
+    group per specialized called workflow. The groups partition the total.</div>
   <canvas id="total"></canvas></div>
 <div class="card">
   <h2>Per stage family, by gpu type &mdash; test time (min)</h2>
@@ -220,14 +253,15 @@ function color(i, n) {{
   return `hsl(${{h}}, 65%, 50%)`;
 }}
 
-function lineChart(canvasId, labels, seriesMap, single) {{
+function lineChart(canvasId, labels, seriesMap) {{
   const keys = Object.keys(seriesMap);
   const datasets = keys.map((k, i) => ({{
     label: k,
     data: seriesMap[k],
-    borderColor: single ? "#2563eb" : color(i, keys.length),
+    // "total" is the sum of its neighbours, so draw it apart from the ramp
+    borderColor: k === "total" ? "#111" : color(i - 1, keys.length - 1),
     backgroundColor: "transparent",
-    borderWidth: 2,
+    borderWidth: k === "total" ? 3 : 2,
     pointRadius: 2,
     spanGaps: false,
     tension: 0.2,
@@ -239,13 +273,13 @@ function lineChart(canvasId, labels, seriesMap, single) {{
       responsive: true,
       interaction: {{ mode: "nearest", intersect: false }},
       scales: {{ y: {{ beginAtZero: true, title: {{ display: true, text: "minutes" }} }} }},
-      plugins: {{ legend: {{ display: !single, position: "bottom" }} }},
+      plugins: {{ legend: {{ position: "bottom" }} }},
     }},
   }});
 }}
 
-lineChart("total", DATA.labels, {{ "total": DATA.total }}, true);
-lineChart("runner", DATA.labels, DATA.per_runner, false);
+lineChart("total", DATA.labels, DATA.total);
+lineChart("runner", DATA.labels, DATA.per_runner);
 
 // Per-stage: left category list switches the single right-hand chart.
 let stageChart = null;
@@ -254,7 +288,7 @@ function selectFamily(fam) {{
     (el) => el.classList.toggle("active", el.dataset.fam === fam)
   );
   if (stageChart) stageChart.destroy();
-  stageChart = lineChart("stage-chart", DATA.labels, DATA.families[fam], false);
+  stageChart = lineChart("stage-chart", DATA.labels, DATA.families[fam]);
 }}
 
 const catlist = document.getElementById("catlist");
@@ -276,7 +310,10 @@ selectFamily(Object.keys(DATA.families)[0]);
 def render(points, n_dropped=0):
     data = {
         "labels": [pt["label"] for pt in points],
-        "total": [pt["total_min"] for pt in points],
+        "total": {
+            "total": [pt["total_min"] for pt in points],
+            **series_for(points, "split"),
+        },
         "families": family_series(points),
         "per_runner": series_for(points, "per_runner"),
     }
