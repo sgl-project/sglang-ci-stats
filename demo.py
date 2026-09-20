@@ -60,11 +60,10 @@ def forward_filled_totals(records, entries_of):
 def stage_group(suite):
     """Which part of pr-test.yml a suite's time belongs to.
 
-    pr-test.yml runs its own base-* stages and calls pr-test-extra.yml plus one
-    workflow per specialized suite, so a run's per_stage spans all of them. Each
-    caller gets its own named group -- an unrecognized suite becomes a group of
-    its own rather than joining a catch-all bucket, so a new caller shows up as
-    a new line instead of silently inflating someone else's.
+    pr-test.yml runs its own base-* stages and calls pr-test-extra.yml,
+    plus one workflow per specialized suite, so one run's per_stage spans them all.
+    An unrecognized suite becomes its own group rather than joining a catch-all,
+    so a new caller shows up as a new line instead of inflating someone else's.
     """
     if suite.startswith("base-"):
         return "base"
