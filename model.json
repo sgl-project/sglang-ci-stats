@@ -1419,9 +1419,9 @@
       "test/registered/unit/sampling/test_sampling_metadata_staging.py": 6
     },
     "call-multimodal-gen-tests": {
-      "test/registered/e2e/diffusion/test_diffusion_1_gpu.py": 1798,
+      "test/registered/e2e/diffusion/test_diffusion_1_gpu.py": 1522,
       "test/registered/e2e/diffusion/test_diffusion_1_gpu_5090.py": 883,
-      "test/registered/e2e/diffusion/test_diffusion_1_gpu_b200.py": 977,
+      "test/registered/e2e/diffusion/test_diffusion_1_gpu_b200.py": 938,
       "test/registered/e2e/diffusion/test_diffusion_2_gpu.py": 2078,
       "test/registered/e2e/diffusion/test_diffusion_bcg.py": 107,
       "test/registered/e2e/diffusion/test_diffusion_component_accuracy.py": 1238,
@@ -1706,8 +1706,8 @@
       "method": "ols"
     },
     "call-multimodal-gen-tests": {
-      "coeff": 1.0007,
-      "bias": 56.1,
+      "coeff": 0.9936,
+      "bias": 60.2,
       "r_squared": 0.9997,
       "n_samples": 16,
       "method": "ols"

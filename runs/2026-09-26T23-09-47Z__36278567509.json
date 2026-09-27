@@ -7326,11 +7326,79 @@
           "elapsed": 7
         }
       ]
+    },
+    {
+      "job_id": 108548903067,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-1-b200",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-09-27T04:16:53Z",
+      "completed_at": "2026-09-27T04:27:35Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_1_gpu_b200.py",
+          "elapsed": 585
+        }
+      ]
+    },
+    {
+      "job_id": 108548904389,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-1-gpu (1)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-09-26T23:10:29Z",
+      "completed_at": "2026-09-26T23:29:10Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_1_gpu.py",
+          "elapsed": 1074
+        }
+      ]
+    },
+    {
+      "job_id": 108548904474,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-1-gpu (0)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-09-26T23:10:29Z",
+      "completed_at": "2026-09-26T23:29:12Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_1_gpu.py",
+          "elapsed": 1072
+        }
+      ]
+    },
+    {
+      "job_id": 108548904693,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-1-gpu (2)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-09-26T23:10:29Z",
+      "completed_at": "2026-09-26T23:32:46Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_1_gpu.py",
+          "elapsed": 1290
+        }
+      ]
     }
   ],
-  "last_scraped_at": "2026-09-27T01:08:58Z",
+  "last_scraped_at": "2026-09-27T06:40:54Z",
   "time_stats": {
-    "total_wall_seconds": 94467,
+    "total_wall_seconds": 98690,
     "per_stage": {
       "base-a-test-1-gpu-small": 413,
       "base-a-test-cpu": 6298,
@@ -7345,7 +7413,7 @@
       "base-c-test-8-gpu-h20": 1814,
       "base-c-test-8-gpu-h200": 1710,
       "call-jit-kernel-tests": 3971,
-      "call-multimodal-gen-tests": 8806,
+      "call-multimodal-gen-tests": 13029,
       "extra-a-test-1-gpu-large": 7311,
       "extra-a-test-1-gpu-small": 3688,
       "extra-a-test-2-gpu-large": 4118,
@@ -7356,9 +7424,9 @@
     },
     "per_runner": {
       "1-gpu-5090": 14977,
-      "1-gpu-h100": 22049,
+      "1-gpu-h100": 25630,
       "2-gpu-h100": 15839,
-      "4-gpu-b200": 11233,
+      "4-gpu-b200": 11875,
       "4-gpu-gb300": 1093,
       "4-gpu-h100": 9268,
       "8-gpu-b300": 2720,
