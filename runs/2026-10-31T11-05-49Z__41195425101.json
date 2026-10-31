@@ -1,0 +1,6058 @@
+{
+  "run_id": 41195425101,
+  "started_at": "2026-10-31T11:05:49Z",
+  "event": "schedule",
+  "head_sha": "fb9846d3e2d66811b372b28c73229e9dbbf54288",
+  "html_url": "https://github.com/sgl-project/sglang/actions/runs/41195425101",
+  "display_title": "Scheduled Full Run",
+  "jobs": [
+    {
+      "job_id": 124520572663,
+      "name": "call-multimodal-gen-tests / multimodal-gen-unit-test",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:04:01Z",
+      "completed_at": "2026-10-31T12:22:26Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/unit/multimodal_gen/test_image_preprocessing.py",
+          "elapsed": 20
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_flux2_xpu_norm_fusions.py",
+          "elapsed": 22
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_unit.py",
+          "elapsed": 1013
+        }
+      ]
+    },
+    {
+      "job_id": 124520572678,
+      "name": "call-multimodal-gen-tests / multimodal-gen-component-accuracy",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:12Z",
+      "completed_at": "2026-10-31T11:21:24Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_component_accuracy.py",
+          "elapsed": 871
+        }
+      ]
+    },
+    {
+      "job_id": 124520572707,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-4-gpu-b200",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:11Z",
+      "completed_at": "2026-10-31T11:18:02Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_1_gpu_b200.py",
+          "elapsed": 295
+        }
+      ]
+    },
+    {
+      "job_id": 124520572710,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-1-5090",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:12Z",
+      "completed_at": "2026-10-31T11:20:49Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_1_gpu_5090.py",
+          "elapsed": 800
+        }
+      ]
+    },
+    {
+      "job_id": 124520572735,
+      "name": "call-multimodal-gen-tests / bcg-diffusion",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:24:42Z",
+      "completed_at": "2026-10-31T12:27:20Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_bcg.py",
+          "elapsed": 107
+        }
+      ]
+    },
+    {
+      "job_id": 124520609629,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-1-gpu (2)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:33:41Z",
+      "completed_at": "2026-10-31T13:20:36Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_1_gpu.py",
+          "elapsed": 2736
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_sana_video2.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_async_video_serving.py",
+          "elapsed": 14
+        }
+      ]
+    },
+    {
+      "job_id": 124520609649,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-2-gpu (3)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:22Z",
+      "completed_at": "2026-10-31T11:28:26Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_ipc_a2a_jit_recovery.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_async_video_serving.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_2_gpu.py",
+          "elapsed": 1245
+        }
+      ]
+    },
+    {
+      "job_id": 124520609677,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-2-gpu (1)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:09:36Z",
+      "completed_at": "2026-10-31T11:32:35Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_2_gpu.py",
+          "elapsed": 1318
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_ipc_a2a_jit_recovery.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_async_video_serving.py",
+          "elapsed": 12
+        }
+      ]
+    },
+    {
+      "job_id": 124520609678,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-2-gpu (0)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:22Z",
+      "completed_at": "2026-10-31T11:36:05Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_ipc_a2a_jit_recovery.py",
+          "elapsed": 33
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_async_video_serving.py",
+          "elapsed": 322
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_2_gpu.py",
+          "elapsed": 1372
+        }
+      ]
+    },
+    {
+      "job_id": 124520609682,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-1-gpu (1)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:39:24Z",
+      "completed_at": "2026-10-31T13:13:40Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_1_gpu.py",
+          "elapsed": 1914
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_sana_video2.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_async_video_serving.py",
+          "elapsed": 14
+        }
+      ]
+    },
+    {
+      "job_id": 124520609686,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-1-gpu (0)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T13:17:02Z",
+      "completed_at": "2026-10-31T13:49:07Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_1_gpu.py",
+          "elapsed": 1656
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_sana_video2.py",
+          "elapsed": 43
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_async_video_serving.py",
+          "elapsed": 161
+        }
+      ]
+    },
+    {
+      "job_id": 124520609707,
+      "name": "call-multimodal-gen-tests / multimodal-gen-test-2-gpu (2)",
+      "suite": "call-multimodal-gen-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:10:05Z",
+      "completed_at": "2026-10-31T11:40:20Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/diffusion/test_ipc_a2a_jit_recovery.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_diffusion_2_gpu.py",
+          "elapsed": 1745
+        },
+        {
+          "file": "test/registered/e2e/diffusion/test_async_video_serving.py",
+          "elapsed": 12
+        }
+      ]
+    },
+    {
+      "job_id": 124520623621,
+      "name": "base-c-test-4-gpu-gb300 / base-c-test-4-gpu-gb300 (0)",
+      "suite": "base-c-test-4-gpu-gb300",
+      "backend": "cuda",
+      "started_at": "2026-10-31T13:11:09Z",
+      "completed_at": "2026-10-31T13:26:31Z",
+      "labels": [
+        "4-gpu-gb300"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_dsa_glm52_pd_kv_shard_hicache.py",
+          "elapsed": 733
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_aarch64.py",
+          "elapsed": 82
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_cuda_vmm_transport.py",
+          "elapsed": 34
+        },
+        {
+          "file": "test/registered/utils/test_numa_utils.py",
+          "elapsed": 7
+        }
+      ]
+    },
+    {
+      "job_id": 124520623658,
+      "name": "base-c-test-2-gpu-gb300 / base-c-test-2-gpu-gb300 (2)",
+      "suite": "base-c-test-2-gpu-gb300",
+      "backend": "cuda",
+      "started_at": "2026-10-31T14:43:26Z",
+      "completed_at": "2026-10-31T15:04:46Z",
+      "labels": [
+        "2-gpu-gb300"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v41_flash_gb300_dp2ep2.py",
+          "elapsed": 672
+        },
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v41_flash_gb300_trtllm_bounded_bcg.py",
+          "elapsed": 542
+        }
+      ]
+    },
+    {
+      "job_id": 124520623704,
+      "name": "base-c-test-2-gpu-gb300 / base-c-test-2-gpu-gb300 (0)",
+      "suite": "base-c-test-2-gpu-gb300",
+      "backend": "cuda",
+      "started_at": "2026-10-31T14:48:45Z",
+      "completed_at": "2026-10-31T15:00:52Z",
+      "labels": [
+        "2-gpu-gb300"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v41_flash_gb300_encoder_bcg.py",
+          "elapsed": 662
+        }
+      ]
+    },
+    {
+      "job_id": 124520623769,
+      "name": "base-c-test-2-gpu-gb300 / base-c-test-2-gpu-gb300 (1)",
+      "suite": "base-c-test-2-gpu-gb300",
+      "backend": "cuda",
+      "started_at": "2026-10-31T15:00:53Z",
+      "completed_at": "2026-10-31T15:12:18Z",
+      "labels": [
+        "2-gpu-gb300"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v41_flash_gb300_tp2ep2.py",
+          "elapsed": 622
+        }
+      ]
+    },
+    {
+      "job_id": 124520623982,
+      "name": "call-pr-test-extra / extra-a-test-2-gpu-large / extra-a-test-2-gpu-large (1)",
+      "suite": "extra-a-test-2-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:10:55Z",
+      "completed_at": "2026-10-31T11:50:11Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/model_loading/test_weight_cache_daemon.py",
+          "elapsed": 360
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_pp_perturb.py",
+          "elapsed": 309
+        },
+        {
+          "file": "test/registered/basic_perf/test_moe_throughput.py",
+          "elapsed": 264
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_pd_perturb.py",
+          "elapsed": 220
+        },
+        {
+          "file": "test/registered/hicache/test_hicache_spec_mooncake_storage.py",
+          "elapsed": 179
+        },
+        {
+          "file": "test/registered/mock_model/test_e2e_pd.py",
+          "elapsed": 153
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_pd_baseline.py",
+          "elapsed": 153
+        },
+        {
+          "file": "test/registered/moe/test_glm4_moe_models.py",
+          "elapsed": 107
+        },
+        {
+          "file": "test/registered/model_loading/test_load_weights_from_remote_instance.py",
+          "elapsed": 109
+        },
+        {
+          "file": "test/registered/rl/test_update_weights_from_distributed.py",
+          "elapsed": 112
+        },
+        {
+          "file": "test/registered/e2e/disaggregation/test_disaggregation_unified_memory_swa.py",
+          "elapsed": 103
+        },
+        {
+          "file": "test/registered/moe/test_moe_ep_extra.py",
+          "elapsed": 86
+        },
+        {
+          "file": "test/registered/dp_attn/test_dp_attention_deepseek_v3.py",
+          "elapsed": 90
+        },
+        {
+          "file": "test/registered/mock_model/test_e2e_pp.py",
+          "elapsed": 58
+        }
+      ]
+    },
+    {
+      "job_id": 124520624033,
+      "name": "call-pr-test-extra / extra-b-test-4-gpu-b200 / extra-b-test-4-gpu-b200 (0)",
+      "suite": "extra-b-test-4-gpu-b200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:27Z",
+      "completed_at": "2026-10-31T11:54:26Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/rl/test_update_weights_from_disk_blackwell.py",
+          "elapsed": 1493
+        },
+        {
+          "file": "test/registered/e2e/models/test_dsa_glm52_nvfp4_dp_mtp.py",
+          "elapsed": 632
+        },
+        {
+          "file": "test/registered/backends/test_deepseek_v3_fp4_cutedsl_moe.py",
+          "elapsed": 345
+        },
+        {
+          "file": "test/registered/dcp/test_kimi_linear_dcp_dspark4.py",
+          "elapsed": 221
+        },
+        {
+          "file": "test/registered/e2e/models/test_kimi_linear_unified_memory_dcp_blackwell.py",
+          "elapsed": 121
+        }
+      ]
+    },
+    {
+      "job_id": 124520624037,
+      "name": "call-pr-test-extra / extra-b-test-4-gpu-b200 / extra-b-test-4-gpu-b200 (1)",
+      "suite": "extra-b-test-4-gpu-b200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:10:08Z",
+      "completed_at": "2026-10-31T11:35:06Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_nvidia_nemotron_3_nano.py",
+          "elapsed": 536
+        },
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v4_flash_fp4_b200.py",
+          "elapsed": 313
+        },
+        {
+          "file": "test/registered/spec/eagle/test_deepseek_v3_fp4_mtp_small.py",
+          "elapsed": 224
+        },
+        {
+          "file": "test/registered/lora/test_lora_nemotron_3_super_120b_a12b_logprob_diff.py",
+          "elapsed": 121
+        },
+        {
+          "file": "test/registered/dcp/test_kimi_linear_dcp4.py",
+          "elapsed": 119
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_dwdp_gpt_oss.py",
+          "elapsed": 112
+        }
+      ]
+    },
+    {
+      "job_id": 124520624053,
+      "name": "call-pr-test-extra / extra-b-test-8-gpu-h20 / extra-b-test-8-gpu-h20 (0)",
+      "suite": "extra-b-test-8-gpu-h20",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:11:42Z",
+      "completed_at": "2026-10-31T11:19:28Z",
+      "labels": [
+        "8-gpu-h20"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_different_tp_deepseek_v3.py",
+          "elapsed": 207
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_dp_attention.py",
+          "elapsed": 108
+        }
+      ]
+    },
+    {
+      "job_id": 124520624062,
+      "name": "call-pr-test-extra / extra-a-test-2-gpu-large / extra-a-test-2-gpu-large (0)",
+      "suite": "extra-a-test-2-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:17:20Z",
+      "completed_at": "2026-10-31T11:55:53Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/hicache/test_hicache_unified_memory.py",
+          "elapsed": 361
+        },
+        {
+          "file": "test/registered/basic_perf/test_pp_throughput.py",
+          "elapsed": 303
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_swa.py",
+          "elapsed": 254
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_pp_baseline.py",
+          "elapsed": 214
+        },
+        {
+          "file": "test/registered/spec/test_gemma4_mtp_31b_extra.py",
+          "elapsed": 196
+        },
+        {
+          "file": "test/registered/e2e/disaggregation/test_prefill_complete_allocation.py",
+          "elapsed": 220
+        },
+        {
+          "file": "test/registered/lora/test_lora_moe_tp_logprob_diff.py",
+          "elapsed": 147
+        },
+        {
+          "file": "test/registered/moe/test_moe_ep.py",
+          "elapsed": 85
+        },
+        {
+          "file": "test/registered/spec/test_constrained_decoding_spec_reasoning.py",
+          "elapsed": 102
+        },
+        {
+          "file": "test/registered/e2e/disaggregation/test_disaggregation_unified_memory_tri.py",
+          "elapsed": 90
+        },
+        {
+          "file": "test/registered/mock_model/test_e2e_tp.py",
+          "elapsed": 89
+        },
+        {
+          "file": "test/registered/spec/test_gemma4_dflash_31b_extra.py",
+          "elapsed": 79
+        },
+        {
+          "file": "test/registered/basic_perf/test_torch_compile_throughput.py",
+          "elapsed": 79
+        },
+        {
+          "file": "test/registered/mock_model/test_e2e_cp.py",
+          "elapsed": 46
+        }
+      ]
+    },
+    {
+      "job_id": 124520624065,
+      "name": "call-pr-test-extra / extra-b-test-4-gpu-b200 / extra-b-test-4-gpu-b200 (4)",
+      "suite": "extra-b-test-4-gpu-b200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:12:52Z",
+      "completed_at": "2026-10-31T11:47:28Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/moe/test_flashinfer_a2a_cutedsl_v2.py",
+          "elapsed": 647
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_glm53_bcg.py",
+          "elapsed": 640
+        },
+        {
+          "file": "test/registered/cp/test_deepseek_v4_flash_fp4_b200_cp.py",
+          "elapsed": 287
+        },
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v4_flash_fp4_megamoe_b200.py",
+          "elapsed": 234
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dcp.py",
+          "elapsed": 176
+        },
+        {
+          "file": "test/registered/kernels/ops/communication/test_all_reduce_residual_norm.py",
+          "elapsed": 21
+        }
+      ]
+    },
+    {
+      "job_id": 124520624075,
+      "name": "call-pr-test-extra / extra-b-test-8-gpu-h200 / extra-b-test-8-gpu-h200 (2)",
+      "suite": "extra-b-test-8-gpu-h200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:26Z",
+      "completed_at": "2026-10-31T11:29:18Z",
+      "labels": [
+        "8-gpu-h200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v4_flash_fp4_tbo_h200.py",
+          "elapsed": 126
+        },
+        {
+          "file": "test/registered/e2e/models/test_glm53_flash_h200_low_latency.py",
+          "elapsed": 369
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/linker/test_unified_cache_linker_kl_glm52.py",
+          "elapsed": 234
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_glm52.py",
+          "elapsed": 285
+        },
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v3_mtp.py",
+          "elapsed": 184
+        },
+        {
+          "file": "test/registered/kernels/ops/communication/test_tp_qknorm.py",
+          "elapsed": 67
+        }
+      ]
+    },
+    {
+      "job_id": 124520624087,
+      "name": "call-pr-test-extra / extra-b-test-8-gpu-h200 / extra-b-test-8-gpu-h200 (0)",
+      "suite": "extra-b-test-8-gpu-h200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:26Z",
+      "completed_at": "2026-10-31T11:35:46Z",
+      "labels": [
+        "8-gpu-h200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/linker/test_unified_cache_linker_kl_dsv41.py",
+          "elapsed": 452
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4_pp.py",
+          "elapsed": 451
+        },
+        {
+          "file": "test/registered/e2e/models/test_step3p5_flash_chain_mtp.py",
+          "elapsed": 228
+        },
+        {
+          "file": "test/registered/e2e/models/test_mimo_v2_flash.py",
+          "elapsed": 286
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_hisparse.py",
+          "elapsed": 195
+        },
+        {
+          "file": "test/registered/dcp/test_reduce_scatter_along_dim.py",
+          "elapsed": 47
+        },
+        {
+          "file": "test/registered/kernels/ops/communication/test_symm_mem_all_gather.py",
+          "elapsed": 36
+        }
+      ]
+    },
+    {
+      "job_id": 124520624110,
+      "name": "call-pr-test-extra / extra-b-test-4-gpu-b200 / extra-b-test-4-gpu-b200 (2)",
+      "suite": "extra-b-test-4-gpu-b200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:15:29Z",
+      "completed_at": "2026-10-31T11:58:07Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_glm53_flash_b200.py",
+          "elapsed": 863
+        },
+        {
+          "file": "test/registered/dcp/test_glm53_dcp2.py",
+          "elapsed": 432
+        },
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v3_fp4.py",
+          "elapsed": 376
+        },
+        {
+          "file": "test/registered/e2e/models/test_gpt_oss_4gpu_mxfp4.py",
+          "elapsed": 500
+        },
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v4_flash_fp4_b200_trtllm.py",
+          "elapsed": 205
+        },
+        {
+          "file": "test/registered/lora/test_lora_gpt_oss_20b_logprob_diff.py",
+          "elapsed": 114
+        }
+      ]
+    },
+    {
+      "job_id": 124520624116,
+      "name": "call-pr-test-extra / extra-a-test-1-gpu-small / extra-a-test-1-gpu-small (0)",
+      "suite": "extra-a-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:27Z",
+      "completed_at": "2026-10-31T11:37:39Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_canary_info.py",
+          "elapsed": 201
+        },
+        {
+          "file": "test/registered/basic_perf/test_vlm_serving_flashinfer.py",
+          "elapsed": 198
+        },
+        {
+          "file": "test/registered/observability/test_tracing.py",
+          "elapsed": 279
+        },
+        {
+          "file": "test/registered/attention/test_torch_native_attention_backend.py",
+          "elapsed": 287
+        },
+        {
+          "file": "test/registered/rl/test_update_weights_from_tensor.py",
+          "elapsed": 158
+        },
+        {
+          "file": "test/registered/e2e/quantization/test_llama8b_nvfp4_kv_cache_sm120.py",
+          "elapsed": 127
+        },
+        {
+          "file": "test/registered/chunked_prefill/test_scripted_core_1gpu.py",
+          "elapsed": 107
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_pr_26329.py",
+          "elapsed": 115
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_perturb_raise.py",
+          "elapsed": 51
+        },
+        {
+          "file": "test/registered/lora/test_lora_drainer.py",
+          "elapsed": 56
+        },
+        {
+          "file": "test/registered/moe/test_shared_expert_routing_extra.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_pricing_property.py",
+          "elapsed": 25
+        },
+        {
+          "file": "test/registered/lora/test_virtual_experts_kernels.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_endpoint.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_pool_patcher.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_runner_health.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_runner_sweep.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/mock_model/test_self_unit_sampler_hookpoint.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_future_tensor.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_pool_patcher_utils.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_runner_per_forward.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_violation.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/mock_model/test_self_unit_install.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/mock_model/test_self_unit_oracle_torch_vs_ref.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_hicache_write_back_ordering.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_hicache_regressions.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/activation/test_fused_op_gpu_parity.py",
+          "elapsed": 10
+        }
+      ]
+    },
+    {
+      "job_id": 124520624123,
+      "name": "call-pr-test-extra / extra-b-test-4-gpu-h100 / extra-b-test-4-gpu-h100 (2)",
+      "suite": "extra-b-test-4-gpu-h100",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:27Z",
+      "completed_at": "2026-10-31T11:46:19Z",
+      "labels": [
+        "4-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/cp/test_gqa_prefill_cp.py",
+          "elapsed": 554
+        },
+        {
+          "file": "test/registered/e2e/pp/test_pp_spec.py",
+          "elapsed": 388
+        },
+        {
+          "file": "test/registered/pp/test_pp_single_node_extra.py",
+          "elapsed": 292
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_kimi_linear.py",
+          "elapsed": 281
+        },
+        {
+          "file": "test/registered/hicache/test_qwen35_hicache.py",
+          "elapsed": 287
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_cp.py",
+          "elapsed": 223
+        },
+        {
+          "file": "test/registered/radix_cache/test_int8_mamba_checkpoint_e2e.py",
+          "elapsed": 141
+        },
+        {
+          "file": "test/registered/attention/test_qwen35_deterministic.py",
+          "elapsed": 108
+        },
+        {
+          "file": "test/registered/chunked_prefill/test_scripted_core_4gpu.py",
+          "elapsed": 53
+        }
+      ]
+    },
+    {
+      "job_id": 124520624131,
+      "name": "call-pr-test-extra / extra-b-test-8-gpu-h200 / extra-b-test-8-gpu-h200 (4)",
+      "suite": "extra-b-test-8-gpu-h200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:26Z",
+      "completed_at": "2026-10-31T11:44:33Z",
+      "labels": [
+        "8-gpu-h200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models_large/test_deepseek_v32_indexcache.py",
+          "elapsed": 616
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_hybrid_attention.py",
+          "elapsed": 652
+        },
+        {
+          "file": "test/registered/e2e/models/test_mimo_v2.py",
+          "elapsed": 357
+        },
+        {
+          "file": "test/registered/ep/test_tbo_shared_experts_fusion.py",
+          "elapsed": 298
+        },
+        {
+          "file": "test/registered/kernels/ops/communication/test_beam_all_reduce.py",
+          "elapsed": 106
+        },
+        {
+          "file": "test/registered/e2e/models/test_minimax_m25_basic.py",
+          "elapsed": 164
+        }
+      ]
+    },
+    {
+      "job_id": 124520624136,
+      "name": "call-pr-test-extra / extra-b-test-8-gpu-h200 / extra-b-test-8-gpu-h200 (3)",
+      "suite": "extra-b-test-8-gpu-h200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:27Z",
+      "completed_at": "2026-10-31T11:42:01Z",
+      "labels": [
+        "8-gpu-h200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_glm53_flash_h200_high_throughput.py",
+          "elapsed": 569
+        },
+        {
+          "file": "test/registered/ep/test_deepep_large.py",
+          "elapsed": 520
+        },
+        {
+          "file": "test/registered/e2e/models/test_deepseek_v4_flash_fp4_h200.py",
+          "elapsed": 361
+        },
+        {
+          "file": "test/registered/e2e/speculative/test_multi_layer_eagle_reject_sampling_deterministic.py",
+          "elapsed": 336
+        },
+        {
+          "file": "test/registered/dcp/test_dsv31_dcp8_gsm8k.py",
+          "elapsed": 207
+        },
+        {
+          "file": "test/registered/kernels/ops/communication/test_custom_all_reduce.py",
+          "elapsed": 56
+        },
+        {
+          "file": "test/registered/kernels/ops/communication/test_ar_fusion.py",
+          "elapsed": 25
+        }
+      ]
+    },
+    {
+      "job_id": 124520624145,
+      "name": "call-pr-test-extra / extra-a-test-1-gpu-large / extra-a-test-1-gpu-large (0)",
+      "suite": "extra-a-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T13:05:21Z",
+      "completed_at": "2026-10-31T13:49:20Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_hybrid_bitexact.py",
+          "elapsed": 921
+        },
+        {
+          "file": "test/registered/e2e/moe/test_paged_experts_gpt_oss.py",
+          "elapsed": 432
+        },
+        {
+          "file": "test/registered/basic_perf/test_lora_latency.py",
+          "elapsed": 267
+        },
+        {
+          "file": "test/registered/basic_perf/test_embeddings_api.py",
+          "elapsed": 197
+        },
+        {
+          "file": "test/registered/basic_perf/test_serving_latency.py",
+          "elapsed": 185
+        },
+        {
+          "file": "test/registered/e2e/models/test_vlm_models.py",
+          "elapsed": 153
+        },
+        {
+          "file": "test/registered/sessions/test_streaming_session_swa_extra.py",
+          "elapsed": 146
+        },
+        {
+          "file": "test/registered/radix_cache/test_swa_radix_cache_kl.py",
+          "elapsed": 125
+        },
+        {
+          "file": "test/registered/attention/test_triton_sliding_window.py",
+          "elapsed": 80
+        },
+        {
+          "file": "test/registered/e2e/quantization/test_gptqmodel_dynamic.py",
+          "elapsed": 56
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_lilicorr_cuda.py",
+          "elapsed": 7
+        }
+      ]
+    },
+    {
+      "job_id": 124520624146,
+      "name": "call-pr-test-extra / extra-b-test-4-gpu-h100 / extra-b-test-4-gpu-h100 (0)",
+      "suite": "extra-b-test-4-gpu-h100",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:27Z",
+      "completed_at": "2026-10-31T11:48:47Z",
+      "labels": [
+        "4-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_dsv4.py",
+          "elapsed": 1808
+        },
+        {
+          "file": "test/registered/ep/test_deepep_small_extra.py",
+          "elapsed": 240
+        },
+        {
+          "file": "test/registered/e2e/disaggregation/test_disaggregation_swa_different_tp.py",
+          "elapsed": 154
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/linker/test_unified_cache_linker_kl_inkling.py",
+          "elapsed": 78
+        },
+        {
+          "file": "test/registered/ep/test_routed_experts_dp_readback.py",
+          "elapsed": 129
+        },
+        {
+          "file": "test/registered/rl/test_multi_instance_release_memory_occupation.py",
+          "elapsed": 61
+        }
+      ]
+    },
+    {
+      "job_id": 124520624170,
+      "name": "call-pr-test-extra / extra-b-test-4-gpu-h100 / extra-b-test-4-gpu-h100 (1)",
+      "suite": "extra-b-test-4-gpu-h100",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:07:46Z",
+      "completed_at": "2026-10-31T11:50:20Z",
+      "labels": [
+        "4-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_mamba.py",
+          "elapsed": 699
+        },
+        {
+          "file": "test/registered/rl/test_return_routed_experts.py",
+          "elapsed": 338
+        },
+        {
+          "file": "test/registered/ep/test_deepep_small.py",
+          "elapsed": 341
+        },
+        {
+          "file": "test/registered/pp/test_pp_parallel_compat.py",
+          "elapsed": 339
+        },
+        {
+          "file": "test/registered/e2e/models/test_qwen3_next_models_extra.py",
+          "elapsed": 261
+        },
+        {
+          "file": "test/registered/hicache/test_page_unified_storage.py",
+          "elapsed": 188
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/linker/test_unified_cache_linker_kl_dsv4.py",
+          "elapsed": 146
+        },
+        {
+          "file": "test/registered/e2e/dp_attn/test_dp_attention_local_control_broadcast.py",
+          "elapsed": 113
+        },
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/linker/test_unified_cache_linker_kimi_linear.py",
+          "elapsed": 60
+        }
+      ]
+    },
+    {
+      "job_id": 124520624174,
+      "name": "call-pr-test-extra / extra-b-test-8-gpu-h200 / extra-b-test-8-gpu-h200 (1)",
+      "suite": "extra-b-test-8-gpu-h200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:26Z",
+      "completed_at": "2026-10-31T11:41:17Z",
+      "labels": [
+        "8-gpu-h200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/cp/test_dsa_prefill_cp.py",
+          "elapsed": 709
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_dsv4.py",
+          "elapsed": 450
+        },
+        {
+          "file": "test/registered/cp/test_deepseek_v3_cp_single_node.py",
+          "elapsed": 317
+        },
+        {
+          "file": "test/registered/rl/test_return_indexer_topk.py",
+          "elapsed": 246
+        },
+        {
+          "file": "test/registered/e2e/models/test_nvidia_nemotron_3_super_bf16_mtp.py",
+          "elapsed": 149
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_decode_radix_cache_swa.py",
+          "elapsed": 131
+        }
+      ]
+    },
+    {
+      "job_id": 124520624193,
+      "name": "call-pr-test-extra / extra-a-test-1-gpu-small / extra-a-test-1-gpu-small (1)",
+      "suite": "extra-a-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:27Z",
+      "completed_at": "2026-10-31T11:43:27Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_gpt_oss_sm120.py",
+          "elapsed": 401
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_perturb_real_kv_unused_cache.py",
+          "elapsed": 297
+        },
+        {
+          "file": "test/registered/lora/test_lora_eviction.py",
+          "elapsed": 304
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_perturb_real_kv_used.py",
+          "elapsed": 291
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_perturb_req_to_token.py",
+          "elapsed": 146
+        },
+        {
+          "file": "test/registered/scheduler/test_priority_scheduling.py",
+          "elapsed": 124
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_baseline.py",
+          "elapsed": 125
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_e2e_pr_25015.py",
+          "elapsed": 106
+        },
+        {
+          "file": "test/registered/mock_model/test_e2e_spec_eagle.py",
+          "elapsed": 96
+        },
+        {
+          "file": "test/registered/mock_model/test_self_e2e_perturb_next_token_swap.py",
+          "elapsed": 53
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_canary_info_fuzz.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/unit/model_executor/test_cuda_graph_lifetime_tracer.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_mamba_compaction.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_conv_compaction.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_perturb.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_req_to_expected_token_ids_manager.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_runner_swa_divergence.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_token_oracle.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_buffer_alloc.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_plan_input.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_radix_walker.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_sweep_plan_builder.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/mock_model/test_self_unit_canary_mock_wiring.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/mock_model/test_self_unit_oracle.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/lora/test_experimental_sgl_marlin_shared_outer_reduce.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_kv_plan_uniform_extend.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/model_executor/test_resolve_sliding_window_size.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_canary_info_hand.py",
+          "elapsed": 8
+        }
+      ]
+    },
+    {
+      "job_id": 124520624222,
+      "name": "call-pr-test-extra / extra-b-test-8-gpu-b300 / extra-b-test-8-gpu-b300 (1)",
+      "suite": "extra-b-test-8-gpu-b300",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:50:02Z",
+      "completed_at": "2026-10-31T13:19:40Z",
+      "labels": [
+        "8-gpu-b300"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_dsa_glm52_pd_mtp_cp_layersplit.py",
+          "elapsed": 1230
+        },
+        {
+          "file": "test/registered/e2e/models/test_muse_spark_unified_memory.py",
+          "elapsed": 475
+        }
+      ]
+    },
+    {
+      "job_id": 124520624232,
+      "name": "call-pr-test-extra / extra-b-test-8-gpu-b300 / extra-b-test-8-gpu-b300 (0)",
+      "suite": "extra-b-test-8-gpu-b300",
+      "backend": "cuda",
+      "started_at": "2026-10-31T13:19:41Z",
+      "completed_at": "2026-10-31T13:48:03Z",
+      "labels": [
+        "8-gpu-b300"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_kimi_k3_b300_low_latency.py",
+          "elapsed": 1632
+        }
+      ]
+    },
+    {
+      "job_id": 124520624308,
+      "name": "call-pr-test-extra / extra-a-test-1-gpu-large / extra-a-test-1-gpu-large (2)",
+      "suite": "extra-a-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:53:22Z",
+      "completed_at": "2026-10-31T13:35:29Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/basic_perf/test_serving_throughput.py",
+          "elapsed": 663
+        },
+        {
+          "file": "test/registered/attention/test_hybrid_attn_backend.py",
+          "elapsed": 380
+        },
+        {
+          "file": "test/registered/sessions/test_streaming_session_swa.py",
+          "elapsed": 328
+        },
+        {
+          "file": "test/registered/spec/test_spec_standalone_extra.py",
+          "elapsed": 203
+        },
+        {
+          "file": "test/registered/page_major/test_page_major_gpt_oss.py",
+          "elapsed": 179
+        },
+        {
+          "file": "test/registered/basic_perf/test_score_api.py",
+          "elapsed": 180
+        },
+        {
+          "file": "test/registered/sessions/test_session_control.py",
+          "elapsed": 137
+        },
+        {
+          "file": "test/registered/backends/test_torch_compile.py",
+          "elapsed": 127
+        },
+        {
+          "file": "test/registered/radix_cache/test_mamba_cache_kl.py",
+          "elapsed": 127
+        },
+        {
+          "file": "test/registered/radix_cache/test_mamba2_extra_buffer_kl.py",
+          "elapsed": 82
+        },
+        {
+          "file": "test/registered/lora/test_lora_qwen3_8b_logprob_diff.py",
+          "elapsed": 57
+        }
+      ]
+    },
+    {
+      "job_id": 124520624364,
+      "name": "call-pr-test-extra / extra-a-test-1-gpu-large / extra-a-test-1-gpu-large (3)",
+      "suite": "extra-a-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T13:25:01Z",
+      "completed_at": "2026-10-31T14:06:30Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/spec/eagle/test_spec_eagle_stress.py",
+          "elapsed": 631
+        },
+        {
+          "file": "test/registered/sessions/test_streaming_session_extra.py",
+          "elapsed": 458
+        },
+        {
+          "file": "test/registered/chunked_prefill/test_scripted_swa_1gpu.py",
+          "elapsed": 248
+        },
+        {
+          "file": "test/registered/e2e/lora/test_lora_moe_prefill_cuda_graph.py",
+          "elapsed": 214
+        },
+        {
+          "file": "test/registered/e2e/quantization/test_w8a8_quantization.py",
+          "elapsed": 205
+        },
+        {
+          "file": "test/registered/e2e/quantization/test_autoround_quantization.py",
+          "elapsed": 161
+        },
+        {
+          "file": "test/registered/hicache/test_hicache_spec_file_storage.py",
+          "elapsed": 154
+        },
+        {
+          "file": "test/registered/basic_perf/test_eagle3_latency.py",
+          "elapsed": 150
+        },
+        {
+          "file": "test/registered/rl/test_lora_load_from_tensor.py",
+          "elapsed": 102
+        },
+        {
+          "file": "test/registered/e2e/quantization/test_fp8kv_triton.py",
+          "elapsed": 64
+        },
+        {
+          "file": "test/registered/lora/test_lora_qwen3_5_4b_logprob_diff.py",
+          "elapsed": 53
+        }
+      ]
+    },
+    {
+      "job_id": 124520627252,
+      "name": "call-jit-kernel-tests / jit-kernel-unit-test-1-gpu-large (1)",
+      "suite": "call-jit-kernel-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:27:21Z",
+      "completed_at": "2026-10-31T12:51:46Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/kernels/ops/lora/test_dense_lora_inkling_sink.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_qprep_bf16_fp8_sm90.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_sparse_mla_q8kv8_prefill_sm90.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_kpool_topk_transform.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_cutlass_fp8_inactive_routes.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_sparse_fp8_attn_gemm.py",
+          "elapsed": 25
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/qsa/test_qsa_indexer.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_q8kv8_sparse_prefill_backend.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_hisparse_spec.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_per_token_group_quant.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_layout.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_fused_kda_conv_recurrent_verify.py",
+          "elapsed": 46
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_fused_verify_backend.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_q8kv8_dsa_nope_bf16_prefill.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_norm.py",
+          "elapsed": 31
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_masked_capacity_graph.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/kernels/ops/memory/test_blake3.py",
+          "elapsed": 22
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_per_token_group_quant_8bit_v2.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_humming_linear.py",
+          "elapsed": 29
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/qsa/test_qsa_fused_kv_prepare.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_iquest_q1_learned_sink.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_prefill_graph.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_replayssm_ring_fused.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_sparse_gqa.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_paged_mqa_metadata.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_complex_rope.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_muse_spark_router_gemv_cutedsl.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_kernel_config.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_chunked_sgmv_cuda_graph.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_dense_lora_kernels.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_fused_dispatch.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_nvfp4_provider_numerics.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_shared_outer_numerics.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_inkling_silu_and_mul.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_subblock_sage_fp8_sm90.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_longcat_image_norm_modulate.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_sana_wm_conv_post.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_wan_norm_silu_post.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/embeddings/test_qwen4_ple_offload.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_rmsnorm.py",
+          "elapsed": 65
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsv4_q_rope_store.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_inkling_attn_prologue_tau.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_trtllm_kv_norm_rope_store.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_ltx25_decoder_rope.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_page_unified_host_pool.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_moe_topk_softmax.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_qknorm.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_interleaved_rope_fp64.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_hy4_decode_kernels.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_attn_res_mix_large_tokens.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_c4_v2.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_metadata_replay.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_fast_topk.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_inkling_checkpoint_indices.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_qknorm_rope.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_matrix_rope.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_residual_gate_fp32.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_shape_specialization.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/embeddings/test_ngram_embedding.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_dsv3_fused_a_gemm.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_pipeline_e2e.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_plan_hand.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_verify_hand.py",
+          "elapsed": 64
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_write_hand.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_set_mla_kv_buffer.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_mhc_combine.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_muse_spark_norm_ops.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_schedule_builder.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_sconv_cache.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/ops/mm/test_lanczos.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_moe_tma_down_padding_rows.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_paged_experts_kernels.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_compressed_tensors_fp4_numeric.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_next_verify_prep.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_store_cache.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_moe_align_block_size.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_prefix_valid_fp8.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_spec_kv_indices_grid.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_rope.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_fused_store_index_cache.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_deepseek_v4_compress_plan_bounds.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_fused_verify_triton_gdn.py",
+          "elapsed": 35
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_muse_spark_qk_norm_rope_store.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_conv_bias_epilogue.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_h3_vae_fused_norm.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_layernorm_modulate.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_routing.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_dsv41_request_window_copy.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_minimax_m31_nvfp4.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_jit_grouped_topk.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_moe_preprocess.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_round_robin_ep_balance.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_deterministic_fast_sample.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_swa_tail_allocation.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/sampling/test_sampling_metadata_staging.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_rope.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_gptq_marlin_repack.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_per_token_quant_fp8.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_kpool_multi_pool.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_triton_sparse_mla_prefill.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_suffix_attention_merge.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_hicache_strided_device_rows.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/memory/test_adler32_checksum.py",
+          "elapsed": 4
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_gemma4_expert_activation.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/sampling/test_watermark_selector.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_ngram_utils.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/unit/disaggregation/test_kv_checksum.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/unit/multimodal_gen/test_minimax_h3_step_contract.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_clamp_position.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_fused_swiglu_epilogue.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_combine_topk_swa_indices.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_kpool_metadata_fusion.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_subblock_sparse_sm90.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_cosmos3_edge_fusions.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_minimax_h3_vae_output.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_router_gemv.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_dsa_index_cache_move.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_masked_set_kv_buffer_strided.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_fused_add_rmsnorm.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_dense_lora_routing_graph.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_runner_attach.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_transfer_mamba.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/memory/test_small_copy.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/memory/test_translate_token_ids_strided.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/mm/test_image.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_deepep_v2_contig_scatter.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_mova_routed_linear.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_awq_marlin_repack.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_dflash_domino.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/unit/dllm/algorithm/test_gemma4_sampling_cuda.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/unit/model_executor/runner/test_early_verify_metadata.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_transform_index.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_fused_decode.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_cutlass_w4a8_inactive_routes.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/sampling/test_renorm.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_sink_pad_cache.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/elementwise/test_add3.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_dsv4_fp4_index_k_cache.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_moe_tma_cache.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_fp4_indexer_quant.py",
+          "elapsed": 5
+        }
+      ]
+    },
+    {
+      "job_id": 124520627270,
+      "name": "call-jit-kernel-tests / jit-kernel-unit-test-4-gpu-b200",
+      "suite": "call-jit-kernel-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:13:46Z",
+      "completed_at": "2026-10-31T11:34:25Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/kernels/ops/moe/test_mega_gate.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_minimax_m31_nvfp4_trtllm_moe.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_mega_moe_pre_dispatch.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_post_reorder_deepgemm.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_situ_and_mul_quant.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_moe_front.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_fp4_allgather_moe_reduction.py",
+          "elapsed": 29
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_minimax_quant_scatter.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_causal_conv1d.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_fp8_rowwise.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_indexed_modulation.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_nvfp4_scaled_mm.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_rope_ltx2.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_modulate.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_flux2_gated_resnorm.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_indexed_scale_shift_mxfp8.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_flux2_token_cat_fp8.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_rmsnorm_indexed_scale_shift.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_flux2_qkv_epilogue.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_flux2_fp8_norm_quant.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_qwen_output_bias_absorption.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_qwen_qkv_epilogue.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_vdn_linear_branch.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_cosmos3_edge_fusions.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_qwen_image_norm_fp8_quant.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_vsa_block_sparse_sm100.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_vdn_delta_factors.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_layout.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_minimax_h3_vae_output.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_qknorm_rope_out_of_place.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/communication/test_deterministic_reduce_scatter.py",
+          "elapsed": 29
+        },
+        {
+          "file": "test/registered/kernels/ops/communication/test_muse_spark_moe_finalize_all_reduce.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_mxfp8_kv_reserved_slot.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_minimax_m31_nvfp4.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_minimax_store_kv_index.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_fused_fp8_qkv_kv_cache.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_mxfp8_epilogue.py",
+          "elapsed": 28
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_muse_spark_rmsnorm_nvfp4_quant.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_compressed_tensors_fp4_numeric.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_mxfp8_swizzled.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_fp8_wo_a.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_nvfp4_native_kv_layout.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_per_token_quant_fp8.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_per_token_group_quant.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_flashmla_sched_meta.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_decode_mtp.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsv41_candidate_table_boundary.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_m31_msa_plan.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_prefill.py",
+          "elapsed": 27
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsv41_prefill_sparse_indexer.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_flash_attention_4.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_wo_a_fused.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_attn_res.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_mtp_cutedsl_replayssm_ring.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_track_state.py",
+          "elapsed": 26
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_qknorm_rope.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dense_prefill_indexer.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_inkling_attn_prologue_tau.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_decode_topk_page_table.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_sparse_fp8_attn_gemm.py",
+          "elapsed": 27
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_decode_topk.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_sparse_decode_paged_tile.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_m31_page_row_views.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_deep_select.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_sparse_gqa.py",
+          "elapsed": 19
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/qsa/test_qsa.py",
+          "elapsed": 20
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/qsa/test_qsa_hicache.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/dsv4/test_flashmla_v41.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/dsv4/test_v41_kv_store.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/dsv4/test_swapab_attention.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/dsv4/test_c2_prefill_ring.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/dsv4/test_mega_attention.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_convrot_int8.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_cutedsl_bf16_gemm.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_cutedsl_dual_gemm.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_inkling_rel_proj.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_hc_mix.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_minimax_fused_qkv_index_gemm.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_muse_spark_router_gemv_cutedsl.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_dsv4_wo_a.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/memory/test_row_compact.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/elementwise/test_row_scale.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/elementwise/test_mla_output_gate.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/activation/test_situ_and_mul.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/activation/test_bias_gelu.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/activation/test_swiglu_mxfp8_swizzled.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/moe/test_humming_runner_gpu.py",
+          "elapsed": 19
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_mxfp4_trtllm_padding.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/multimodal_gen/test_flux3_swiglu_fp8.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/attention/test_gdn_prefill_cutedsl.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/test_kda_prefill_flashinfer.py",
+          "elapsed": 32
+        },
+        {
+          "file": "test/registered/attention/test_kda_prefill_cutedsl.py",
+          "elapsed": 14
+        }
+      ]
+    },
+    {
+      "job_id": 124520627271,
+      "name": "call-jit-kernel-tests / jit-kernel-unit-test-1-gpu-large (0)",
+      "suite": "call-jit-kernel-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:53:14Z",
+      "completed_at": "2026-10-31T13:25:00Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/kernels/ops/attention/test_flash_attention_4.py",
+          "elapsed": 29
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_down_b_into_base.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_contiguous_row_domain.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_helion.py",
+          "elapsed": 90
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_deep_select.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_model_fast_paths.py",
+          "elapsed": 24
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/qsa/test_qsa_strided_zero_fill.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_convrot_int8.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_prepared_input_reuse.py",
+          "elapsed": 24
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_draft_decode_window.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_fused_metadata_copy.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_gdn_prefill_graph.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kpool_topk_transform_fused.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_topk_v2.py",
+          "elapsed": 22
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_dense_lora_backend.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_causal_conv1d.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_humming_fp8_dispatch.py",
+          "elapsed": 21
+        },
+        {
+          "file": "test/registered/unit/layers/moe/test_humming_runner_gpu.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_modulate.py",
+          "elapsed": 34
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_flashinfer_host_plan.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_gate_beta_cumsum.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_replayssm_fold_batched.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_replayssm_ring_ragged.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_mla_kv_pack_quantize_fp8.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_topk_v1.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_qknorm_rope_out_of_place.py",
+          "elapsed": 125
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_tiny_gemm.py",
+          "elapsed": 35
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_hicache_tma.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_dense_lora_geometry.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_fp8_provider_numerics.py",
+          "elapsed": 21
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_moe_runner_numerics.py",
+          "elapsed": 20
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_per_row_b.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_fp8_per_token_to_per_tensor_quant.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_fp4_indexer.py",
+          "elapsed": 56
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_sparse_decode_paged_tile.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_helios_qk_rope.py",
+          "elapsed": 22
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_rope_ltx2.py",
+          "elapsed": 20
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_sana_wm_reverse_scan.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/elementwise/test_add_constant.py",
+          "elapsed": 27
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_fused_eh_norm.py",
+          "elapsed": 23
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_routing.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsv4_trtllm_q_metadata.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_minimax_decode_topk.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_fast_launch.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_fused_fp8_qkv_kv_cache.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_dense_lora_mla_correction.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_sites.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_lingbot_modulation.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_hadamard_jit.py",
+          "elapsed": 106
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/minicpm_sala/test_get_block_table.py",
+          "elapsed": 33
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_c128_v2.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_deepseek_v4_compress_state_runtime_shapes.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsv4_dequant_k_cache.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_flash_attention_3_only_qv.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_replayssm_fold.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_tilelang_dsa_zero_rope.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_qwen_qkv_epilogue.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_rmsnorm_interleaved_rope.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/elementwise/test_hc_combine.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_cutedsl_dsv3_fused_a_gemm.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_inkling_rel_proj.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_plan_fuzz.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_verify_fuzz.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_write_fuzz.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_minimax_store_kv_index.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_grouped_gemma_rmsnorm.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_mhc_stream_mean.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_rmsnorm_hf.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_mtp_hicache.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_verify_commit_triton.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_marlin_packed_topk_unpack.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_muse_spark_routing.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_post_reorder_deepgemm.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_block_verification.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/profiling/test_diffusion_stage_profiler_sync.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_align_block_size.py",
+          "elapsed": 22
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_flux2_strided_qknorm_rope.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_route_quant_prerequisites.py",
+          "elapsed": 25
+        },
+        {
+          "file": "test/registered/unit/model_executor/runner/test_flashinfer_autotune_sync.py",
+          "elapsed": 38
+        },
+        {
+          "file": "test/registered/kernels/ops/activation/test_activation.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/activation/test_bias_gelu.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_fused_norm_gate_strided.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_mla_scatter_concat.py",
+          "elapsed": 20
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_vision_rope.py",
+          "elapsed": 20
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_flux3_video_qknorm_rope.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_joint_qkv_cat.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_rmsnorm_preserve_reduction.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/elementwise/test_row_scale.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_hisparse_slot_mapping.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_sconv_decode_metadata.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_moe_align_small_numel.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_moe_topk_sigmoid.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_shuffle_rows_with_scales.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_draft_decode_kv_indices_read_table.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/multimodal_gen/test_modelopt_fp8_scaled_mm.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_pos_enc.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_concat_mla.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_per_tensor_quant_fp8.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_decode_metadata_mapping.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_multi_ctas_counter.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_msa_v1_decode_plan.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_gelu_tanh_cat.py",
+          "elapsed": 4
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_lfm_short_conv.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_fused_moe_block_fp8_scales.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/sampling/test_apply_custom_logit_processor.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_eagle_utils.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_speculative_sampling.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_prefix_valid_fp8_pool.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_gptq_marlin.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_sconv_extend_metadata.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/minicpm_sala/test_minicpm_compress_k.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_cutedsl_gdn.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_metadata.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_activation.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/diffusion/test_head_gate.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/elementwise/test_row_sum.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_scatter_req_token_ids.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_hisparse.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_pd_dcp_gather.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_gemma4_qkv_norm.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_bind_execution.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_sconv_tracking.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/ops/memory/test_row_compact.py",
+          "elapsed": 4
+        },
+        {
+          "file": "test/registered/kernels/ops/memory/test_swa_page_free.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/memory/test_virtual_slot_binding.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_block_topk_triton.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_deepep_v2_expand_kernels.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_awq_marlin_moe_repack.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/ops/sampling/test_watermark_state.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_uniform_extend_translation.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/layers/moe/test_flashinfer_a2a_wide_ep.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/model_executor/runner_backend/test_cuda_graph_dedup.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_awq_dequantize.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_moe_fused_gate.py",
+          "elapsed": 23
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_gdn_decode_fused_proj_conv.py",
+          "elapsed": 4
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_fused_qk_rmsnorm_rope_gate.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/kv_canary/test_const_sync.py",
+          "elapsed": 4
+        },
+        {
+          "file": "test/registered/kernels/ops/mamba/test_fused_replay_state_indices.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_pad_expert_counts.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/elementwise/test_sigmoid_gate_mul.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/kernels/ops/lora/test_moe_lora_small_masked_prepare_paths.py",
+          "elapsed": 17
+        }
+      ]
+    },
+    {
+      "job_id": 124520627280,
+      "name": "call-jit-kernel-tests / jit-kernel-unit-test-1-gpu-small",
+      "suite": "call-jit-kernel-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:06:45Z",
+      "completed_at": "2026-10-31T11:11:19Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/kernels/ops/quantization/test_compressed_tensors_fp4_numeric.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_minimax_m31_hicache.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_sm120_topk_gate_small_m.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_gemma4_fused_routing.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_flash_attention_4_sm120.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/qsa/test_qsa_rocm.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_dspark_fused_kv_write.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_gather_spec_extras.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_dspark_markov_sample.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_spec_topk1.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_convrot_int8.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_pi05_modelopt_fp8_cuda.py",
+          "elapsed": 63
+        },
+        {
+          "file": "test/registered/kernels/ops/sampling/test_temperature_softmax.py",
+          "elapsed": 12
+        }
+      ]
+    },
+    {
+      "job_id": 124520627295,
+      "name": "call-jit-kernel-tests / jit-kernel-benchmark-test-1-gpu-large",
+      "suite": "call-jit-kernel-tests",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:40:19Z",
+      "completed_at": "2026-10-31T12:53:21Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/kernels/benchmark/activation/bench_activation.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/benchmark/activation/bench_bias_gelu.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_clamp_position.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_concat_mla.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_minimax_decode_topk.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_mla_kv_pack_quantize_fp8.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_rope.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_fused_qknorm_rope.py",
+          "elapsed": 33
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_dsv4_c2_decode.py",
+          "elapsed": 34
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_topk.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_fp4_index_logits.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_online_c128_mtp.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_dsa_triton_sparse_mla_prefill.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_sparse_mla_q8kv8_prefill_sm90.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/bench_minimax_qknorm_rope.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/attention/minicpm_sala/bench_get_block_table.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_qknorm_rope.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_scale_shift_4d.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_timestep_embedding.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_ltx25_decoder_rope.py",
+          "elapsed": 21
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_interleaved_rope_fp64.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_helios_qk_rope.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_qwen_image_modulation.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_qwen_image_norm_fp8_quant.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_varlen_segmented_pack.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_flux2_fp8_norm_quant.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_flux2_token_cat_fp8.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_vdn_delta_factors.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_cosmos3_edge_fusions.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_fp8_rowwise.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/diffusion/bench_residual_gate_add.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/embeddings/bench_vocab_parallel_embedding.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/benchmark/embeddings/bench_ngram_compute_decode.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/embeddings/bench_ngram_update_token_table.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/gemm/bench_fp8_blockwise_gemm.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/gemm/bench_tiny_gemm.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/benchmark/gemm/bench_dsv3_fused_a_gemm.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/benchmark/gemm/bench_bf16xfp32_router_gemm.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/benchmark/gemm/bench_convrot_int8.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/kv_canary/bench_write.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/benchmark/kvcache/bench_fused_fp8_qkv_kv_cache.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/kvcache/bench_minimax_store_kv_index.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/kvcache/bench_store_cache.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/benchmark/kvcache/bench_hisparse.py",
+          "elapsed": 42
+        },
+        {
+          "file": "test/registered/kernels/benchmark/kvcache/bench_hicache.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/benchmark/kvcache/bench_hisparse_spec.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/benchmark/kvcache/bench_set_mla_kv_buffer.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/layernorm/bench_fused_eh_norm.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/layernorm/bench_qknorm.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/benchmark/layernorm/bench_norm.py",
+          "elapsed": 29
+        },
+        {
+          "file": "test/registered/kernels/benchmark/moe/bench_moe_topk_softmax.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/benchmark/moe/bench_shuffle_rows_with_scales.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/benchmark/moe/bench_fp8_per_token_to_per_tensor_quant.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/benchmark/moe/bench_moe_fused_gate.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/benchmark/moe/bench_post_reorder_deepgemm.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/quantization/bench_per_tensor_quant_fp8.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/quantization/bench_hadamard.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/benchmark/quantization/bench_per_token_group_quant_8bit_v2.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/quantization/bench_per_token_quant_fp8.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/quantization/bench_awq_dequantize.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/quantization/bench_per_token_group_quant_masked.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/quantization/bench_per_token_group_quant.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/kernels/benchmark/speculative/bench_spec_topk1.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/benchmark/elementwise/bench_add_constant.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/kernels/benchmark/mamba/bench_causal_conv1d.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/kernels/benchmark/sampling/bench_renorm.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/benchmark/memory/bench_small_field_copy.py",
+          "elapsed": 9
+        }
+      ]
+    },
+    {
+      "job_id": 124520627301,
+      "name": "base-a-test-1-gpu-small / base-a-test-1-gpu-small (0)",
+      "suite": "base-a-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:10:13Z",
+      "completed_at": "2026-10-31T11:17:07Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/core/test_basic_sanity_eagle3.py",
+          "elapsed": 126
+        },
+        {
+          "file": "test/registered/core/test_basic_sanity.py",
+          "elapsed": 116
+        },
+        {
+          "file": "test/registered/core/test_basic_sanity_dflash.py",
+          "elapsed": 103
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_extend_init_contract.py",
+          "elapsed": 12
+        }
+      ]
+    },
+    {
+      "job_id": 124520627345,
+      "name": "base-b-test-2-gpu-large / base-b-test-2-gpu-large (1)",
+      "suite": "base-b-test-2-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:19:45Z",
+      "completed_at": "2026-10-31T11:40:13Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/radix_cache/unified_radix_tree/test_unified_radix_cache_kl_full.py",
+          "elapsed": 385
+        },
+        {
+          "file": "test/registered/hicache/test_hicache_storage_file_backend.py",
+          "elapsed": 311
+        },
+        {
+          "file": "test/registered/pp/test_pp_gemma4.py",
+          "elapsed": 174
+        },
+        {
+          "file": "test/registered/cuda_graph/breakable/test_bcg_with_speculative_decoding.py",
+          "elapsed": 91
+        },
+        {
+          "file": "test/registered/dp_engine/test_data_parallelism.py",
+          "elapsed": 72
+        },
+        {
+          "file": "test/registered/attention/test_gemma4_swa_triton_oob_regression.py",
+          "elapsed": 72
+        },
+        {
+          "file": "test/registered/core/test_no_extra_forked_cuda_context.py",
+          "elapsed": 54
+        },
+        {
+          "file": "test/registered/e2e/layers/test_logprob_memory_distributed.py",
+          "elapsed": 15
+        }
+      ]
+    },
+    {
+      "job_id": 124520627348,
+      "name": "base-c-test-8-gpu-h200 / base-c-test-8-gpu-h200 (0)",
+      "suite": "base-c-test-8-gpu-h200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:15:04Z",
+      "completed_at": "2026-10-31T11:19:32Z",
+      "labels": [
+        "8-gpu-h200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/lora/test_lora_tp.py",
+          "elapsed": 194
+        }
+      ]
+    },
+    {
+      "job_id": 124520627351,
+      "name": "base-c-test-4-gpu-h100 / base-c-test-4-gpu-h100 (1)",
+      "suite": "base-c-test-4-gpu-h100",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:13:47Z",
+      "completed_at": "2026-10-31T11:33:50Z",
+      "labels": [
+        "4-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_qwen3_next_models_mtp.py",
+          "elapsed": 347
+        },
+        {
+          "file": "test/registered/pp/test_pp_single_node.py",
+          "elapsed": 303
+        },
+        {
+          "file": "test/registered/vlm/test_vlm_tp4.py",
+          "elapsed": 136
+        },
+        {
+          "file": "test/registered/spec/eagle/test_dp_spec_prefill_coordination.py",
+          "elapsed": 91
+        },
+        {
+          "file": "test/registered/spec/eagle/test_eagle_dp_attention.py",
+          "elapsed": 101
+        },
+        {
+          "file": "test/registered/lora/test_lora_qwen3_vl_30b_a3b_instruct_logprob_diff.py",
+          "elapsed": 91
+        },
+        {
+          "file": "test/registered/spec/dspark/test_dspark_dp_spec_prefill_coordination.py",
+          "elapsed": 70
+        }
+      ]
+    },
+    {
+      "job_id": 124520627357,
+      "name": "base-b-test-1-gpu-large / base-b-test-1-gpu-large (1)",
+      "suite": "base-b-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T13:34:19Z",
+      "completed_at": "2026-10-31T14:12:20Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/hicache/test_hicache_variants.py",
+          "elapsed": 535
+        },
+        {
+          "file": "test/registered/core/test_srt_engine.py",
+          "elapsed": 259
+        },
+        {
+          "file": "test/registered/cuda_graph/breakable/test_bcg_with_lora.py",
+          "elapsed": 180
+        },
+        {
+          "file": "test/registered/spec/uno/test_uno.py",
+          "elapsed": 162
+        },
+        {
+          "file": "test/registered/spec/eagle/test_adaptive_speculative.py",
+          "elapsed": 137
+        },
+        {
+          "file": "test/registered/dllm/test_dllm_batching_fdfo.py",
+          "elapsed": 128
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_trtllm_mha.py",
+          "elapsed": 128
+        },
+        {
+          "file": "test/registered/reasoning/test_reasoning.py",
+          "elapsed": 107
+        },
+        {
+          "file": "test/registered/vlm/test_token_id_retokenize_e2e.py",
+          "elapsed": 99
+        },
+        {
+          "file": "test/registered/spec/test_spec_standalone.py",
+          "elapsed": 83
+        },
+        {
+          "file": "test/registered/e2e/radix_cache/test_mamba_extra_buffer_spec_grammar.py",
+          "elapsed": 70
+        },
+        {
+          "file": "test/registered/openai_server/function_call/test_anthropic_tool_use.py",
+          "elapsed": 53
+        },
+        {
+          "file": "test/registered/lora/test_lora_moe_vllm_sgl_logprob_diff.py",
+          "elapsed": 49
+        },
+        {
+          "file": "test/registered/attention/test_kda_kernels.py",
+          "elapsed": 38
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_flex_attention.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_flashinfer.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/lora/test_fused_moe_lora_kernel.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/attention/unittests/kda/test_triton.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/attention/unittests/swa/test_triton.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/layers/test_layernorm_fusion.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_tbo.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/hybrid_linear/test_verify_buffer_fixup_hook.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/moe/test_triton_fused_moe.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_linear_replayssm_decode.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dcp_lse_combine.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/moe/test_fused_append_shared_experts_top6.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_swa_unittest.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/prefill_only/test_serving_rerank.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/unit/spec/test_resolve_swa_kv_pool.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/attention/test_gdn_noncontiguous_stride.py",
+          "elapsed": 9
+        }
+      ]
+    },
+    {
+      "job_id": 124520627361,
+      "name": "base-c-test-8-gpu-h20 / base-c-test-8-gpu-h20 (0)",
+      "suite": "base-c-test-8-gpu-h20",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:13:45Z",
+      "completed_at": "2026-10-31T12:24:43Z",
+      "labels": [
+        "8-gpu-h20"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_different_tp.py",
+          "elapsed": 358
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_decode_radix_cache.py",
+          "elapsed": 149
+        }
+      ]
+    },
+    {
+      "job_id": 124520627369,
+      "name": "base-b-test-2-gpu-large / base-b-test-2-gpu-large (2)",
+      "suite": "base-b-test-2-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:21:35Z",
+      "completed_at": "2026-10-31T11:43:42Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/hicache/test_hicache_storage_mooncake_backend.py",
+          "elapsed": 414
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_optimistic_prefill.py",
+          "elapsed": 316
+        },
+        {
+          "file": "test/registered/scheduler/test_load_snapshot_server.py",
+          "elapsed": 217
+        },
+        {
+          "file": "test/registered/e2e/speculative/test_dflash_domino.py",
+          "elapsed": 120
+        },
+        {
+          "file": "test/registered/spec/eagle/test_eagle_reject_sampling.py",
+          "elapsed": 80
+        },
+        {
+          "file": "test/registered/e2e/models/test_layernorm_sp.py",
+          "elapsed": 66
+        },
+        {
+          "file": "test/registered/e2e/rust_server/test_mm_transport_1node_tp2_shm.py",
+          "elapsed": 49
+        },
+        {
+          "file": "test/registered/rl/test_patch_torch.py",
+          "elapsed": 13
+        }
+      ]
+    },
+    {
+      "job_id": 124520627370,
+      "name": "base-b-test-2-gpu-large / base-b-test-2-gpu-large (3)",
+      "suite": "base-b-test-2-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:21:39Z",
+      "completed_at": "2026-10-31T11:41:14Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/dp_attn/test_dp_attention.py",
+          "elapsed": 263
+        },
+        {
+          "file": "test/registered/tokenizer/test_multi_tokenizer.py",
+          "elapsed": 309
+        },
+        {
+          "file": "test/registered/sampling/test_sampling_mask.py",
+          "elapsed": 205
+        },
+        {
+          "file": "test/registered/dp_attn/test_dp_attention_bcg_kl.py",
+          "elapsed": 171
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_rust_server.py",
+          "elapsed": 75
+        },
+        {
+          "file": "test/registered/e2e/speculative/test_eagle_reject_sampling_deterministic.py",
+          "elapsed": 72
+        },
+        {
+          "file": "test/registered/backends/test_flashinfer_fusion_preflight.py",
+          "elapsed": 28
+        }
+      ]
+    },
+    {
+      "job_id": 124520627384,
+      "name": "base-b-test-1-gpu-large / base-b-test-1-gpu-large (2)",
+      "suite": "base-b-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T13:37:25Z",
+      "completed_at": "2026-10-31T14:11:45Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/lora/test_lora_update.py",
+          "elapsed": 385
+        },
+        {
+          "file": "test/registered/spec/eagle/test_spec_eagle_fa3.py",
+          "elapsed": 267
+        },
+        {
+          "file": "test/registered/spec/test_spec_mixed_chunk.py",
+          "elapsed": 184
+        },
+        {
+          "file": "test/registered/vlm/test_vision_chunked_prefill.py",
+          "elapsed": 134
+        },
+        {
+          "file": "test/registered/e2e/quantization/test_modelopt_fp8.py",
+          "elapsed": 151
+        },
+        {
+          "file": "test/registered/spec/eagle/test_spec_eagle_parity.py",
+          "elapsed": 134
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_flashinfer.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/e2e/hicache/test_hicache_storage_lora.py",
+          "elapsed": 130
+        },
+        {
+          "file": "test/registered/core/test_basic_sanity_dspark.py",
+          "elapsed": 92
+        },
+        {
+          "file": "test/registered/lora/test_lora_spec_decoding.py",
+          "elapsed": 83
+        },
+        {
+          "file": "test/registered/mem_cache/test_post_capture_kv_sizing.py",
+          "elapsed": 68
+        },
+        {
+          "file": "test/registered/vlm/test_unlimited_ocr_server.py",
+          "elapsed": 58
+        },
+        {
+          "file": "test/registered/e2e/rust_server/test_mm_transport_1node_cpu.py",
+          "elapsed": 48
+        },
+        {
+          "file": "test/registered/openai_server/validation/test_request_length_validation.py",
+          "elapsed": 51
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_fa4.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_gdn_cutedsl_ring_verify.py",
+          "elapsed": 19
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsv32_indexer_fusion.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/moe/test_fused_moe.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/attention/unittests/mla/test_triton.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_hopper_bf16_gemv.py",
+          "elapsed": 6
+        },
+        {
+          "file": "test/registered/moe/test_topk_renormalize_degenerate.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_gdn_replayssm_spec_fold.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/unittests/mamba/test_mamba2.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/moe/test_triton_moe_channel_fp8_kernel.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/hybrid_linear/test_kda_fused_accept_indices.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/quantization/test_fp8_kernel.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/layers/attention/test_flashattention_return_lse.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/test_gdn_prefill_layout.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_nvfp4_marlin.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/unit/mem_cache/pool_host/test_kvcacheio_asymmetric.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/moe/test_hpc_ops_moe.py",
+          "elapsed": 9
+        }
+      ]
+    },
+    {
+      "job_id": 124520627386,
+      "name": "base-b-test-2-gpu-large / base-b-test-2-gpu-large (4)",
+      "suite": "base-b-test-2-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:17:31Z",
+      "completed_at": "2026-10-31T11:39:31Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_decode_offload.py",
+          "elapsed": 370
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_unified_memory.py",
+          "elapsed": 289
+        },
+        {
+          "file": "test/registered/hicache/test_hicache_storage_runtime_attach_detach.py",
+          "elapsed": 208
+        },
+        {
+          "file": "test/registered/hicache/test_hicache_storage_3fs_backend.py",
+          "elapsed": 228
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_chunked_prefill_abort.py",
+          "elapsed": 79
+        },
+        {
+          "file": "test/registered/observability/test_tracing_disaggregation.py",
+          "elapsed": 63
+        },
+        {
+          "file": "test/registered/eplb/test_lplb_distributed.py",
+          "elapsed": 20
+        },
+        {
+          "file": "test/registered/unit/test_cuda_vmm_utils.py",
+          "elapsed": 13
+        }
+      ]
+    },
+    {
+      "job_id": 124520627392,
+      "name": "base-b-test-1-gpu-large / base-b-test-1-gpu-large (3)",
+      "suite": "base-b-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T13:51:50Z",
+      "completed_at": "2026-10-31T14:26:01Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/sessions/test_streaming_session.py",
+          "elapsed": 320
+        },
+        {
+          "file": "test/registered/e2e/moe/test_paged_experts.py",
+          "elapsed": 254
+        },
+        {
+          "file": "test/registered/vlm/test_vlm_input_format.py",
+          "elapsed": 191
+        },
+        {
+          "file": "test/registered/e2e/quantization/test_awq.py",
+          "elapsed": 196
+        },
+        {
+          "file": "test/registered/e2e/models/test_inkling.py",
+          "elapsed": 140
+        },
+        {
+          "file": "test/registered/e2e/models/test_inkling_unified.py",
+          "elapsed": 119
+        },
+        {
+          "file": "test/registered/vlm/test_rust_native_mm_mmmu.py",
+          "elapsed": 114
+        },
+        {
+          "file": "test/registered/spec/eagle/test_eagle_constrained_decoding.py",
+          "elapsed": 99
+        },
+        {
+          "file": "test/registered/cuda_graph/breakable/test_breakable_cuda_graph.py",
+          "elapsed": 78
+        },
+        {
+          "file": "test/registered/attention/test_unified_memory_deterministic.py",
+          "elapsed": 73
+        },
+        {
+          "file": "test/registered/openai_server/validation/test_large_max_new_tokens.py",
+          "elapsed": 61
+        },
+        {
+          "file": "test/registered/vlm/test_paddleocr_vl_server.py",
+          "elapsed": 54
+        },
+        {
+          "file": "test/registered/lora/test_lora_overlap_loading.py",
+          "elapsed": 50
+        },
+        {
+          "file": "test/registered/vlm/test_rust_native_mm_e2e.py",
+          "elapsed": 41
+        },
+        {
+          "file": "test/registered/moe/test_topk_padded_region.py",
+          "elapsed": 24
+        },
+        {
+          "file": "test/registered/unit/models/test_kimi_k3_bfa_overlap.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_hicache.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/test_triton_attention_kernels.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_torch_native.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/dsa/test_dsa.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/attention/unittests/lightning/test_triton.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_int8_linear_methods.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/mla/test_flashinfer.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/test_normal_decode_set_metadata.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_torch_native.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/unittests/swa/test_torch_native.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/moe/test_fused_append_shared_experts.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_fp8_utils.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/kvcache/test_hicache_page_first_write_back.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_vit_cuda_graph_metadata_cuda.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_flash_mla_backends.py",
+          "elapsed": 8
+        }
+      ]
+    },
+    {
+      "job_id": 124520627393,
+      "name": "base-c-test-4-gpu-h100 / base-c-test-4-gpu-h100 (0)",
+      "suite": "base-c-test-4-gpu-h100",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:19:40Z",
+      "completed_at": "2026-10-31T11:37:11Z",
+      "labels": [
+        "4-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_qwen3_next_models.py",
+          "elapsed": 281
+        },
+        {
+          "file": "test/registered/disaggregation/test_epd_disaggregation.py",
+          "elapsed": 174
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_kv_checksum.py",
+          "elapsed": 140
+        },
+        {
+          "file": "test/registered/hicache/test_pp_with_hicache.py",
+          "elapsed": 169
+        },
+        {
+          "file": "test/registered/spec/eagle/test_dp_spec_prefill_coordination_mixed.py",
+          "elapsed": 86
+        },
+        {
+          "file": "test/registered/lora/test_lora_qwen3_5_35b_a3b_logprob_diff.py",
+          "elapsed": 81
+        },
+        {
+          "file": "test/registered/e2e/models/test_gemma4_fp8_per_expert_loading.py",
+          "elapsed": 64
+        }
+      ]
+    },
+    {
+      "job_id": 124520627396,
+      "name": "base-b-test-1-gpu-small / base-b-test-1-gpu-small (1)",
+      "suite": "base-b-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:08:51Z",
+      "completed_at": "2026-10-31T11:30:01Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/spec/eagle/test_spec_eagle_topk.py",
+          "elapsed": 817
+        },
+        {
+          "file": "test/registered/prefill_only/test_openai_embedding.py",
+          "elapsed": 96
+        },
+        {
+          "file": "test/registered/openai_server/validation/test_matched_stop.py",
+          "elapsed": 65
+        },
+        {
+          "file": "test/registered/sampling/test_original_logprobs.py",
+          "elapsed": 53
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_radix_cache_bench.py",
+          "elapsed": 26
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_gguf_inactive_routes.py",
+          "elapsed": 19
+        },
+        {
+          "file": "test/registered/unit/layers/test_mamba_track_states_triton.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/embeddings/test_vocab_parallel_embedding.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/unit/spec/test_dspark_accept_tail.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_triton_scaled_mm.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/layers/attention/test_flashattention_graph_metadata.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_mamba_unittest.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/spec/test_eagle_seeded_coins.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/spec/dspark/test_ragged_verify_backend_capability.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/managers/test_io_struct.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_handout_zeroing.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/utils/test_custom_op_eager_direct.py",
+          "elapsed": 8
+        }
+      ]
+    },
+    {
+      "job_id": 124520627401,
+      "name": "base-c-test-8-gpu-b300 / base-c-test-8-gpu-b300 (0)",
+      "suite": "base-c-test-8-gpu-b300",
+      "backend": "cuda",
+      "started_at": "2026-10-31T14:08:28Z",
+      "completed_at": "2026-10-31T14:39:54Z",
+      "labels": [
+        "8-gpu-b300"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_kimi_k3_b300.py",
+          "elapsed": 1126
+        },
+        {
+          "file": "test/registered/e2e/models/test_muse_spark_12_b300_pd.py",
+          "elapsed": 630
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_kda_prefill.py",
+          "elapsed": 36
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_flash_attention_4_sm103.py",
+          "elapsed": 21
+        }
+      ]
+    },
+    {
+      "job_id": 124520627404,
+      "name": "base-b-test-1-gpu-large / base-b-test-1-gpu-large (0)",
+      "suite": "base-b-test-1-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T13:55:57Z",
+      "completed_at": "2026-10-31T14:32:43Z",
+      "labels": [
+        "1-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/vlm/test_vision_openai_server_a.py",
+          "elapsed": 605
+        },
+        {
+          "file": "test/registered/attention/test_deterministic.py",
+          "elapsed": 253
+        },
+        {
+          "file": "test/registered/openai_server/function_call/test_openai_function_calling.py",
+          "elapsed": 195
+        },
+        {
+          "file": "test/registered/dllm/test_dllm_fdfo_joint_threshold.py",
+          "elapsed": 123
+        },
+        {
+          "file": "test/registered/spec/test_frozen_kv_mtp.py",
+          "elapsed": 115
+        },
+        {
+          "file": "test/registered/moe/test_torch_compile_moe.py",
+          "elapsed": 125
+        },
+        {
+          "file": "test/registered/mla/test_mla_fp8.py",
+          "elapsed": 106
+        },
+        {
+          "file": "test/registered/lora/test_multi_lora_backend.py",
+          "elapsed": 92
+        },
+        {
+          "file": "test/registered/spec/test_spec_ngram.py",
+          "elapsed": 75
+        },
+        {
+          "file": "test/registered/attention/test_gemma4_unified_swa_virtual_ids.py",
+          "elapsed": 64
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_cuda_ipc_transport.py",
+          "elapsed": 56
+        },
+        {
+          "file": "test/registered/e2e/entrypoints/test_engine_multi_tokenizer.py",
+          "elapsed": 50
+        },
+        {
+          "file": "test/registered/e2e/rust_server/test_mm_transport_1node_cuda_ipc.py",
+          "elapsed": 48
+        },
+        {
+          "file": "test/registered/model_loading/test_utils_update_weights.py",
+          "elapsed": 38
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_triton.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_fp8_blockwise_linear_backends.py",
+          "elapsed": 19
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_fa3.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsa_indexer.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/kernels/ops/layernorm/test_mhc_kernels.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/attention/unittests/dsv4/test_deepseek_v4.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_triton.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/unittests/mla/test_flashmla.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_hybrid_attn.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/swa/test_flashinfer.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/moe/test_fused_append_remap_per_rank_shared_slots.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/layers/moe/test_deepep_v2_masked_slab.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/hybrid_linear/test_flashinfer_mla_chunk_metadata.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_mxfp4_sm90_cutlass.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_dsv4_indexer_quant.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/attention/test_chunk_gated_delta_rule.py",
+          "elapsed": 7
+        },
+        {
+          "file": "test/registered/attention/test_gdn_fused_split_head_ratios.py",
+          "elapsed": 6
+        }
+      ]
+    },
+    {
+      "job_id": 124520627419,
+      "name": "base-b-test-1-gpu-small / base-b-test-1-gpu-small (8)",
+      "suite": "base-b-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:08:26Z",
+      "completed_at": "2026-10-31T11:28:15Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/kernels/ops/moe/test_marlin_moe.py",
+          "elapsed": 136
+        },
+        {
+          "file": "test/registered/core/test_srt_endpoint.py",
+          "elapsed": 260
+        },
+        {
+          "file": "test/registered/e2e/quantization/test_gguf.py",
+          "elapsed": 170
+        },
+        {
+          "file": "test/registered/prefill_only/test_multi_item_scoring.py",
+          "elapsed": 139
+        },
+        {
+          "file": "test/registered/openai_server/basic/test_serving_transcription.py",
+          "elapsed": 118
+        },
+        {
+          "file": "test/registered/radix_cache/test_radix_cache_hit.py",
+          "elapsed": 74
+        },
+        {
+          "file": "test/registered/observability/test_priority_metrics.py",
+          "elapsed": 55
+        },
+        {
+          "file": "test/registered/model_loading/test_external_models.py",
+          "elapsed": 31
+        },
+        {
+          "file": "test/registered/cuda_graph/breakable/test_empty_view_capture.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_fp8_blockwise_linear_backends.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/e2e/pp/test_pp_spec_embed_scan.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_kv_storage_lifecycle.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_sm120_paged_mqa_logits.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/spec/dspark/test_dspark_stacked_ctx_kv_parity.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_mamba_path_state_cap.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/spec/test_eagle_post_verify_graphs.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/model_loading/test_cpu_offloader.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/managers/test_hisparse_unit.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_minimax_sparse_pool_host_unit.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_mla_block_table.py",
+          "elapsed": 7
+        }
+      ]
+    },
+    {
+      "job_id": 124520627420,
+      "name": "base-b-test-1-gpu-small / base-b-test-1-gpu-small (5)",
+      "suite": "base-b-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:14:07Z",
+      "completed_at": "2026-10-31T11:34:56Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/scripted_runtime/test_scripted_runtime_core.py",
+          "elapsed": 311
+        },
+        {
+          "file": "test/registered/spec/eagle/test_spec_eagle_page.py",
+          "elapsed": 190
+        },
+        {
+          "file": "test/registered/observability/test_metrics.py",
+          "elapsed": 146
+        },
+        {
+          "file": "test/registered/prefill_only/test_pooled_hidden_states.py",
+          "elapsed": 113
+        },
+        {
+          "file": "test/registered/sampling/test_pytorch_sampling_backend.py",
+          "elapsed": 110
+        },
+        {
+          "file": "test/registered/unit/mem_cache/unified_radix_cache/test_unified_radix_cache_rust.py",
+          "elapsed": 79
+        },
+        {
+          "file": "test/registered/input_embedding/test_input_embeds_chunked.py",
+          "elapsed": 58
+        },
+        {
+          "file": "test/registered/observability/test_encoder_server_metrics.py",
+          "elapsed": 33
+        },
+        {
+          "file": "test/registered/prefill_only/test_multi_item_scoring_metadata.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/mem_cache/unified_radix_cache/test_unified_radix_cache_core.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/lora/test_moe_lora_info.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/unit/utils/test_weight_checker.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_eplb_map_record.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/attention/test_minimax_sparse_nvfp4_idle.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_post_capture_sizing.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/speculative/test_dspark_engram_commit_in_graph.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_unquant_apply_with_addend.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/spec/test_dflash_extra_buffer_lazy.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/layers/mamba/test_mamba_ssm_ssd.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_fp8_blockwise_gemm.py",
+          "elapsed": 9
+        }
+      ]
+    },
+    {
+      "job_id": 124520627422,
+      "name": "base-c-test-8-gpu-h20 / base-c-test-8-gpu-h20 (1)",
+      "suite": "base-c-test-8-gpu-h20",
+      "backend": "cuda",
+      "started_at": "2026-10-31T12:50:44Z",
+      "completed_at": "2026-10-31T13:03:17Z",
+      "labels": [
+        "8-gpu-h20"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_nixl.py",
+          "elapsed": 341
+        },
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_pp.py",
+          "elapsed": 256
+        }
+      ]
+    },
+    {
+      "job_id": 124520627424,
+      "name": "base-b-test-4-gpu-b200 / base-b-test-4-gpu-b200 (0)",
+      "suite": "base-b-test-4-gpu-b200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:34:12Z",
+      "completed_at": "2026-10-31T11:51:24Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/cuda_graph/full_prefill/test_full_cuda_graph_prefill.py",
+          "elapsed": 259
+        },
+        {
+          "file": "test/registered/attention/test_flash_attention_4.py",
+          "elapsed": 215
+        },
+        {
+          "file": "test/registered/attention/unittests/kda/test_triton.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_flashinfer.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_fa4.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_flex_attention.py",
+          "elapsed": 19
+        },
+        {
+          "file": "test/registered/attention/unittests/mla/test_triton.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_triton.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/e2e/cp/test_cp_decode_attn_tp.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_flashinfer.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_trtllm_mha.py",
+          "elapsed": 17
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_triton.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_fp8_blockwise_linear_backends.py",
+          "elapsed": 21
+        },
+        {
+          "file": "test/registered/attention/test_trtllm_mha_graph_metadata.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/unittests/dsv4/test_deepseek_v4.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_dense_swiglu_fp8.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/test_dflash_mla_backends.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_nvfp4_moe_backends.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/attention/unittests/dsa/test_dsa.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/unittests/mamba/test_mamba2.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/unittests/swa/test_flashinfer.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/unittests/swa/test_triton.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_tbo.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/unittests/gdn/test_torch_native.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/mla/test_flashinfer.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/unittests/mla/test_flashmla.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/dcp/test_dsa_dcp_attention.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/dcp/test_trtllm_mla_family_dcp_metadata.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/spec/dspark/test_dspark_minimax_mxfp8_stacked_kv.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_mxfp4_sm100_trtllm_gen.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/unit/layers/test_dual_gemm.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/test_trtllm_mha_encoder_only.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/test_trtllm_mha_stride_parity.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_hybrid_attn.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/unittests/dense/test_torch_native.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/attention/unittests/lightning/test_triton.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/unittests/swa/test_torch_native.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_nvfp4_linear_backends.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/attention/test_trtllm_mla_stride_parity.py",
+          "elapsed": 10
+        }
+      ]
+    },
+    {
+      "job_id": 124520627426,
+      "name": "base-b-test-1-gpu-small / base-b-test-1-gpu-small (0)",
+      "suite": "base-b-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:13:01Z",
+      "completed_at": "2026-10-31T11:34:08Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/spec/dflash/test_dflash.py",
+          "elapsed": 871
+        },
+        {
+          "file": "test/registered/scheduler/test_retract_decode_logprob.py",
+          "elapsed": 76
+        },
+        {
+          "file": "test/registered/model_loading/test_weight_loader_v2_e2e.py",
+          "elapsed": 60
+        },
+        {
+          "file": "test/registered/core/test_engine_child_pids.py",
+          "elapsed": 35
+        },
+        {
+          "file": "test/registered/unit/server_args/test_resolution_is_reproducible.py",
+          "elapsed": 23
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_int8_kernel.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_cache_linker.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/rl/test_fp32_lm_head.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/attention/test_verify_splitkv.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/kernels/ops/speculative/test_boundary_kv_fix_kernels.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/attention/test_verify_widening_is_wired.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/unified_radix_cache/test_unified_radix_cache_insert_walk.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/utils/test_common.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/test_mamba_state_scatter_triton.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/utils/test_weight_checker_comparator.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/test_quantization_post_load.py",
+          "elapsed": 10
+        }
+      ]
+    },
+    {
+      "job_id": 124520627432,
+      "name": "base-b-test-2-gpu-large / base-b-test-2-gpu-large (0)",
+      "suite": "base-b-test-2-gpu-large",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:25:28Z",
+      "completed_at": "2026-10-31T11:46:02Z",
+      "labels": [
+        "2-gpu-h100"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/disaggregation/test_disaggregation_basic.py",
+          "elapsed": 595
+        },
+        {
+          "file": "test/registered/e2e/models/test_kimi_linear_models.py",
+          "elapsed": 263
+        },
+        {
+          "file": "test/registered/e2e/disaggregation/test_disaggregation_lora.py",
+          "elapsed": 161
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_page_interleave_gather_multi_gpu.py",
+          "elapsed": 72
+        },
+        {
+          "file": "test/registered/e2e/rust_server/test_mm_transport_2node_cpu.py",
+          "elapsed": 58
+        },
+        {
+          "file": "test/registered/layers/mamba/test_mamba2_mixer.py",
+          "elapsed": 33
+        }
+      ]
+    },
+    {
+      "job_id": 124520627442,
+      "name": "base-b-test-1-gpu-small / base-b-test-1-gpu-small (3)",
+      "suite": "base-b-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:18:33Z",
+      "completed_at": "2026-10-31T11:41:06Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/spec/eagle/test_spec_eagle.py",
+          "elapsed": 381
+        },
+        {
+          "file": "test/registered/prefill_only/test_reward_models.py",
+          "elapsed": 149
+        },
+        {
+          "file": "test/registered/e2e/openai_server/test_watermark.py",
+          "elapsed": 145
+        },
+        {
+          "file": "test/registered/openai_server/basic/test_http2_server.py",
+          "elapsed": 110
+        },
+        {
+          "file": "test/registered/scheduler/test_async_d2h_copy_worker_server.py",
+          "elapsed": 96
+        },
+        {
+          "file": "test/registered/core/test_request_queue_validation.py",
+          "elapsed": 65
+        },
+        {
+          "file": "test/registered/unit/mem_cache/unified_radix_cache/test_unified_radix_cache_storage.py",
+          "elapsed": 45
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_rust_unified_radix_cache_bench.py",
+          "elapsed": 25
+        },
+        {
+          "file": "test/registered/unit/test_import_without_flashinfer.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/attention/test_create_kvindices.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/disaggregation/test_decode_prealloc_no_host_sync.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/hicache/test_dsa_host_release.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/moe/test_zero_experts.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/test_joint_schema_head.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/model_loader/test_modelopt_loader.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_nvfp4_marlin.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/layers/test_linear_parallel_groups.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/spec/test_move_accept_tokens_targets.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_kv_layer_router.py",
+          "elapsed": 12
+        }
+      ]
+    },
+    {
+      "job_id": 124520627449,
+      "name": "base-b-test-1-gpu-small / base-b-test-1-gpu-small (7)",
+      "suite": "base-b-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:11:20Z",
+      "completed_at": "2026-10-31T11:32:04Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/spec/eagle/test_spec_eagle_topk_page.py",
+          "elapsed": 280
+        },
+        {
+          "file": "test/registered/lora/test_lora_hf_sgl_logprob_diff.py",
+          "elapsed": 209
+        },
+        {
+          "file": "test/registered/constrained_decoding/test_constrained_decoding.py",
+          "elapsed": 152
+        },
+        {
+          "file": "test/registered/hicache/test_hicache_storage.py",
+          "elapsed": 126
+        },
+        {
+          "file": "test/registered/prefill_only/test_score_engine.py",
+          "elapsed": 98
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_mxfp4_sm120_cutlass.py",
+          "elapsed": 75
+        },
+        {
+          "file": "test/registered/sampling/test_penalty.py",
+          "elapsed": 61
+        },
+        {
+          "file": "test/registered/unit/mem_cache/unified_radix_cache/test_unified_radix_cache_hicache.py",
+          "elapsed": 31
+        },
+        {
+          "file": "test/registered/cuda_graph/breakable/test_deepseek_dual_stream_outputs.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/sampling/test_deterministic_gumbel_u1.py",
+          "elapsed": 16
+        },
+        {
+          "file": "test/registered/e2e/model_executor/test_decoder_tail_moe_bound.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/managers/test_async_d2h_copy_worker.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/attention/test_flashinfer_window_verify.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/spec/dspark/test_dspark_kernel_parity.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_kv_layer_access.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/spec/test_dspark_deferred_commit.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/ops/sampling/test_lm_head_output_dtype.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/lora/test_lora_spec_verify_batch_info.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_dsa_pool_host_unit.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/unit/kernels/test_device_guard.py",
+          "elapsed": 7
+        }
+      ]
+    },
+    {
+      "job_id": 124520627458,
+      "name": "base-b-test-1-gpu-small / base-b-test-1-gpu-small (2)",
+      "suite": "base-b-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:18:43Z",
+      "completed_at": "2026-10-31T11:40:55Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/scheduler/test_scheduler_control.py",
+          "elapsed": 421
+        },
+        {
+          "file": "test/registered/openai_server/features/test_openai_server_hidden_states.py",
+          "elapsed": 170
+        },
+        {
+          "file": "test/registered/radix_cache/test_radix_attention.py",
+          "elapsed": 140
+        },
+        {
+          "file": "test/registered/core/test_rust_server_graceful_shutdown.py",
+          "elapsed": 62
+        },
+        {
+          "file": "test/registered/openai_server/basic/test_openai_completion_rust.py",
+          "elapsed": 93
+        },
+        {
+          "file": "test/registered/e2e/models/test_transformers_backend_eval.py",
+          "elapsed": 63
+        },
+        {
+          "file": "test/registered/core/test_hidden_states.py",
+          "elapsed": 34
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_decode_retraction_backup.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/unit/mem_cache/unified_radix_cache/test_unified_radix_cache_load_back.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/unit/speculative/test_dspark_sampling_accept_graph.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/unit/batch_invariant_ops/test_fused_add_rms_norm_batch_invariant.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/debug_utils/test_tensor_dump_forward_hook.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/layers/mamba/test_mamba_slot_fused.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_compressed_tensors_wna16_moe_reload.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/mem_cache/unified_radix_cache/test_unified_radix_cache_kv_events.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/kernels/benchmark/gemm/bench_kda_fp8_skinny_gemm.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/layers/test_flashinfer_comm_fusion.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/spec/test_dspark_step_inputs_once.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/spec/utils/test_build_eagle_tree.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/unit/layers/test_kda_decode_mtp_slot_stride.py",
+          "elapsed": 6
+        }
+      ]
+    },
+    {
+      "job_id": 124520627467,
+      "name": "base-b-test-1-gpu-small / base-b-test-1-gpu-small (6)",
+      "suite": "base-b-test-1-gpu-small",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:18:21Z",
+      "completed_at": "2026-10-31T11:42:18Z",
+      "labels": [
+        "1-gpu-5090"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/scheduler/test_retract_decode.py",
+          "elapsed": 282
+        },
+        {
+          "file": "test/registered/e2e/models/test_transformers_models.py",
+          "elapsed": 202
+        },
+        {
+          "file": "test/registered/scheduler/test_mixed_chunked_prefill.py",
+          "elapsed": 173
+        },
+        {
+          "file": "test/registered/tokenizer/test_skip_tokenizer_init.py",
+          "elapsed": 122
+        },
+        {
+          "file": "test/registered/prefill_only/test_score_api.py",
+          "elapsed": 96
+        },
+        {
+          "file": "test/registered/profiling/test_start_profile.py",
+          "elapsed": 113
+        },
+        {
+          "file": "test/registered/model_loading/test_startup_weight_load.py",
+          "elapsed": 58
+        },
+        {
+          "file": "test/registered/kernels/ops/moe/test_block_int8.py",
+          "elapsed": 33
+        },
+        {
+          "file": "test/registered/unit/model_loader/test_quantized_reload_scale_layout.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/unit/model_executor/runner_utils/test_graph_pool_borrow.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/moe/test_triton_moe_padding.py",
+          "elapsed": 14
+        },
+        {
+          "file": "test/registered/attention/test_trtllm_mha_page_table.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/hicache/test_k_only_host_release.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/spec/dspark/test_dspark_draft_graph.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_hicache_nixl_storage.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/unit/spec/test_dflash_overlap_hostsync.py",
+          "elapsed": 13
+        },
+        {
+          "file": "test/registered/kernels/ops/gemm/test_sm120_fp8_linear.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/lora/test_experimental_sgl_marlin_multi_prefill.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_asymmetric_mha_pool.py",
+          "elapsed": 10
+        },
+        {
+          "file": "test/registered/layers/mamba/test_mamba_ssm.py",
+          "elapsed": 9
+        }
+      ]
+    },
+    {
+      "job_id": 124520627486,
+      "name": "base-c-test-4-gpu-b200 / base-c-test-4-gpu-b200 (1)",
+      "suite": "base-c-test-4-gpu-b200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:21:07Z",
+      "completed_at": "2026-10-31T11:34:11Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_qwen35_fp4_mtp.py",
+          "elapsed": 432
+        },
+        {
+          "file": "test/registered/e2e/disaggregation/test_disaggregation_kv_cache_sharding.py",
+          "elapsed": 109
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_page_interleave_gather_multi_gpu.py",
+          "elapsed": 90
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_dsa_layer_split_broadcast.py",
+          "elapsed": 28
+        },
+        {
+          "file": "test/registered/kernels/ops/communication/test_collectives.py",
+          "elapsed": 48
+        },
+        {
+          "file": "test/registered/utils/test_numa_utils.py",
+          "elapsed": 7
+        }
+      ]
+    },
+    {
+      "job_id": 124520627489,
+      "name": "base-c-test-4-gpu-b200 / base-c-test-4-gpu-b200 (0)",
+      "suite": "base-c-test-4-gpu-b200",
+      "backend": "cuda",
+      "started_at": "2026-10-31T11:18:03Z",
+      "completed_at": "2026-10-31T11:30:48Z",
+      "labels": [
+        "4-gpu-b200"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/e2e/models/test_qwen4_exp_models.py",
+          "elapsed": 636
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_page_sharded_dsa_attention.py",
+          "elapsed": 63
+        }
+      ]
+    },
+    {
+      "job_id": 124520627544,
+      "name": "base-a-test-cpu / base-a-test-cpu (5)",
+      "suite": "base-a-test-cpu",
+      "backend": "cpu",
+      "started_at": "2026-10-31T11:06:28Z",
+      "completed_at": "2026-10-31T11:11:02Z",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/unit/entrypoints/openai/test_serving_decisions.py",
+          "elapsed": 48
+        },
+        {
+          "file": "test/registered/unit/spec/test_decode_bookkeeping_ownership.py",
+          "elapsed": 15
+        },
+        {
+          "file": "test/registered/unit/entrypoints/test_ssl_cert_refresher.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/utils/test_hf_transformers_fastokens.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/unit/spec/test_dspark_sim_draw_ahead.py",
+          "elapsed": 3
+        },
+        {
+          "file": "test/registered/unit/managers/test_deferred_output.py",
+          "elapsed": 3
+        },
+        {
+          "file": "test/registered/unit/models/test_kimi_k25.py",
+          "elapsed": 3
+        },
+        {
+          "file": "test/registered/unit/spec/test_eagle_gate_routing.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/api/v1/test_parity.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/disaggregation/test_nixl_backend_basic.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/eplb/test_compute_logical_to_rank_dispatch_physical_map.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layer_boundary/test_declared_attention_cp.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/attention/test_kda_helion_dispatcher.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_flashinfer_trtllm_bf16_moe_reload.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layers/test_logprob_chunk_stitching.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/managers/test_load_snapshot_backends.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/managers/test_scheduler_sampling_mask_validation.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_page_unified_staging.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/model_executor/runner/test_dsv41_draft_metadata_glue.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/models/test_glm5_next_modelopt.py",
+          "elapsed": 4
+        },
+        {
+          "file": "test/registered/unit/models/test_zaya_mod_tp.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_vit_npu_graph_runner.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/server_args/test_declared_fallbacks.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/spec/test_pp_draft_embedding.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/utils/test_common.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/attention/test_triton_sparse_mla_prefill.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/disaggregation/test_decode_req_to_token_pool.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/dllm/test_gemma4_uniform_lifecycle.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/function_call/test_muse_glimmer_format.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layer_boundary/test_prepare_attn_steps.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_deepgemm_ue8m0_requant.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layers/test_minicpm_attention_adapter.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_output_streamer_customized_info.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_asymmetric_mha_pool_host_unit.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_hicache_storage_format_tag.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_session_unified_radix_cache.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/model_executor/runner/test_dsv41_target_verify_metadata_glue.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/models/test_bailing_vl_loader.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/models/test_llava.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/parser/test_code_completion_parser.py",
+          "elapsed": 4
+        },
+        {
+          "file": "test/registered/unit/test_parallel_consumers.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/managers/test_exportable_env_vars.py",
+          "elapsed": 0
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_mla_views.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_mxfp8_scale_transfer_buffers.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/function_call/test_kimik2_detector.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/kernels/test_jit_cache.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/vlm/test_video_utils.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_hicache_sidecar_restore.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/tokenizer/test_mistral_empty_assistant.py",
+          "elapsed": 0
+        }
+      ]
+    },
+    {
+      "job_id": 124520627549,
+      "name": "base-a-test-cpu / base-a-test-cpu (18)",
+      "suite": "base-a-test-cpu",
+      "backend": "cpu",
+      "started_at": "2026-10-31T11:06:28Z",
+      "completed_at": "2026-10-31T11:10:20Z",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/unit/test_server_args_namespaces.py",
+          "elapsed": 26
+        },
+        {
+          "file": "test/registered/unit/spec/test_dflash_model_config.py",
+          "elapsed": 18
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_buffer_mode_sidecar.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/unit/multimodal/rust/qwen/test_rust_mm_processor.py",
+          "elapsed": 5
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_inkling_media_errors.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/lora/test_triton_dp_attention_unit.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/model_loader/test_weight_utils.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/spec/test_dflash_domino.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/spec/dspark/test_dspark_draft_path_default.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/disaggregation/test_kimi_k3_encoder_mode.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/entrypoints/test_http_server_auth_levels.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/kernels/test_fused_op_dispatch.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/attention/test_aiter_verify_metadata.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/moe/test_topk_correction_bias_cache.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/test_dsv4_nonpaged_indexer.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_disagg_idle_step_counters.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_scheduler_flush_cache_after_retract.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_mooncake_ssd_offload_path.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/model_executor/model_runner_components/test_aux_hidden_state_capture.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/models/test_deepseek_pp_mtp_embedding.py",
+          "elapsed": 3
+        },
+        {
+          "file": "test/registered/unit/models/test_nemotron_h_shared_add.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_mrope_encoder_utils.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/plugins/test_load_plugins.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/spec/test_eagle_worker_v2_topk1_fastpath.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/test_runtime_context_override.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/spec/dspark/test_dspark_dp_tier.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/configs/test_multimodal_piecewise_cuda_graph.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/distributed/test_attn_cp_tp_broadcast.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/entrypoints/openai/test_whisper_adapter.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layer_boundary/test_boundary_output_policy.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/attention/test_trtllm_mha_paged_kv.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_nvfp4_online_weight_loader.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/managers/test_dcp_logical_capacity.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_scheduler_init_req_max_new_tokens.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_fcfs_waiting_prefix_refresh.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_mooncake_store_config.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_conv_compaction.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/model_executor/test_kv_canary_headroom.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/models/test_glm5_next_bfg_fusion.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_audio_container_decode.py",
+          "elapsed": 4
+        },
+        {
+          "file": "test/registered/unit/spec/test_draft_construction_isolation.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/disaggregation/test_deferred_bootstrap.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_dsv4_c4_state_lifecycle.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/model_loader/test_presharded_loader.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/function_call/test_kimik3_structural_tag.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/compilation/test_torch_compile_decoration.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/lora/test_moe_lora_gemm_config_store.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/configs/test_embedding_model_spec.py",
+          "elapsed": 0
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_kda_fused_decode_strided_state.py",
+          "elapsed": 0
+        },
+        {
+          "file": "test/registered/utils/test_log_utils.py",
+          "elapsed": 0
+        }
+      ]
+    },
+    {
+      "job_id": 124520627556,
+      "name": "base-a-test-cpu / base-a-test-cpu (0)",
+      "suite": "base-a-test-cpu",
+      "backend": "cpu",
+      "started_at": "2026-10-31T11:06:28Z",
+      "completed_at": "2026-10-31T11:11:03Z",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/unit/test_runtime_context.py",
+          "elapsed": 128
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_fp8_moe_weight_gating.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/test_logprob_fast_input.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_lora_update_result_merge.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_tokenizer_manager_rid_cleanup.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_registry.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/model_executor/runner/test_early_verify_metadata.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/models/test_glmmoedsa_correction_bias_fp32.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/multimodal/rust/shared/test_image_decode.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/observability/test_forward_pass_metrics.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/server_args/test_mamba_extra_buffer_platform.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/spec/test_spec_cpu_overlap_constraint.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/utils/test_field_validators.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/batch_overlap/test_tbo_children_dummy_token_mask.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/disaggregation/test_dsv4_unified_fp8_pd.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/entrypoints/anthropic/test_serving.py",
+          "elapsed": 0
+        },
+        {
+          "file": "test/registered/unit/function_call/test_response_template_structural_tag.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layer_boundary/test_qwen4_exp_ple_rows.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_flashinfer_trtllm_fp8_fallback.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/test_pooler_score_and_pool.py",
+          "elapsed": 3
+        },
+        {
+          "file": "test/registered/unit/managers/test_output_streamer_logprobs.py",
+          "elapsed": 8
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_component_split_contract.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_hicache_storage_registration_hook.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_sharded_dsa_hicache.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/model_executor/runner/test_graph_routing_context.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/models/test_cosmos3.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/models/test_locate_anything.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/parser/test_conversation.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/test_pre_publish_readers.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_grammar_stop_speculative.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_npool_sweep.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_npu_mamba_async_layout.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/function_call/test_kimik3_detector.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layers/test_dsv4_kv_splits_heuristic.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/kv_canary/test_self_unit_canary_info.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_evict_policy.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/spec/test_adaptive_runtime_state.py",
+          "elapsed": 0
+        }
+      ]
+    },
+    {
+      "job_id": 124520627561,
+      "name": "base-a-test-cpu / base-a-test-cpu (7)",
+      "suite": "base-a-test-cpu",
+      "backend": "cpu",
+      "started_at": "2026-10-31T11:06:28Z",
+      "completed_at": "2026-10-31T11:10:33Z",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "timings": [
+        {
+          "file": "test/registered/unit/models/test_mistral3_vision_feature.py",
+          "elapsed": 38
+        },
+        {
+          "file": "test/registered/unit/layers/moe/test_deepep_import_guard.py",
+          "elapsed": 12
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_hicache_file_lru_unit.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/unit/server_args/test_server_args.py",
+          "elapsed": 3
+        },
+        {
+          "file": "test/registered/unit/parser/test_deepseek_recipe_renderer.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/lora/test_uno_inactive_lora_batch.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/models/test_deepseek_v4_amd_fused_mhc.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/spec/test_dflash_dp_attention.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/spec/dspark/test_dspark_scheduler.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/disaggregation/test_kv_transfer_replica_metric.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/entrypoints/test_ready.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layer_boundary/test_aux_capture_deferred_allreduce.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/attention/test_dsa_head_gate_guard.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/moe/test_w4afp8_deepep_post_reorder.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/layers/test_joint_schema_head.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_finish_length_speculative.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_scheduler_hicache_events.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_multi_ended_allocator.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/model_executor/model_runner_components/test_layer_setup.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/models/test_deepseek_v4_cp_kv_store.py",
+          "elapsed": 3
+        },
+        {
+          "file": "test/registered/unit/models/test_paddleocr_vl_vision.py",
+          "elapsed": 11
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_processor_clone_isolation.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/sampling/test_sampling_metadata_staging.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/spec/test_multimodal_draft_embeddings.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/test_server_args_migration.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/spec/dspark/test_dspark_sps_table.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/disaggregation/test_ascend_page_dcp.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/distributed/test_pp_comm_overlap.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/entrypoints/test_v1_loads_aggregate.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layer_boundary/test_gated_residual_ops.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layers/moe/test_aiter_megamoe_rank_sync.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/layers/quantization/test_quark_w8a8_fp8_ptpc.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/managers/test_mamba_checkpoint_depth.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/managers/test_scheduler_timeouts.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_hicache_dcp_host_pool.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_pd_envelope_transfer_layout.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_unified_swa_shared_virtual_ids.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/model_loader/test_default_model_loader.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/models/test_hunyuan_v4_nextn_weight_loading.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/multimodal/test_precomputed_embedding_validation.py",
+          "elapsed": 3
+        },
+        {
+          "file": "test/registered/unit/spec/test_plugin_hook_signatures.py",
+          "elapsed": 9
+        },
+        {
+          "file": "test/registered/unit/eplb/test_megamoe_prefill_recorder.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/mem_cache/test_kv_stride_hygiene.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/server_args/test_page_major_backend_allowlist.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/model_executor/test_eager_on_graph.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/unit/distributed/test_oot_group_coordinator_hooks.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/lora/test_moe_lora_stage_dispatch.py",
+          "elapsed": 1
+        },
+        {
+          "file": "test/registered/unit/entrypoints/openai/test_matched_stop.py",
+          "elapsed": 0
+        },
+        {
+          "file": "test/registered/unit/models/test_qwen4_exp_decode_comm.py",
+          "elapsed": 2
+        },
+        {
+          "file": "test/registered/xpu/test_numa_utils_xpu.py",
+          "elapsed": 1
+        }
+      ]
+    }
+  ],
+  "last_scraped_at": "2026-10-31T18:19:52Z",
+  "time_stats": {
+    "total_wall_seconds": 107706,
+    "per_stage": {
+      "base-a-test-1-gpu-small": 414,
+      "base-a-test-cpu": 1026,
+      "base-b-test-1-gpu-large": 8598,
+      "base-b-test-1-gpu-small": 10341,
+      "base-b-test-2-gpu-large": 6284,
+      "base-b-test-4-gpu-b200": 1032,
+      "base-c-test-2-gpu-gb300": 2692,
+      "base-c-test-4-gpu-b200": 1549,
+      "base-c-test-4-gpu-gb300": 922,
+      "base-c-test-4-gpu-h100": 2254,
+      "base-c-test-8-gpu-b300": 1886,
+      "base-c-test-8-gpu-h20": 1411,
+      "base-c-test-8-gpu-h200": 268,
+      "call-jit-kernel-tests": 5666,
+      "call-multimodal-gen-tests": 16860,
+      "extra-a-test-1-gpu-large": 7655,
+      "extra-a-test-1-gpu-small": 4092,
+      "extra-a-test-2-gpu-large": 4669,
+      "extra-b-test-4-gpu-b200": 9011,
+      "extra-b-test-4-gpu-h100": 7486,
+      "extra-b-test-8-gpu-b300": 3480,
+      "extra-b-test-8-gpu-h20": 466,
+      "extra-b-test-8-gpu-h200": 9644
+    },
+    "per_runner": {
+      "1-gpu-5090": 15998,
+      "1-gpu-h100": 28465,
+      "2-gpu-gb300": 2692,
+      "2-gpu-h100": 18166,
+      "4-gpu-b200": 13542,
+      "4-gpu-gb300": 922,
+      "4-gpu-h100": 9740,
+      "8-gpu-b300": 5366,
+      "8-gpu-h20": 1877,
+      "8-gpu-h200": 9912,
+      "ubuntu-latest": 1026
+    }
+  }
+}
