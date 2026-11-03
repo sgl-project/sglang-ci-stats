@@ -32,10 +32,8 @@ consumer's bias >= target guard and failed check-changes repo-wide.
 Consumers should still fall back to coeff=1.0, bias=0 (and the
 in-source static est_time) whenever a lookup is missing.
 
-resets.json maps a suite to a UTC timestamp; that suite's jobs from runs
-started before it are ignored. After a step change in a suite (tests made
-faster, files moved in or out), add an entry instead of waiting
-fit_window_days for p90 to drop the old samples.
+A suite's jobs from runs started before its cutoff in resets.json are left
+out of both est and the fit (see README).
 
 Usage:
     python derive.py [--fit-window-days 7]
