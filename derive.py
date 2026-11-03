@@ -32,6 +32,9 @@ consumer's bias >= target guard and failed check-changes repo-wide.
 Consumers should still fall back to coeff=1.0, bias=0 (and the
 in-source static est_time) whenever a lookup is missing.
 
+A suite's jobs from runs started before its cutoff in resets.json are left
+out of both est and the fit (see README).
+
 Usage:
     python derive.py [--fit-window-days 7]
 """
@@ -45,6 +48,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent
 RUNS_DIR = REPO_ROOT / "runs"
+RESETS_PATH = REPO_ROOT / "resets.json"
 
 MIN_EST_SAMPLES = 3
 MIN_FIT_SAMPLES = 3
@@ -70,6 +74,25 @@ def load_runs(cutoff):
             continue
         out.append(rec)
     out.sort(key=lambda r: r["started_at"], reverse=True)
+    return out
+
+
+def load_resets(path=RESETS_PATH):
+    """Suite -> reset time from resets.json; {} when the file is absent."""
+    if not path.exists():
+        return {}
+    return {suite: parse_iso(ts) for suite, ts in json.loads(path.read_text()).items()}
+
+
+def drop_before_resets(records, resets):
+    """Drop each suite's jobs from runs started before that suite's reset."""
+    if not resets:
+        return records
+    out = []
+    for r in records:
+        started = parse_iso(r["started_at"])
+        jobs = [j for j in r["jobs"] if started >= resets.get(j["suite"], started)]
+        out.append({**r, "jobs": jobs})
     return out
 
 
@@ -199,7 +222,8 @@ def main():
     now = datetime.now(timezone.utc)
     today_utc = now.replace(hour=0, minute=0, second=0, microsecond=0)
     cutoff = today_utc - timedelta(days=args.fit_window_days)
-    records = load_runs(cutoff)
+    resets = load_resets()
+    records = drop_before_resets(load_runs(cutoff), resets)
 
     # Bins arrive newest-first (load_runs sorts that way). Slicing to
     # MAX_SAMPLES then keeps only the most recent samples per key.
@@ -231,6 +255,10 @@ def main():
         "fit_window_start": cutoff.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "fit_window_days": args.fit_window_days,
         "n_runs": len(records),
+        "resets": {
+            suite: ts.strftime("%Y-%m-%dT%H:%M:%SZ")
+            for suite, ts in sorted(resets.items())
+        },
         "est": est,
         "fit": fit,
     }
