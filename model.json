@@ -2,7 +2,7 @@
   "version": 1,
   "fit_window_start": "2026-11-16T00:00:00Z",
   "fit_window_days": 7,
-  "n_runs": 14,
+  "n_runs": 15,
   "resets": {
     "base-a-test-cpu": "2026-10-31T11:00:00Z"
   },
