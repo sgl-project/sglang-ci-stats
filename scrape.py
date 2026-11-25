@@ -11,12 +11,13 @@ Layout:
 
   runs/<YYYY-MM-DD>T<HH-MM-SS>Z__<run_id>.json
       Idempotent at job-name granularity: every invocation re-scans each
-      run in the lookback window and appends any newly-successful job
+      run in the lookback window and appends any newly-seen job
       (e.g. picked up from a "Re-run failed jobs" rerun) whose name isn't
       already on disk. Dedup is by name, not job_id: "Re-run failed jobs"
       carries each already-passed job forward into the new attempt under a
       *new* job_id but the *same* name and original timings, so a job_id
       key would double-count every carried-forward success on the rescan.
+      A `success` does supersede a name archived as `failure`.
 
 Filter:
   - workflow:   .github/workflows/pr-test.yml (matched by path, not display
@@ -25,7 +26,10 @@ Filter:
   - branch:     main
   - event:      schedule OR workflow_dispatch
   - run-level:  status=completed (any conclusion)
-  - job-level:  conclusion=success
+  - job-level:  conclusion in {success, failure}. A failed job still logs
+                valid timings for the files that finished, and dropping them
+                freezes a timed-out shard's est at its last green value.
+                derive.py drops the `passed=False` entries.
   - parser:     primary = TIMINGS JSONL block (sglang#25232);
                 fallback = legacy `filename=..., elapsed=N,` regex with
                 keep-last retry dedup, used for pre-merge log format.
@@ -199,9 +203,10 @@ def list_recent_runs(repo, workflow_id, lookback_hours=LOOKBACK_HOURS):
     return sorted(seen.values(), key=lambda r: r["run_started_at"], reverse=True)
 
 
-def get_successful_jobs(repo, run_id):
+def get_completed_jobs(repo, run_id):
+    """Cancelled/skipped jobs die before the TIMINGS block, so they add nothing."""
     data = gh_api(f"/repos/{repo}/actions/runs/{run_id}/jobs?per_page=100")
-    return [j for j in data["jobs"] if j["conclusion"] == "success"]
+    return [j for j in data["jobs"] if j["conclusion"] in ("success", "failure")]
 
 
 def job_logs_text(repo, job_id):
@@ -347,6 +352,7 @@ def build_job_record(repo, job):
     return {
         "job_id": job["id"],
         "name": job["name"],
+        "conclusion": job["conclusion"],
         "suite": job_name_to_suite(job["name"]),
         "backend": determine_backend(job["name"]),
         # L1 inputs for setup-time / per-runner bias analysis.
@@ -371,7 +377,9 @@ def sync_run(repo, run):
     existing_path = find_archive_path(run_id)
     if existing_path is not None:
         record = json.loads(existing_path.read_text())
-        known_names = {j["name"] for j in record.get("jobs", [])}
+        # Pre-conclusion archives hold successes only.
+        archived = {j["name"]: j.get("conclusion", "success")
+                    for j in record.get("jobs", [])}
     else:
         record = {
             "run_id": run_id,
@@ -382,15 +390,18 @@ def sync_run(repo, run):
             "display_title": run.get("display_title", ""),
             "jobs": [],
         }
-        known_names = set()
+        archived = {}
 
     # Dedup by name, not job_id: a "Re-run failed jobs" carries every
     # already-passed job into the new attempt under a fresh job_id but the
     # same name, so keying on job_id would re-append (double-count) each one.
-    todo = [
-        j for j in get_successful_jobs(repo, run_id)
-        if j["name"] not in known_names
-    ]
+    # failure -> success is the one known name we re-fetch: the rerun holds
+    # the full timing set the failed attempt cut short.
+    def is_new(job):
+        prev = archived.get(job["name"])
+        return prev is None or (prev == "failure" and job["conclusion"] == "success")
+
+    todo = [j for j in get_completed_jobs(repo, run_id) if is_new(j)]
     # Parallelize the per-job log download (the wall-time hot spot:
     # each gh API call is ~1.3s, almost entirely network roundtrip).
     with ThreadPoolExecutor(max_workers=LOG_FETCH_WORKERS) as pool:
@@ -399,6 +410,8 @@ def sync_run(repo, run):
     if not new_jobs and existing_path is not None:
         return record, 0
 
+    superseded = {j["name"] for j in new_jobs}
+    record["jobs"] = [j for j in record["jobs"] if j["name"] not in superseded]
     record["jobs"].extend(new_jobs)
     record["last_scraped_at"] = datetime.now(timezone.utc).strftime(
         "%Y-%m-%dT%H:%M:%SZ"
